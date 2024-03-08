@@ -1,10 +1,10 @@
 import "@/styles/globals.css";
 
-import { Inter } from "next/font/google";
+import { Noto_Sans } from "next/font/google";
 
 import { TRPCReactProvider } from "@/trpc/react";
 
-const inter = Inter({
+const noto_sans = Noto_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
 });
@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>
+      <body className={`font-sans ${noto_sans.variable}`}>
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
