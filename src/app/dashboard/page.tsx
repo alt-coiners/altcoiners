@@ -11,6 +11,7 @@ export default async function Dashboard() {
         {newData.map((news) => (
           <NewsCard
             key={news.id}
+            id={news.id}
             picture={news.picture}
             title={news.title}
             category={news.category}

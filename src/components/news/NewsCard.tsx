@@ -1,6 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface NewsCardProps {
+  id: number;
   picture: string;
   title: string;
   category: string;
@@ -34,13 +36,14 @@ const getHowLongAgo = (date: Date) => {
 };
 
 export default function NewsCard({
+  id,
   picture,
   title,
   category,
   date,
 }: NewsCardProps) {
   return (
-    <div className="flex flex-col gap-2">
+    <Link className="flex flex-col gap-2" href={`/dashboard/news/${id}`}>
       <Image
         src={picture}
         alt={title}
@@ -54,6 +57,6 @@ export default function NewsCard({
         <p className="text-primary">{category}</p>
       </div>
       <p className="w-5/6 text-pretty font-semibold">{title}</p>
-    </div>
+    </Link>
   );
 }
