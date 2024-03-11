@@ -1,13 +1,11 @@
-"use client";
+import { api } from "@/trpc/server";
 
-import { api } from "@/trpc/react";
-import { useParams } from "next/navigation";
+export default async function NewsId({ params }: { params: { id: string } }) {
+  const newsArticle = await api.news.getNewsById.query({ id: +params.id });
 
-export default function NewsId() {
-  const { id } = useParams();
-  const { data } = api.news.getNewsById.useQuery({
-    id: parseInt((id as string) ?? 0),
-  });
-
-  return <div>{data?.title}</div>;
+  return (
+    <div className="py-10">
+      <p>{newsArticle?.title}</p>
+    </div>
+  );
 }
