@@ -23,3 +23,23 @@ export const getHowLongAgo = (date: Date) => {
   }
   return "Just now";
 };
+
+export const calculateReadingTime = (text: string): string => {
+  const words = text.split(" ").length;
+  const minutes = Math.ceil(words / 200);
+  return `${minutes} min read`;
+};
+
+export const formatDate = (date: Date): string => {
+  const dateFormatter = new Intl.DateTimeFormat("en-US", { dateStyle: "long" });
+  const timeFormatter = new Intl.DateTimeFormat("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZoneName: "short",
+  });
+
+  const formattedDate = dateFormatter.format(date);
+  const formattedTime = timeFormatter.format(date);
+
+  return `${formattedDate} ${formattedTime}`;
+};
