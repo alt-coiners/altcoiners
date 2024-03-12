@@ -1,7 +1,9 @@
 import { getHowLongAgo } from "@/utils/helper";
 import type { Video } from "@prisma/client";
-import { PlayCircle } from "lucide-react";
+import { ChevronRight, PlayCircle } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { Button } from "../ui/button";
 
 interface VideoListProps {
   videos: Video[];
@@ -32,6 +34,15 @@ export default function VideoList({ videos }: VideoListProps) {
           <h2 className="text-sm font-semibold">{video.title}</h2>
         </div>
       ))}
+      <Link href={"/dashboard/videos"}>
+        <Button
+          variant="outline"
+          className="mx-auto mt-5 flex w-5/6 items-center gap-1 bg-transparent"
+        >
+          <p>More Videos</p>
+          <ChevronRight size={12} />
+        </Button>
+      </Link>
     </div>
   );
 }
