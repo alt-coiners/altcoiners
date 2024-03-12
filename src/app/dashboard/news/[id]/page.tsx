@@ -1,10 +1,14 @@
 import BreadcrumbComponent from "@/components/breadcrumb";
+import NewsLetter from "@/components/news/NewsLetter";
+import NewsList from "@/components/news/NewsList";
+import NewsListWithImage from "@/components/news/NewsListWithImage";
 import { api } from "@/trpc/server";
 import { calculateReadingTime, formatDate } from "@/utils/helper";
 import Image from "next/image";
 
 export default async function NewsId({ params }: { params: { id: string } }) {
   const newsArticle = await api.news.getNewsById.query({ id: +params.id });
+  const latestNews = await api.news.getLatestNews.query();
 
   const breadcrumbs = [
     {
@@ -44,6 +48,19 @@ export default async function NewsId({ params }: { params: { id: string } }) {
         className="prose px-2 py-6 text-sm text-gray-700"
         dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
       ></article>
+      <div className="mb-4 px-2">
+        <NewsList
+          articles={latestNews}
+          moreUrl="/dashboard/news"
+          title="Crypto News"
+        />
+      </div>
+      <NewsLetter />
+      <NewsListWithImage
+        articles={latestNews.slice(0, 2)}
+        title="Similar News"
+        className="my-6 px-2"
+      />
     </div>
   );
 }

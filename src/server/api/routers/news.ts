@@ -37,4 +37,13 @@ export const newsRouter = createTRPCRouter({
         },
       });
     }),
+
+  getLatestNews: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.article.findMany({
+      orderBy: {
+        updatedAt: "desc",
+      },
+      take: 5,
+    });
+  }),
 });
