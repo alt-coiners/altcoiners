@@ -5,7 +5,7 @@ export const NEWS_DATA = [
     title:
       "IRS Taps Binance.US, TaxBit Execs to Strengthen Crypto Tax Regulation Efforts",
     category: "News",
-    date: new Date("2022-01-01"),
+    createdAt: new Date("2022-01-01"),
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ export const NEWS_DATA = [
     title:
       "Matrixport Files Virtual Asset Trading License Application with Hong Kong SFC",
     category: "Blockchain News",
-    date: new Date("2024-03-04"),
+    createdAt: new Date("2024-03-04"),
   },
   {
     id: 3,
@@ -21,6 +21,6 @@ export const NEWS_DATA = [
     title:
       "Uniswap Releases Browser Extension and Tools to Improve Transactions",
     category: "News",
-    date: new Date("2024-01-04"),
+    createdAt: new Date("2024-01-04"),
   },
 ];

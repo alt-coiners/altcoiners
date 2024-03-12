@@ -15,7 +15,7 @@ export default async function Dashboard() {
             picture={news.picture}
             title={news.title}
             category={news.category}
-            date={news.date}
+            date={news.createdAt}
           />
         ))}
       </div>
