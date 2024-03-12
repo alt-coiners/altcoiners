@@ -5,7 +5,7 @@ export default async function NewsId({ params }: { params: { id: string } }) {
 
   return (
     <div className="px-2 py-10">
-      <p>{newsArticle?.title}</p>
+      <p className="text-xl text-primary-dark">{newsArticle?.title}</p>
     </div>
   );
 }

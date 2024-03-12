@@ -5,7 +5,9 @@ interface ArticleListCardProps {
   articles: Article[];
 }
 
-export default function ArticleListCard({ articles }: ArticleListCardProps) {
+export default function PopularArticleListCard({
+  articles,
+}: ArticleListCardProps) {
   return (
     <div
       className="mx-auto flex max-w-[350px] flex-col gap-4 bg-primary-dark px-4 pb-6 pt-12 text-white"
@@ -21,7 +23,6 @@ export default function ArticleListCard({ articles }: ArticleListCardProps) {
             <p className="text-gray-300">{article.category}</p>
           </div>
           <h2 className="font-semibold">{article.title}</h2>
-          <p>{article.content}</p>
           {index + 1 !== articles.length && (
             <div className="mb-2 h-[1px] w-full bg-gray-500"></div>
           )}
