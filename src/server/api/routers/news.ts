@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { NEWS_DATA } from "@/utils/constant/news";
 
 export const newsRouter = createTRPCRouter({
   // hello: publicProcedure
@@ -25,13 +24,17 @@ export const newsRouter = createTRPCRouter({
   //     });
   //   }),
 
-  getAllNews: publicProcedure.query(() => {
-    return NEWS_DATA;
+  getAllNews: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.article.findMany();
   }),
 
   getNewsById: publicProcedure
     .input(z.object({ id: z.number() }))
-    .query(({ input }) => {
-      return NEWS_DATA.find((news) => news.id === input.id);
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.article.findUnique({
+        where: {
+          id: input.id,
+        },
+      });
     }),
 });
