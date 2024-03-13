@@ -34,3 +34,26 @@ model Video {
 
     @@index([title])
 }
+
+model GuideCategory {
+    id        Int      @id @default(autoincrement())
+    name      String   @unique
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    Guide     Guide[]
+
+    @@index([name])
+}
+
+model Guide {
+    id         Int           @id @default(autoincrement())
+    title      String
+    content    String        @db.Text
+    picture    String
+    category   GuideCategory @relation(fields: [categoryId], references: [id])
+    categoryId Int
+    createdAt  DateTime      @default(now())
+    updatedAt  DateTime      @updatedAt
+
+    @@index([title])
+}
