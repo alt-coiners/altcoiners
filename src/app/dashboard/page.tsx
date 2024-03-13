@@ -1,7 +1,7 @@
 import NewsCard from "@/components/news/NewsCard";
 import NewsList from "@/components/news/NewsList";
 import NewsListWithImage from "@/components/news/NewsListWithImage";
-import VideoList from "@/components/news/VideoList";
+import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 
 export default async function Dashboard() {
@@ -16,7 +16,7 @@ export default async function Dashboard() {
         articles={newsData}
         moreUrl="/dashboard/news"
       />
-      <VideoList videos={videosData} />
+      <VideoListCard videos={videosData} />
     </div>
   );
 }
