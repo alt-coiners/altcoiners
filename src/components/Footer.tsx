@@ -42,9 +42,9 @@ const FooterBottomLinks = [
 
 export default function Footer() {
   return (
-    <div className="bg-primary-dark flex w-full flex-col gap-3 px-3 py-10 text-white">
+    <div className="flex w-full flex-col gap-3 bg-primary-dark px-3 py-10 text-white min-[425px]:px-5 sm:px-6">
       <div className="flex items-center gap-2">
-        <Triangle className="text-primary size-8" />
+        <Triangle className="size-8 text-primary" />
         <p className="text-lg font-medium">AltCoiners.live</p>
       </div>
       <p className="text-sm text-gray-400">
@@ -53,7 +53,7 @@ export default function Footer() {
       <p className="text-pretty text-lg font-semibold">
         Enter your email for our Free Daily Newsletter
       </p>
-      <div>
+      <div className="sm:mx-auto sm:w-3/4">
         <Input
           type="email"
           placeholder="Email"
