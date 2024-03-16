@@ -1,4 +1,5 @@
 import { Triangle } from "lucide-react";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -40,9 +41,37 @@ const FooterBottomLinks = [
   },
 ];
 
+const SocialLinks = [
+  {
+    title: "Twitter",
+    icon: "/images/social/twitter.png",
+    href: "#",
+  },
+  {
+    title: "LinkedIn",
+    icon: "/images/social/linkedin.png",
+    href: "#",
+  },
+  {
+    title: "YouTube",
+    icon: "/images/social/youtube.png",
+    href: "#",
+  },
+  {
+    title: "TikTok",
+    icon: "/images/social/tiktok.png",
+    href: "#",
+  },
+  {
+    title: "Telegram",
+    icon: "/images/social/telegram.png",
+    href: "#",
+  },
+];
+
 export default function Footer() {
   return (
-    <div className="flex w-full flex-col gap-3 bg-primary-dark px-3 py-10 text-white min-[425px]:px-5 sm:px-6">
+    <div className="flex w-full flex-col gap-3 bg-primary-dark px-3 py-10 text-white min-[425px]:px-5 sm:px-6 lg:gap-6">
       <div className="flex items-center gap-2">
         <Triangle className="size-8 text-primary" />
         <p className="text-lg font-medium">AltCoiners.live</p>
@@ -76,7 +105,7 @@ export default function Footer() {
         <span className="underline">Privacy Policy</span> and{" "}
         <span className="underline">Terms of Service</span> apply
       </p>
-      <div className="my-4 flex flex-col gap-5">
+      <div className="my-4 flex flex-col gap-5 lg:hidden">
         {FooterLinks.map((link) => (
           <a key={link.title} href={link.href} className="font-medium">
             {link.title}
@@ -98,16 +127,36 @@ export default function Footer() {
         Crypto promotions on this site do not comply with the UK Financial
         Promotions Regime and are not intended for UK consumers.
       </p>
-      <div className="my-4 flex w-5/6 justify-center gap-5 self-center">
+      <div className="hidden items-center gap-4 lg:flex">
+        {SocialLinks.map((link) => (
+          <a key={link.title} href={link.href}>
+            <Image src={link.icon} alt={link.title} width={16} height={16} />
+          </a>
+        ))}
+      </div>
+      <div className="my-4 flex w-5/6 justify-center gap-5 self-center lg:hidden">
         {FooterBottomLinks.map((link) => (
           <a key={link.title} href={link.href} className="text-sm">
             {link.title}
           </a>
         ))}
       </div>
-      <p className="mt-8 text-center text-sm text-gray-400">
-        © 2024 Altcoiners.live . All rights reserved
-      </p>
+      <div className="mt-8 lg:flex lg:items-center lg:justify-between">
+        <p className="text-center text-sm text-gray-400">
+          © 2024 Altcoiners.live . All rights reserved
+        </p>
+        <div className="hidden gap-5 lg:flex">
+          {FooterLinks.map((link) => (
+            <a key={link.title} href={link.href} className="font-medium">
+              {link.title}
+            </a>
+          ))}
+        </div>
+      </div>
+      <div className="hidden justify-end gap-8 lg:flex">
+        <p className="text-center text-sm text-gray-400">Have a story?</p>
+        <p className="text-center text-sm text-gray-400">Advertising</p>
+      </div>
     </div>
   );
 }
