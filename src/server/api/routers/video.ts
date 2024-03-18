@@ -16,4 +16,14 @@ export const videoRouter = createTRPCRouter({
         },
       });
     }),
+
+  getVideosForCategory: publicProcedure
+    .input(z.object({ category: z.string() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.video.findMany({
+        where: {
+          category: input.category,
+        },
+      });
+    }),
 });

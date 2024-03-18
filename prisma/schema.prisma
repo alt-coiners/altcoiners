@@ -24,15 +24,27 @@ model Article {
 }
 
 model Video {
-    id        Int      @id @default(autoincrement())
-    title     String
-    url       String
-    picture   String
-    category  String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id              Int           @id @default(autoincrement())
+    title           String
+    url             String
+    picture         String
+    createdAt       DateTime      @default(now())
+    updatedAt       DateTime      @updatedAt
+    VideoCategory   VideoCategory @relation(fields: [videoCategoryId], references: [id])
+    videoCategoryId Int
 
     @@index([title])
+}
+
+model VideoCategory {
+    id          Int      @id @default(autoincrement())
+    name        String   @unique
+    description String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    Video       Video[]
+
+    @@index([name])
 }
 
 model GuideCategory {
