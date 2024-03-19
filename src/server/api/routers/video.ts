@@ -4,7 +4,11 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const videoRouter = createTRPCRouter({
   getAllVideos: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.video.findMany();
+    return await ctx.db.video.findMany({
+      include: {
+        VideoCategory: true,
+      },
+    });
   }),
 
   getVideoById: publicProcedure
@@ -13,6 +17,9 @@ export const videoRouter = createTRPCRouter({
       return await ctx.db.video.findUnique({
         where: {
           id: input.id,
+        },
+        include: {
+          VideoCategory: true,
         },
       });
     }),
@@ -26,6 +33,48 @@ export const videoRouter = createTRPCRouter({
         },
         include: {
           Videos: true,
+        },
+      });
+    }),
+
+  getVideoCategories: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.videoCategory.findMany();
+  }),
+
+  upsertVideo: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        title: z.string(),
+        url: z.string(),
+        picture: z.string(),
+        categoryId: z.number(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.db.video.upsert({
+        where: {
+          id: input.id,
+        },
+        update: {
+          title: input.title,
+          url: input.url,
+          picture: input.picture,
+          VideoCategory: {
+            connect: {
+              id: input.categoryId,
+            },
+          },
+        },
+        create: {
+          title: input.title,
+          url: input.url,
+          picture: input.picture,
+          VideoCategory: {
+            connect: {
+              id: input.categoryId,
+            },
+          },
         },
       });
     }),

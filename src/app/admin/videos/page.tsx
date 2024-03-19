@@ -1,8 +1,17 @@
+"use client";
+
 import { columns } from "@/components/admin/video/videoCategory/columns";
+import { columns as videosColumns } from "@/components/admin/video/videoItem/columns";
 import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { api } from "@/trpc/react";
 
 export default function VideosAdmin() {
+  const { data: videoCategories, isLoading: isVideoCategoriesLoading } =
+    api.video.getVideoCategories.useQuery();
+  const { data: videos, isLoading: isVideosLoading } =
+    api.video.getAllVideos.useQuery();
+
   return (
     <div>
       <p className="p-2 text-2xl font-semibold">Holidays</p>
@@ -16,17 +25,17 @@ export default function VideosAdmin() {
             Video Categories
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="all">
+        <TabsContent value="videos">
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex w-full flex-col">
               <p className="text-lg font-medium">Videos</p>
               <DataTable
-                columns={columns}
-                data={holidays ?? []}
+                columns={videosColumns}
+                data={videos ?? []}
                 sortColumnAccessor="day"
                 sortColumnName="Date"
-                isLoading={isHolidaysLoading}
-                createComponent={<EditHoliday holidayId={-1} />}
+                isLoading={isVideosLoading}
+                // createComponent={<EditHoliday holidayId={-1} />}
               />
             </div>
           </div>
@@ -36,12 +45,12 @@ export default function VideosAdmin() {
             <div className="flex w-full flex-col">
               <p className="text-lg font-medium">Video Categories</p>
               <DataTable
-                columns={columnsSchoolHolidays}
-                data={schoolHolidaysMap ?? []}
-                sortColumnAccessor="day"
-                sortColumnName="Date"
-                isLoading={isSchoolHolidaysLoading}
-                createComponent={<EditSchoolHoliday holidayId={-1} />}
+                columns={columns}
+                data={videoCategories ?? []}
+                isLoading={isVideoCategoriesLoading}
+                sortColumnAccessor="name"
+                sortColumnName="Name"
+                // createComponent={<EditSchoolHoliday holidayId={-1} />}
               />
             </div>
           </div>

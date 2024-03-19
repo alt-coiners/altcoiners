@@ -24,14 +24,14 @@ model Article {
 }
 
 model Video {
-    id              Int            @id @default(autoincrement())
+    id              Int           @id @default(autoincrement())
     title           String
     url             String
     picture         String
-    createdAt       DateTime       @default(now())
-    updatedAt       DateTime       @updatedAt
-    VideoCategory   VideoCategory? @relation(fields: [videoCategoryId], references: [id])
-    videoCategoryId Int?
+    createdAt       DateTime      @default(now())
+    updatedAt       DateTime      @updatedAt
+    VideoCategory   VideoCategory @relation(fields: [videoCategoryId], references: [id])
+    videoCategoryId Int
 
     @@index([title])
 }
