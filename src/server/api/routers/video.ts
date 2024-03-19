@@ -20,9 +20,12 @@ export const videoRouter = createTRPCRouter({
   getVideosForCategory: publicProcedure
     .input(z.object({ category: z.string() }))
     .query(async ({ input, ctx }) => {
-      return await ctx.db.video.findMany({
+      return await ctx.db.videoCategory.findUnique({
         where: {
-          category: input.category,
+          name: input.category,
+        },
+        include: {
+          Videos: true,
         },
       });
     }),
