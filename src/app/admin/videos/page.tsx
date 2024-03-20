@@ -1,7 +1,9 @@
 "use client";
 
 import { columns } from "@/components/admin/video/videoCategory/columns";
+import EditVideo from "@/components/admin/video/videoCategory/create";
 import { columns as videosColumns } from "@/components/admin/video/videoItem/columns";
+import EditVideoCategory from "@/components/admin/video/videoItem/create";
 import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/trpc/react";
@@ -32,10 +34,10 @@ export default function VideosAdmin() {
               <DataTable
                 columns={videosColumns}
                 data={videos ?? []}
-                sortColumnAccessor="day"
-                sortColumnName="Date"
+                sortColumnAccessor="title"
+                sortColumnName="Title"
                 isLoading={isVideosLoading}
-                // createComponent={<EditHoliday holidayId={-1} />}
+                createComponent={<EditVideo videoId={-1} />}
               />
             </div>
           </div>
@@ -50,7 +52,7 @@ export default function VideosAdmin() {
                 isLoading={isVideoCategoriesLoading}
                 sortColumnAccessor="name"
                 sortColumnName="Name"
-                // createComponent={<EditSchoolHoliday holidayId={-1} />}
+                createComponent={<EditVideoCategory videoCategoryId={-1} />}
               />
             </div>
           </div>

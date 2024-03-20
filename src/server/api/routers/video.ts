@@ -37,6 +37,16 @@ export const videoRouter = createTRPCRouter({
       });
     }),
 
+  getCategoryById: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.videoCategory.findUnique({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
+
   getVideoCategories: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.videoCategory.findMany();
   }),
@@ -75,6 +85,30 @@ export const videoRouter = createTRPCRouter({
               id: input.categoryId,
             },
           },
+        },
+      });
+    }),
+
+  upsertVideoCategory: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        name: z.string(),
+        description: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.db.videoCategory.upsert({
+        where: {
+          id: input.id,
+        },
+        update: {
+          name: input.name,
+          description: input.description,
+        },
+        create: {
+          name: input.name,
+          description: input.description,
         },
       });
     }),

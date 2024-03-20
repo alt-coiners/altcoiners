@@ -18,6 +18,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -26,59 +27,61 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 interface EditVideoProps {
-  videoId: number;
+  videoCategoryId: number;
 }
 
 const formSchema = z.object({
-  title: z.string().min(1),
-  url: z.string().min(1),
-  picture: z.string().min(1),
-  categoryId: z.number(),
+  name: z.string().min(3),
+  description: z.string().min(3),
 });
 
-export default function EditVideo({ videoId }: EditVideoProps) {
-  const { data: videoData } = api.video.getVideoById.useQuery(
-    { id: videoId },
-    { enabled: videoId !== -1 },
+export default function EditVideoCategory({ videoCategoryId }: EditVideoProps) {
+  const { data: videoData } = api.video.getCategoryById.useQuery(
+    { id: videoCategoryId },
+    { enabled: videoCategoryId !== -1 },
   );
-  const { refetch: refetchVideos } = api.video.getAllVideos.useQuery();
-  const updateVideoMutation = api.video.upsertVideo.useMutation({
-    onSuccess: () => {
-      void refetchVideos();
-      form.reset();
-      toast({ title: "Video updated" });
+  const { refetch: refetchVideoCategories } =
+    api.video.getVideoCategories.useQuery();
+  const updateVideoCategoryMutation = api.video.upsertVideoCategory.useMutation(
+    {
+      onSuccess: () => {
+        void refetchVideoCategories();
+        form.reset();
+        toast({ title: "Video Category updated" });
+      },
     },
-  });
+  );
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: videoData?.title ?? "",
-      url: videoData?.url ?? "",
-      picture: videoData?.picture ?? "",
-      categoryId: videoData?.VideoCategory.id ?? 0,
+      name: videoData?.name ?? "",
+      description: videoData?.description ?? "",
     },
   });
 
   useEffect(() => {
     if (videoData) {
-      form.setValue("title", videoData.title ?? "");
-      form.setValue("url", videoData.url ?? "");
-      form.setValue("picture", videoData.picture ?? "");
-      form.setValue("categoryId", videoData.VideoCategory.id ?? 0);
+      form.setValue("name", videoData.name ?? "");
+      form.setValue("description", videoData.description ?? "");
     }
   }, [videoData, form]);
 
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await updateVideoMutation.mutateAsync({ id: videoId, ...values });
+    await updateVideoCategoryMutation.mutateAsync({
+      id: videoCategoryId,
+      ...values,
+    });
   }
 
   return (
     <Dialog>
       <DialogTrigger>
-        <Button>{videoId === -1 ? "Add Video" : "Edit"}</Button>
+        <Button>
+          {videoCategoryId === -1 ? "Add Video Category" : "Edit"}
+        </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="text-start">
@@ -91,14 +94,14 @@ export default function EditVideo({ videoId }: EditVideoProps) {
               >
                 <FormField
                   control={form.control}
-                  name="title"
+                  name="name"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        Title<span className="text-red-600">*</span>
+                        Name<span className="text-red-600">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter Title" {...field} />
+                        <Input placeholder="Enter Name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,29 +109,14 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                 />
                 <FormField
                   control={form.control}
-                  name="url"
+                  name="description"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel>
-                        URL<span className="text-red-600">*</span>
+                        Description<span className="text-red-600">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter URL" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="picture"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        Picture<span className="text-red-600">*</span>
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter Picture" {...field} />
+                        <Textarea placeholder="Enter Description" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

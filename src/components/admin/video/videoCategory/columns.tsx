@@ -2,15 +2,16 @@ import { Button } from "@/components/ui/button";
 import type { VideoCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import EditVideoCategory from "../videoItem/create";
 
 export const columns: ColumnDef<VideoCategory>[] = [
-  // {
-  //   id: 'edit',
-  //   header: ({ table }) => <Button variant="ghost">Edit</Button>,
-  //   cell: ({ row }) => <EditVoucher voucherId={row.original.id} />,
-  //   enableSorting: false,
-  //   enableHiding: false,
-  // },
+  {
+    id: "edit",
+    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    cell: ({ row }) => <EditVideoCategory videoCategoryId={row.original.id} />,
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     accessorKey: "id",
     header: ({ column }) => {
@@ -47,7 +48,7 @@ export const columns: ColumnDef<VideoCategory>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Total Coupons
+          Description
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
