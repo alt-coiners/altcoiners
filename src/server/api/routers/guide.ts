@@ -32,21 +32,20 @@ export const guideRouter = createTRPCRouter({
     }),
 
   getGuidesByCategory: publicProcedure
-    .input(z.object({ category: z.string() }))
+    .input(z.object({ id: z.number() }))
     .query(async ({ input, ctx }) => {
-      const category = await ctx.db.guideCategory.findUnique({
+      const data = await ctx.db.guideCategory.findUnique({
         where: {
-          name: input.category,
+          id: input.id,
+        },
+        include: {
+          Guide: true,
         },
       });
-      if (!category) {
-        return [] as Guide[];
+      if (!data) {
+        throw new Error("Category not found");
       }
-      return await ctx.db.guide.findMany({
-        where: {
-          categoryId: category.id,
-        },
-      });
+      return data;
     }),
 
   getAllGuidesByCategory: publicProcedure.query(async ({ ctx }) => {
