@@ -58,8 +58,10 @@ export default function Navbar() {
           </MenubarMenu>
         ))}
       </Menubar>
-      <Menu className="size-6 text-primary lg:hidden" />
-      <Search className="size-6 text-primary" />
+      <div className="flex items-center gap-3">
+        <Menu className="size-6 text-primary lg:hidden" />
+        <Search className="size-6 text-primary" />
+      </div>
     </div>
   );
 }
