@@ -48,4 +48,12 @@ export const guideRouter = createTRPCRouter({
         },
       });
     }),
+
+  getAllGuidesByCategory: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.guideCategory.findMany({
+      include: {
+        Guide: true,
+      },
+    });
+  }),
 });
