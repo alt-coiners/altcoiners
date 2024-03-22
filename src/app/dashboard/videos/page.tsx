@@ -7,19 +7,15 @@ export default async function Videos() {
 
   const breadcrumbs = [
     {
-      name: "News",
-      url: "/dashboard/news",
-    },
-    {
       name: "Videos",
       url: `/dashboard/news/category/videos`,
     },
   ];
 
   return (
-    <div className="flex flex-col gap-4 p-3">
+    <div className="mx-auto flex flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <BreadcrumbComponent links={breadcrumbs} />
-      <p className="w-[90%] text-pretty text-xl font-semibold text-primary-dark">
+      <p className="w-[90%] text-pretty text-xl font-bold text-primary-dark">
         Videos
       </p>
       <p className="text-sm">
