@@ -8,10 +8,12 @@ export default async function ReadersChoiceSection() {
 
   return (
     <section className="flex flex-col gap-4">
-      <h1 className="text-xl font-semibold">Reader&apos;s choice</h1>
+      <h1 className="text-xl font-bold text-primary-dark">
+        Reader&apos;s choice
+      </h1>
       <div>
         {/* Main news section */}
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2">
           <Image
             src={mainNews?.picture ?? ""}
             alt={mainNews?.title ?? "Picture"}

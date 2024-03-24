@@ -13,7 +13,7 @@ export default async function Dashboard() {
   const guideData = await api.guide.getAllGuidesByCategory.query();
 
   return (
-    <div className="my-4 flex flex-col gap-4 px-2 lg:gap-8">
+    <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12">
       <NewsListWithImage title="Latest News" articles={newsData} />
       <NewsList
         title="Crypto News"

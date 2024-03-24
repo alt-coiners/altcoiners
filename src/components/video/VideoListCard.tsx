@@ -1,12 +1,12 @@
 import { getHowLongAgo } from "@/utils/helper";
-import type { Video } from "@prisma/client";
+import type { Video, VideoCategory } from "@prisma/client";
 import { ChevronRight, PlayCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 interface VideoListProps {
-  videos: Video[];
+  videos: (Video & { VideoCategory: VideoCategory })[];
 }
 
 export default function VideoListCard({ videos }: VideoListProps) {
@@ -20,7 +20,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
               src={video.picture}
               width={350}
               height={200}
-              alt={video.category}
+              alt={video.VideoCategory.name}
             />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
               <PlayCircle size={32} />
@@ -29,7 +29,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
           <div className="flex gap-1 text-[10px]">
             <p>{getHowLongAgo(video.createdAt)}</p>
             <p>-</p>
-            <p className="text-gray-300">{video.category}</p>
+            <p className="text-gray-300">{video.VideoCategory.name}</p>
           </div>
           <h2 className="text-sm font-semibold">{video.title}</h2>
         </div>
