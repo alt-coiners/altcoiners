@@ -25,7 +25,8 @@ export const newsRouter = createTRPCRouter({
   //   }),
 
   getAllNews: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.article.findMany();
+    const articles = await ctx.db.article.findMany();
+    return [...articles, ...articles, ...articles];
   }),
 
   getNewsById: publicProcedure

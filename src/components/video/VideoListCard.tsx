@@ -14,7 +14,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
     <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold">Videos</h3>
-        <Link href={"/dashboard/news/category/videos"}>
+        <Link href={"/dashboard/videos"}>
           <Button variant="ghost" className="hidden items-center gap-1 lg:flex">
             <p className="text-xs">More Videos</p>
             <ChevronRight size={12} />
