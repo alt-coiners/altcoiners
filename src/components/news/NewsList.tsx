@@ -8,12 +8,18 @@ interface NewsListProps {
   title?: string;
   articles: Article[];
   moreUrl?: string;
+  showTitle?: boolean;
 }
 
-export default function NewsList({ title, articles, moreUrl }: NewsListProps) {
+export default function NewsList({
+  title,
+  articles,
+  moreUrl,
+  showTitle,
+}: NewsListProps) {
   return (
     <section className="flex flex-col gap-4">
-      {!!title?.length && (
+      {!!title?.length && showTitle && (
         <h2 className="text-xl font-semibold text-primary-dark">{title}</h2>
       )}
       <div className="flex flex-col gap-3">
