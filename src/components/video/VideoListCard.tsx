@@ -11,33 +11,46 @@ interface VideoListProps {
 
 export default function VideoListCard({ videos }: VideoListProps) {
   return (
-    <div className="mx-auto flex max-w-[350px] flex-col gap-4 bg-primary-dark px-4 py-6 text-white">
-      <h3 className="text-xl font-semibold">Videos</h3>
-      {videos.map((video, index) => (
-        <div key={video.id} className="flex flex-col gap-2">
-          <div className="relative">
-            <Image
-              src={video.picture}
-              width={350}
-              height={200}
-              alt={video.VideoCategory.name}
-            />
-            <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
-              <PlayCircle size={32} />
+    <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-12 xl:px-28 xl:py-6 2xl:px-36">
+      <div className="flex items-center justify-between">
+        <h3 className="text-xl font-semibold">Videos</h3>
+        <Link href={"/dashboard/news/category/videos"}>
+          <Button variant="ghost" className="hidden items-center gap-1 lg:flex">
+            <p className="text-xs">More Videos</p>
+            <ChevronRight size={12} />
+          </Button>
+        </Link>
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+        {videos.map((video, index) => (
+          <div key={video.id} className="flex flex-col gap-2">
+            <div className="relative">
+              <Image
+                src={video.picture}
+                width={350}
+                height={200}
+                alt={video.VideoCategory.name}
+                className="h-[200px] w-full object-cover"
+              />
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
+                <PlayCircle size={32} />
+              </div>
             </div>
+            <div className="flex gap-1 text-[10px] sm:text-xs">
+              <p>{getHowLongAgo(video.createdAt)}</p>
+              <p>-</p>
+              <p className="text-gray-300">{video.VideoCategory.name}</p>
+            </div>
+            <h2 className="text-sm font-semibold sm:text-base">
+              {video.title}
+            </h2>
           </div>
-          <div className="flex gap-1 text-[10px]">
-            <p>{getHowLongAgo(video.createdAt)}</p>
-            <p>-</p>
-            <p className="text-gray-300">{video.VideoCategory.name}</p>
-          </div>
-          <h2 className="text-sm font-semibold">{video.title}</h2>
-        </div>
-      ))}
+        ))}
+      </div>
       <Link href={"/dashboard/news/category/videos"}>
         <Button
           variant="outline"
-          className="mx-auto mt-5 flex w-5/6 items-center gap-1 bg-transparent"
+          className="mx-auto mt-5 flex w-5/6 items-center gap-1 bg-transparent lg:hidden"
         >
           <p>More Videos</p>
           <ChevronRight size={12} />

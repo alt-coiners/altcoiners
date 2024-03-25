@@ -1,6 +1,5 @@
 import GuideHomeSection from "@/components/guide/GuideHomeSection";
 import MostPopularSection from "@/components/news/MostPopularSection";
-import NewsCard from "@/components/news/NewsCard";
 import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
 import NewsListWithImage from "@/components/news/NewsListWithImage";
