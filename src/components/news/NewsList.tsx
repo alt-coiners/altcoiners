@@ -15,12 +15,12 @@ export default function NewsList({
   title,
   articles,
   moreUrl,
-  showTitle,
+  showTitle = true,
 }: NewsListProps) {
   return (
     <section className="flex flex-col gap-4">
       {!!title?.length && showTitle && (
-        <h2 className="text-xl font-semibold text-primary-dark">{title}</h2>
+        <h2 className="text-xl font-bold text-primary-dark">{title}</h2>
       )}
       <div className="flex flex-col gap-3">
         {articles.map((article, index) => (
