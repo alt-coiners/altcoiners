@@ -12,7 +12,11 @@ import Link from "next/link";
 const MenuNavLinks = [
   {
     title: "News",
-    subMenus: [{ title: "New Window" }, { title: "Share" }, { title: "Print" }],
+    subMenus: [
+      { title: "Bitcoin Leaks", url: "/dashboard/news/" },
+      { title: "Share" },
+      { title: "Print" },
+    ],
   },
   {
     title: "Exclusives",

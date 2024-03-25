@@ -16,7 +16,7 @@ export default async function Dashboard() {
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12">
       <NewsListWithImage title="Latest News" articles={newsData} />
       <MostPopularSection articles={newsData} />
-      <NewsList
+      <NewsListWithImage
         title="Crypto News"
         articles={newsData}
         moreUrl="/dashboard/news"

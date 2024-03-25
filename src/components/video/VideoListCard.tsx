@@ -30,7 +30,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
                 width={350}
                 height={200}
                 alt={video.VideoCategory.name}
-                className="h-[200px] w-full object-cover"
+                className="h-[200px] w-full object-cover lg:h-40"
               />
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 <PlayCircle size={32} />

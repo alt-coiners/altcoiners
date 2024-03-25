@@ -24,10 +24,10 @@ export default function NewsCard({
         alt={title}
         width={300}
         height={200}
-        className="h-48 w-full object-cover"
+        className="h-48 w-full object-cover lg:h-40"
       />
       <div className="flex items-center gap-2 text-xs">
-        <p className="text-gray-400">{getHowLongAgo(date)}</p>
+        <p className="text-gray-600">{getHowLongAgo(date)}</p>
         <div className="h-1.5 w-1.5 rounded-full bg-gray-400"></div>
         <p className="text-primary">{category}</p>
       </div>
