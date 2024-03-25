@@ -45,7 +45,7 @@ export default function NewsList({
         <Link href={moreUrl}>
           <Button
             variant="outline"
-            className="mx-auto flex w-5/6 items-center gap-1 text-primary"
+            className="mx-auto flex w-5/6 items-center gap-1 text-primary lg:hidden"
           >
             <p>More from {title}</p>
             <ChevronRight size={12} />

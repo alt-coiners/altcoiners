@@ -24,7 +24,7 @@ export default async function Dashboard() {
           <h2 className="text-xl font-bold text-primary-dark">
             Latest Crypto News
           </h2>
-          <NewsList articles={newsData} />
+          <NewsList articles={newsData.slice(0, 5)} />
         </div>
         <div className="flex w-1/2 flex-col gap-4">
           <div className="flex items-center justify-end gap-1 py-2 text-xs text-primary">
@@ -53,30 +53,36 @@ export default async function Dashboard() {
                   <p>{mainNews?.author}</p>
                 </div>
                 <h3 className="font-semibold">{mainNews?.title}</h3>
-                {/* <p className="text-sm">{mainNews?.description}</p> */}
-                <p className="text-xs">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
-                  perferendis repellat dolor provident ab, excepturi est velit,
-                  sunt delectus quibusdam soluta sint recusandae odio sequi
-                  debitis nam? Ratione, natus iure!
-                </p>
+                <p className="text-sm">{mainNews?.description}</p>
               </div>
             </div>
           </div>
         </div>
         <div className="w-1/4">
-          <MostPopularSection articles={newsData} />
+          <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
       </div>
-      <NewsListWithImage title="Latest News" articles={newsData} />
-      <MostPopularSection articles={newsData} />
       <NewsListWithImage
         title="Crypto News"
-        articles={newsData}
+        articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news"
       />
-      <VideoListCard videos={videosData} />
-      <NewsListWithImage title="Altcoin News" articles={newsData} />
+      <div className="lg:hidden">
+        <NewsListWithImage
+          title="Latest News"
+          articles={newsData.slice(0, 8)}
+          moreUrl="/dashboard/news"
+        />
+      </div>
+      <div className="lg:hidden">
+        <MostPopularSection articles={newsData.slice(0, 8)} />
+      </div>
+      <VideoListCard videos={videosData.slice(0, 4)} />
+      <NewsListWithImage
+        title="Altcoin News"
+        articles={newsData.slice(0, 8)}
+        moreUrl="/dashboard/news"
+      />
       <ReadersChoiceSection />
       <NewsLetter />
       <GuideHomeSection guides={guideData} />
