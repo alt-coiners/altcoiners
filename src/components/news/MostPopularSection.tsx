@@ -23,7 +23,7 @@ export default function MostPopularSection({
                   {article.category}
                 </span>
               </div>
-              <h3 className="font-semibold">{article.title}</h3>
+              <h3 className="text-sm font-semibold">{article.title}</h3>
             </div>
             {index + 1 !== articles.length && (
               <div className="h-[0.5px] w-full bg-gray-400"></div>
