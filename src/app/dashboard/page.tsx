@@ -86,6 +86,26 @@ export default async function Dashboard() {
       <ReadersChoiceSection />
       <NewsLetter />
       <GuideHomeSection guides={guideData} />
+      <NewsListWithImage
+        title="Bitcoin News"
+        articles={newsData.slice(0, 8)}
+        moreUrl="/dashboard/news"
+      />
+      <NewsListWithImage
+        title="Ethereum News"
+        articles={newsData.slice(0, 8)}
+        moreUrl="/dashboard/news"
+      />
+      <NewsListWithImage
+        title="NFT News"
+        articles={newsData.slice(0, 8)}
+        moreUrl="/dashboard/news"
+      />
+      <NewsListWithImage
+        title="All News"
+        articles={newsData.slice(0, 16)}
+        moreUrl="/dashboard/news"
+      />
     </div>
   );
 }

@@ -11,7 +11,7 @@ interface VideoListProps {
 
 export default function VideoListCard({ videos }: VideoListProps) {
   return (
-    <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-12 xl:px-28 xl:py-6 2xl:px-36">
+    <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold">Videos</h3>
         <Link href={"/dashboard/news/category/videos"}>
@@ -30,7 +30,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
                 width={350}
                 height={200}
                 alt={video.VideoCategory.name}
-                className="h-[200px] w-full object-cover lg:h-40"
+                className="h-[200px] w-full object-cover lg:h-40 xl:h-48"
               />
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 <PlayCircle size={32} />

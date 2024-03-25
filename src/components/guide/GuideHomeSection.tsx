@@ -30,8 +30,8 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
-    <Card className="bg-primary-dark text-white">
-      <CardHeader className="mx-auto flex flex-row items-center justify-between lg:max-w-3xl lg:px-0 xl:max-w-5xl 2xl:max-w-7xl">
+    <Card className="rounded-none border-0 bg-primary-dark text-white">
+      <CardHeader className="mx-auto flex flex-row items-center justify-between lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
         <CardTitle>Guides</CardTitle>
         <Button variant="ghost">
           View All <ArrowRight size={12} />
