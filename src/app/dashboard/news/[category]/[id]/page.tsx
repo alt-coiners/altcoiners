@@ -6,7 +6,11 @@ import { api } from "@/trpc/server";
 import { calculateReadingTime, formatDate } from "@/utils/helper";
 import Image from "next/image";
 
-export default async function NewsId({ params }: { params: { id: string } }) {
+export default async function NewsId({
+  params,
+}: {
+  params: { id: string; category: string };
+}) {
   const newsArticle = await api.news.getNewsById.query({ id: +params.id });
   const latestNews = await api.news.getLatestNews.query();
 
@@ -14,6 +18,10 @@ export default async function NewsId({ params }: { params: { id: string } }) {
     {
       name: "News",
       url: "/dashboard/news",
+    },
+    {
+      name: params.category ?? "",
+      url: `/dashboard/news/${params.category}`,
     },
     {
       name: newsArticle?.title ?? "",

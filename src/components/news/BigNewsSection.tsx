@@ -33,7 +33,7 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
             <p className="text-[10px] xl:text-xs 2xl:text-sm">
               {article.description}
             </p>
-            <Link href={`/dashboard/news/${article.id}`}>
+            <Link href={`/dashboard/news/${article.category}/${article.id}`}>
               <Button
                 variant={"ghost"}
                 className="items-center px-0 text-[10px] xl:text-xs 2xl:text-sm"

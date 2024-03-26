@@ -65,13 +65,13 @@ export default async function Dashboard() {
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
-        moreUrl="/dashboard/news"
+        moreUrl="/dashboard/news/Crypto"
       />
       <div className="lg:hidden">
         <NewsListWithImage
           title="Latest News"
           articles={newsData.slice(0, 8)}
-          moreUrl="/dashboard/news"
+          moreUrl="/dashboard/news/Latest"
         />
       </div>
       <div className="lg:hidden">
@@ -81,7 +81,7 @@ export default async function Dashboard() {
       <NewsListWithImage
         title="Altcoin News"
         articles={newsData.slice(0, 8)}
-        moreUrl="/dashboard/news"
+        moreUrl="/dashboard/news/Altcoin"
       />
       <ReadersChoiceSection />
       <NewsLetter />
@@ -89,22 +89,22 @@ export default async function Dashboard() {
       <NewsListWithImage
         title="Bitcoin News"
         articles={newsData.slice(0, 8)}
-        moreUrl="/dashboard/news"
+        moreUrl="/dashboard/news/Bitcoin"
       />
       <NewsListWithImage
         title="Ethereum News"
         articles={newsData.slice(0, 8)}
-        moreUrl="/dashboard/news"
+        moreUrl="/dashboard/news/Ethereum"
       />
       <NewsListWithImage
         title="NFT News"
         articles={newsData.slice(0, 8)}
-        moreUrl="/dashboard/news"
+        moreUrl="/dashboard/news/NFT"
       />
       <NewsListWithImage
         title="All News"
         articles={newsData.slice(0, 16)}
-        moreUrl="/dashboard/news"
+        moreUrl="/dashboard/news/All"
       />
     </div>
   );

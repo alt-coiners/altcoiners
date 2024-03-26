@@ -18,7 +18,10 @@ export default function NewsCard({
   date,
 }: NewsCardProps) {
   return (
-    <Link className="flex flex-col gap-2" href={`/dashboard/news/${id}`}>
+    <Link
+      className="flex flex-col gap-2"
+      href={`/dashboard/news/${category}/${id}`}
+    >
       <Image
         src={picture}
         alt={title}
