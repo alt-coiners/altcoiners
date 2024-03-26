@@ -13,7 +13,7 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
   return (
     <section className="flex flex-col gap-6">
       {articles.map((article) => (
-        <div key={article.id} className="flex gap-4">
+        <div key={article.id} className="flex gap-4 xl:gap-6">
           <Image
             src={article.picture}
             alt={article.title}
@@ -27,14 +27,16 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
               <p>-</p>
               <p className="text-primary">{article.category}</p>
             </div>
-            <h2 className="w-[90%] text-pretty text-sm font-semibold xl:text-base">
+            <h2 className="w-[90%] text-pretty text-sm font-semibold xl:text-base 2xl:text-lg">
               {article.title}
             </h2>
-            <p className="text-[10px] xl:text-xs">{article.description}</p>
+            <p className="text-[10px] xl:text-xs 2xl:text-sm">
+              {article.description}
+            </p>
             <Link href={`/dashboard/news/${article.id}`}>
               <Button
                 variant={"ghost"}
-                className="items-center px-0 text-[10px] xl:text-xs"
+                className="items-center px-0 text-[10px] xl:text-xs 2xl:text-sm"
               >
                 <p>Read More</p>
                 <ChevronRight size={12} />
