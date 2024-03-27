@@ -10,6 +10,7 @@ import {
 import type { Guide, GuideCategory } from "@prisma/client";
 import Autoplay from "embla-carousel-autoplay";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 import { useRef } from "react";
 import { Button } from "../ui/button";
 import {
@@ -33,9 +34,11 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
     <Card className="rounded-none border-0 bg-primary-dark text-white">
       <CardHeader className="mx-auto flex flex-row items-center justify-between lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
         <CardTitle>Guides</CardTitle>
-        <Button variant="ghost">
-          View All <ArrowRight size={12} />
-        </Button>
+        <Link href="/dashboard/guides">
+          <Button variant="ghost">
+            View All <ArrowRight size={12} />
+          </Button>
+        </Link>
       </CardHeader>
       <CardContent>
         <Carousel
