@@ -22,8 +22,14 @@ export default function HamburgerMenu() {
       <PopoverContent className="w-screen">
         <Accordion type="single" collapsible className="w-full">
           {MENU_NAV_LINKS.map((menu, index) => (
-            <AccordionItem key={index} value={`menu-${index}`}>
-              <AccordionTrigger>{menu.title}</AccordionTrigger>
+            <AccordionItem
+              key={index}
+              value={`menu-${index}`}
+              className="outline-none"
+            >
+              <AccordionTrigger className="outline-none">
+                {menu.title}
+              </AccordionTrigger>
               <AccordionContent>
                 <ul className="flex flex-col gap-3 pl-4">
                   {menu.subMenus.map((subMenu, subIndex) => (
