@@ -41,7 +41,7 @@ export default function Navbar() {
       </Menubar>
       <div className="flex items-center gap-3">
         <HamburgerMenu />
-        <Search className="size-6 text-primary" />
+        {/* <Search className="size-6 text-primary" /> */}
       </div>
     </div>
   );
