@@ -4,6 +4,7 @@ import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/trpc/react";
 import { columns as categoryColumns } from "./_guideTable/guideCategory/columns";
+import EditGuideCategory from "./_guideTable/guideCategory/create";
 import { columns } from "./_guideTable/guideItem/columns";
 
 export default function GuidesAdmin() {
@@ -50,7 +51,7 @@ export default function GuidesAdmin() {
                 isLoading={isCategoriesLoading}
                 sortColumnAccessor="name"
                 sortColumnName="Name"
-                // createComponent={<EditVideoCategory videoCategoryId={-1} />}
+                createComponent={<EditGuideCategory id={-1} />}
               />
             </div>
           </div>

@@ -25,60 +25,60 @@ import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-interface EditVideoProps {
-  videoId: number;
+interface Props {
+  id: number;
 }
 
 const formSchema = z.object({
   title: z.string().min(1),
-  url: z.string().min(1),
   picture: z.string().min(1),
+  content: z.string().min(1),
   categoryId: z.number(),
 });
 
-export default function EditVideo({ videoId }: EditVideoProps) {
-  const { data: videoData } = api.video.getVideoById.useQuery(
-    { id: videoId },
-    { enabled: videoId !== -1 },
+export default function EditGuide({ id }: Props) {
+  const { data } = api.guide.getGuideById.useQuery(
+    { id: id },
+    { enabled: id !== -1 },
   );
-  const { refetch: refetchVideos } = api.video.getAllVideos.useQuery();
-  const updateVideoMutation = api.video.upsertVideo.useMutation({
+  const { refetch } = api.guide.getAllGuides.useQuery();
+  const upsertMutation = api.guide.upsertGuide.useMutation({
     onSuccess: () => {
-      void refetchVideos();
+      void refetch();
       form.reset();
-      toast({ title: "Video updated" });
+      toast({ title: id === -1 ? "Created" : "Updated" });
     },
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: videoData?.title ?? "",
-      url: videoData?.url ?? "",
-      picture: videoData?.picture ?? "",
-      categoryId: videoData?.VideoCategory.id ?? 0,
+      title: data?.title ?? "",
+      picture: data?.picture ?? "",
+      content: data?.content ?? "",
+      categoryId: data?.categoryId ?? 0,
     },
   });
 
   useEffect(() => {
-    if (videoData) {
-      form.setValue("title", videoData.title ?? "");
-      form.setValue("url", videoData.url ?? "");
-      form.setValue("picture", videoData.picture ?? "");
-      form.setValue("categoryId", videoData.VideoCategory.id ?? 0);
+    if (data) {
+      form.setValue("title", data.title);
+      form.setValue("picture", data.picture);
+      form.setValue("content", data.content);
+      form.setValue("categoryId", data.categoryId);
     }
-  }, [videoData, form]);
+  }, [data, form]);
 
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await updateVideoMutation.mutateAsync({ id: videoId, ...values });
+    await upsertMutation.mutateAsync({ id: id, ...values });
   }
 
   return (
     <Dialog>
       <DialogTrigger>
-        <Button>{videoId === -1 ? "Add Video" : "Edit"}</Button>
+        <Button>{id === -1 ? "Add" : "Edit"}</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="text-start">
@@ -106,21 +106,6 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                 />
                 <FormField
                   control={form.control}
-                  name="url"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>
-                        URL<span className="text-red-600">*</span>
-                      </FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter URL" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
                   name="picture"
                   render={({ field }) => (
                     <FormItem>
@@ -134,6 +119,22 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                     </FormItem>
                   )}
                 />
+                <FormField
+                  control={form.control}
+                  name="content"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Content<span className="text-red-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter Content" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <Button type="submit" className="hidden" ref={submitButtonRef}>
                   Submit
                 </Button>
@@ -154,7 +155,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                   className="w-[45%] justify-center rounded-xl"
                   onClick={() => submitButtonRef.current?.click()}
                 >
-                  {videoData ? "Update" : "Create"}
+                  {data ? "Update" : "Create"}
                 </Button>
               </DialogTrigger>
             </div>
