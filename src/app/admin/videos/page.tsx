@@ -16,7 +16,7 @@ export default function VideosAdmin() {
 
   return (
     <div>
-      <p className="p-2 text-2xl font-semibold">Holidays</p>
+      <p className="p-2 text-2xl font-semibold">Videos</p>
       <hr />
       <Tabs defaultValue="videos" className="w-full px-4 py-6">
         <TabsList className="w-1/2">
