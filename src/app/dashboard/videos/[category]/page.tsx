@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import VideoList from "@/components/video/VideoList";
 import { api } from "@/trpc/server";
@@ -61,6 +62,7 @@ export default async function VideoCategory({
       </p>
       {/* @ts-expect-error - TODO: Fix this */}
       <VideoList videos={videoListArray} />
+      <AdSection className="h-56" />
     </div>
   );
 }

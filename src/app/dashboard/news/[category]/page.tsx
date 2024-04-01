@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import BigNewsSection from "@/components/news/BigNewsSection";
 import NewsList from "@/components/news/NewsList";
@@ -49,9 +50,11 @@ export default async function CategoryNews({
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
+          <AdSection className="h-[500px]" />
         </div>
       </div>
       <NewsListWithImage title="All News" articles={news.slice(0, 6)} />
+      <AdSection className="h-56" />
     </div>
   );
 }

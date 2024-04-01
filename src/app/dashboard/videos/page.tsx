@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import VideoList from "@/components/video/VideoList";
 import { api } from "@/trpc/server";
@@ -39,6 +40,7 @@ export default async function Videos() {
         of the best ways to stay on top of the game.
       </p>
       <VideoList videos={videos} />
+      <AdSection className="h-56" />
     </div>
   );
 }

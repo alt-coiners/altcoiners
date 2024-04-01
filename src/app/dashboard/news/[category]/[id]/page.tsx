@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
@@ -58,12 +59,14 @@ export default async function NewsId({
             className="prose prose-sm px-2 py-6 text-gray-700 sm:prose-base lg:prose-lg"
             dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
           ></article>
+          <AdSection className="h-56 lg:hidden" />
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
               articles={latestNews}
               moreUrl="/dashboard/news"
               title="Crypto News"
             />
+            A
           </div>
           <div className="xl:hidden">
             <NewsLetter />
@@ -75,6 +78,7 @@ export default async function NewsId({
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
+          <AdSection className="h-[600px]" />
           <NewsList
             articles={latestNews}
             moreUrl="/dashboard/news"
@@ -82,6 +86,7 @@ export default async function NewsId({
           />
         </div>
       </div>
+      <AdSection className="h-56 px-2" />
       <NewsListWithImage
         articles={latestNews.slice(0, 4)}
         title="Similar News"
