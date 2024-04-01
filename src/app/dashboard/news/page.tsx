@@ -22,7 +22,7 @@ export default async function News() {
       </p>
       <div className="lg:flex lg:justify-between lg:gap-10 xl:gap-16">
         <div className="hidden lg:block">
-          <BigNewsSection articles={news.slice(0, 5)} />
+          <BigNewsSection articles={news.slice(1, 5)} />
         </div>
         <div className="flex flex-col gap-6 lg:w-2/5">
           <div className="lg:hidden">

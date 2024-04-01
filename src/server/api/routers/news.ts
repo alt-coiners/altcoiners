@@ -3,30 +3,12 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const newsRouter = createTRPCRouter({
-  // hello: publicProcedure
-  //   .input(z.object({ text: z.string() }))
-  //   .query(({ input }) => {
-  //     return {
-  //       greeting: `Hello ${input.text}`,
-  //     };
-  //   }),
-
-  // create: publicProcedure
-  //   .input(z.object({ name: z.string().min(1) }))
-  //   .mutation(async ({ ctx, input }) => {
-  //     // simulate a slow db call
-  //     await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  //     return ctx.db.post.create({
-  //       data: {
-  //         name: input.name,
-  //       },
-  //     });
-  //   }),
-
   getAllNews: publicProcedure.query(async ({ ctx }) => {
-    const articles = await ctx.db.article.findMany();
-    return [...articles, ...articles, ...articles];
+    return await ctx.db.article.findMany({
+      include: {
+        category: true,
+      },
+    });
   }),
 
   getNewsById: publicProcedure
@@ -36,6 +18,9 @@ export const newsRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
+        include: {
+          category: true,
+        },
       });
     }),
 
@@ -44,7 +29,42 @@ export const newsRouter = createTRPCRouter({
       orderBy: {
         updatedAt: "desc",
       },
+      include: {
+        category: true,
+      },
       take: 5,
     });
+  }),
+
+  getNewsByCategoryId: publicProcedure
+    .input(z.object({ categoryId: z.number() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.article.findMany({
+        where: {
+          newsCategoryId: input.categoryId,
+        },
+        include: {
+          category: true,
+        },
+      });
+    }),
+
+  getNewsByCategoryName: publicProcedure
+    .input(z.object({ categoryName: z.string() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.article.findMany({
+        where: {
+          category: {
+            name: input.categoryName,
+          },
+        },
+        include: {
+          category: true,
+        },
+      });
+    }),
+
+  getAllCategories: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.newsCategory.findMany();
   }),
 });

@@ -1,8 +1,8 @@
 import { getHowLongAgo } from "@/utils/helper";
-import type { Article } from "@prisma/client";
+import { type NewsWithCategory } from "@/utils/types";
 
 interface ArticleListCardProps {
-  articles: Article[];
+  articles: NewsWithCategory[];
 }
 
 export default function PopularArticleListCard({
@@ -20,7 +20,7 @@ export default function PopularArticleListCard({
           <div className="flex gap-1 text-[10px]">
             <p>{getHowLongAgo(article.createdAt)}</p>
             <p>-</p>
-            <p className="text-gray-300">{article.category}</p>
+            <p className="text-gray-300">{article.category.name}</p>
           </div>
           <h2 className="font-semibold">{article.title}</h2>
           {index + 1 !== articles.length && (

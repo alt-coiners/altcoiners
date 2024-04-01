@@ -36,7 +36,7 @@ export default async function ReadersChoiceSection() {
               <div className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-1">
                   <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
-                  <p className="text-primary">{mainNews?.category}</p>
+                  <p className="text-primary">{mainNews?.category?.name}</p>
                 </div>
                 <p>{mainNews?.author}</p>
               </div>

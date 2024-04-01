@@ -10,7 +10,9 @@ export default async function CategoryNews({
   params: { category: string };
 }) {
   const { category } = params;
-  const news = await api.news.getAllNews.query();
+  const news = await api.news.getNewsByCategoryName.query({
+    categoryName: category,
+  });
 
   const breadcrumbs = [
     {

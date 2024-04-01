@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { type Article } from "@prisma/client";
+import { type NewsWithCategory } from "@/utils/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { type HTMLAttributes } from "react";
@@ -8,7 +8,7 @@ import NewsCard from "./NewsCard";
 
 interface NewsListWithImageProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
-  articles: Article[];
+  articles: NewsWithCategory[];
   moreUrl?: string;
 }
 
@@ -46,7 +46,7 @@ export default function NewsListWithImage({
             id={news.id}
             picture={news.picture}
             title={news.title}
-            category={news.category}
+            category={news.category.name}
             date={news.createdAt}
           />
         ))}

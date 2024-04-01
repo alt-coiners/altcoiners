@@ -1,12 +1,12 @@
 import { getHowLongAgo } from "@/utils/helper";
-import type { Article } from "@prisma/client";
+import { type NewsWithCategory } from "@/utils/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 interface NewsListProps {
   title?: string;
-  articles: Article[];
+  articles: NewsWithCategory[];
   moreUrl?: string;
   showTitle?: boolean;
 }
@@ -29,7 +29,7 @@ export default function NewsList({
               <div className="flex gap-1 text-[10px]">
                 <p>{getHowLongAgo(article.createdAt)}</p>
                 <p>-</p>
-                <p className="text-primary">{article.category}</p>
+                <p className="text-primary">{article.category.name}</p>
               </div>
               <h2 className="w-[90%] text-pretty text-sm font-semibold">
                 {article.title}

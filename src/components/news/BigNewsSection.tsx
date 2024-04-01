@@ -1,12 +1,12 @@
 import { getHowLongAgo } from "@/utils/helper";
-import type { Article } from "@prisma/client";
+import { type NewsWithCategory } from "@/utils/types";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 interface BigNewsSectionProps {
-  articles: Article[];
+  articles: NewsWithCategory[];
 }
 
 export default function BigNewsSection({ articles }: BigNewsSectionProps) {
@@ -25,7 +25,7 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
             <div className="flex gap-1 text-[10px]">
               <p>{getHowLongAgo(article.createdAt)}</p>
               <p>-</p>
-              <p className="text-primary">{article.category}</p>
+              <p className="text-primary">{article.category.name}</p>
             </div>
             <h2 className="w-[90%] text-pretty text-sm font-semibold xl:text-base 2xl:text-lg">
               {article.title}
@@ -33,7 +33,9 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
             <p className="text-[10px] xl:text-xs 2xl:text-sm">
               {article.description}
             </p>
-            <Link href={`/dashboard/news/${article.category}/${article.id}`}>
+            <Link
+              href={`/dashboard/news/${article.category.name}/${article.id}`}
+            >
               <Button
                 variant={"ghost"}
                 className="items-center px-0 text-[10px] xl:text-xs 2xl:text-sm"

@@ -1,8 +1,8 @@
 import { getHowLongAgo } from "@/utils/helper";
-import type { Article } from "@prisma/client";
+import { type NewsWithCategory } from "@/utils/types";
 
 interface MostPopularSectionProps {
-  articles: Article[];
+  articles: NewsWithCategory[];
 }
 
 export default function MostPopularSection({
@@ -20,7 +20,7 @@ export default function MostPopularSection({
                   {getHowLongAgo(article.createdAt)}
                 </span>
                 <span className="text-xs text-gray-200">
-                  {article.category}
+                  {article.category.name}
                 </span>
               </div>
               <h3 className="text-sm font-semibold">{article.title}</h3>

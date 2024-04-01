@@ -4,7 +4,6 @@ import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
 import NewsListWithImage from "@/components/news/NewsListWithImage";
 import ReadersChoiceSection from "@/components/news/ReadersChoiceSection";
-import { Button } from "@/components/ui/button";
 import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 import { getHowLongAgo } from "@/utils/helper";
@@ -48,7 +47,7 @@ export default async function Dashboard() {
                 <div className="flex w-full items-center justify-between text-[10px] text-gray-400">
                   <div className="flex items-center gap-1">
                     <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
-                    <p className="text-primary">{mainNews?.category}</p>
+                    <p className="text-primary">{mainNews?.category.name}</p>
                   </div>
                   <p>{mainNews?.author}</p>
                 </div>
