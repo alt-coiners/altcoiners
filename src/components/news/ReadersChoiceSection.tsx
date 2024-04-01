@@ -2,6 +2,7 @@ import { api } from "@/trpc/server";
 import { getHowLongAgo } from "@/utils/helper";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import NewsList from "./NewsList";
 
 export default async function ReadersChoiceSection() {
@@ -20,7 +21,10 @@ export default async function ReadersChoiceSection() {
         </div>
       </div>
       <div className="flex flex-col gap-3 lg:flex-row lg:gap-6">
-        <div className="flex flex-col lg:w-2/3">
+        <Link
+          className="flex flex-col lg:w-2/3"
+          href={`/dashboard/news/${mainNews?.category.name}/${mainNews?.id}`}
+        >
           <div className="relative">
             <Image
               src={mainNews?.picture ?? ""}
@@ -45,7 +49,7 @@ export default async function ReadersChoiceSection() {
             </div>
             <div className="min-h-full w-10 bg-primary"></div>
           </div>
-        </div>
+        </Link>
         <div className="my-2 sm:w-3/4 lg:w-1/3">
           <NewsList
             articles={readersNews.slice(1, 5)}

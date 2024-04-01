@@ -9,6 +9,7 @@ import { api } from "@/trpc/server";
 import { getHowLongAgo } from "@/utils/helper";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Dashboard() {
   const newsData = await api.news.getAllNews.query();
@@ -30,7 +31,10 @@ export default async function Dashboard() {
             <p>More from Crypto News</p>
             <ChevronRight size={12} />
           </div>
-          <div className="flex flex-col">
+          <Link
+            className="flex flex-col"
+            href={`/dashboard/news/${mainNews?.category.name}/${mainNews?.id}`}
+          >
             <div className="relative">
               <Image
                 src={mainNews?.picture ?? "/images/placeholder.png"}
@@ -44,7 +48,7 @@ export default async function Dashboard() {
             <div className="flex gap-2">
               <div className="h-full w-8 bg-primary"></div>
               <div className="flex flex-col gap-1 pt-2 xl:w-5/6">
-                <div className="flex w-full items-center justify-between text-[10px] text-gray-400">
+                <div className="flex w-full items-center justify-between text-[10px] text-gray-400 lg:text-xs">
                   <div className="flex items-center gap-1">
                     <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
                     <p className="text-primary">{mainNews?.category.name}</p>
@@ -55,7 +59,7 @@ export default async function Dashboard() {
                 <p className="text-sm">{mainNews?.description}</p>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="w-1/4">
           <MostPopularSection articles={newsData.slice(0, 5)} />
