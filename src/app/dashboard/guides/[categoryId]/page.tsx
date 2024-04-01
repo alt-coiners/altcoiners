@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import GuideCard from "@/components/guide/GuideCard";
 import { api } from "@/trpc/server";
@@ -40,6 +41,7 @@ export default async function GuideCategory({
           ))}
         </div>
       </div>
+      <AdSection className="h-56" />
     </div>
   );
 }
