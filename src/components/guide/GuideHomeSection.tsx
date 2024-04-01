@@ -57,8 +57,8 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
+          {/* <CarouselPrevious />
+          <CarouselNext /> */}
         </Carousel>
         {/* make multiple columns of the categories with the guides below */}
         <div className="mx-auto hidden grid-cols-4 gap-4 lg:grid lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">

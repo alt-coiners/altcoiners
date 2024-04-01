@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import GuideHomeSection from "@/components/guide/GuideHomeSection";
 import MostPopularSection from "@/components/news/MostPopularSection";
 import NewsLetter from "@/components/news/NewsLetter";
@@ -68,6 +69,7 @@ export default async function Dashboard() {
           <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
       </div>
+      <AdSection className="hidden h-48 lg:block" />
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
@@ -83,12 +85,14 @@ export default async function Dashboard() {
       <div className="lg:hidden">
         <MostPopularSection articles={newsData.slice(0, 8)} />
       </div>
+      <AdSection className="h-64 lg:hidden" />
       <VideoListCard videos={videosData.slice(0, 4)} />
       <NewsListWithImage
         title="Altcoin News"
         articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news/Altcoin"
       />
+      <AdSection className="h-36" />
       <ReadersChoiceSection />
       <NewsLetter />
       <GuideHomeSection guides={guideData} />
@@ -102,6 +106,7 @@ export default async function Dashboard() {
         articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news/Ethereum"
       />
+      <AdSection className="h-64" />
       <NewsListWithImage
         title="NFT News"
         articles={newsData.slice(0, 8)}
@@ -112,6 +117,7 @@ export default async function Dashboard() {
         articles={newsData.slice(0, 16)}
         moreUrl="/dashboard/news/All"
       />
+      <AdSection className="h-[400px] lg:h-56" />
     </div>
   );
 }

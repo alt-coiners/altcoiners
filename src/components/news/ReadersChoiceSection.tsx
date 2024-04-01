@@ -3,6 +3,7 @@ import { getHowLongAgo } from "@/utils/helper";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import AdSection from "../AdSection";
 import NewsList from "./NewsList";
 
 export default async function ReadersChoiceSection() {
@@ -22,7 +23,7 @@ export default async function ReadersChoiceSection() {
       </div>
       <div className="flex flex-col gap-3 lg:flex-row lg:gap-6">
         <Link
-          className="flex flex-col lg:w-2/3"
+          className="flex flex-col lg:w-1/2"
           href={`/dashboard/news/${mainNews?.category.name}/${mainNews?.id}`}
         >
           <div className="relative">
@@ -50,13 +51,22 @@ export default async function ReadersChoiceSection() {
             <div className="min-h-full w-10 bg-primary"></div>
           </div>
         </Link>
-        <div className="my-2 sm:w-3/4 lg:w-1/3">
+        <div className="my-2 sm:w-3/4 lg:hidden">
           <NewsList
             articles={readersNews.slice(1, 5)}
             moreUrl="/dashboard/news"
             title="Readers' choice"
             showTitle={false}
           />
+        </div>
+        <div className="my-2 hidden gap-6 sm:w-3/4 lg:flex lg:w-1/2">
+          <NewsList
+            articles={readersNews.slice(1, 5)}
+            moreUrl="/dashboard/news"
+            title="Readers' choice"
+            showTitle={false}
+          />
+          <AdSection className="h-full" />
         </div>
       </div>
     </section>
