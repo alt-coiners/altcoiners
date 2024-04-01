@@ -55,4 +55,63 @@ export const guideRouter = createTRPCRouter({
       },
     });
   }),
+
+  getAllGuides: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.guide.findMany({
+      include: {
+        category: true,
+      },
+    });
+  }),
+
+  upsertGuideCategory: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        name: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.db.guideCategory.upsert({
+        where: {
+          id: input.id,
+        },
+        create: {
+          name: input.name,
+        },
+        update: {
+          name: input.name,
+        },
+      });
+    }),
+
+  upsertGuide: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        title: z.string(),
+        picture: z.string(),
+        content: z.string(),
+        categoryId: z.number(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.db.guide.upsert({
+        where: {
+          id: input.id,
+        },
+        create: {
+          title: input.title,
+          picture: input.picture,
+          content: input.content,
+          categoryId: input.categoryId,
+        },
+        update: {
+          title: input.title,
+          picture: input.picture,
+          content: input.content,
+          categoryId: input.categoryId,
+        },
+      });
+    }),
 });

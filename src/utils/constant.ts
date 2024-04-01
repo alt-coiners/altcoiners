@@ -39,3 +39,181 @@ export const MENU_NAV_LINKS = [
     subMenus: [{ title: "Exchanges", url: "/dashboard/reviews" }],
   },
 ];
+
+export const FOOTER_LINKS = [
+  {
+    title: "Terms & Conditions",
+    href: "#",
+  },
+  {
+    title: "About Us",
+    href: "#",
+  },
+  {
+    title: "Privacy Policy",
+    href: "#",
+  },
+  {
+    title: "Disclaimer",
+    href: "#",
+  },
+];
+
+export const FOOTER_BOTTOM_LINKS = [
+  {
+    title: "Popular Crypto",
+    href: "#",
+    children: [
+      {
+        title: "Bitcoin Price",
+        href: "#",
+      },
+      {
+        title: "Ethereum Price",
+        href: "#",
+      },
+      {
+        title: "Cardano Price",
+        href: "#",
+      },
+      {
+        title: "Solana Price",
+        href: "#",
+      },
+      {
+        title: "Dogecoin Price",
+        href: "#",
+      },
+    ],
+  },
+  {
+    title: "Bitcoin & Crypto",
+    href: "#",
+    children: [
+      {
+        title: "Crypto Price Tracker",
+        href: "#",
+      },
+      {
+        title: "Crypto Converter",
+        href: "#",
+      },
+      {
+        title: "How to Buy Bitcoin",
+        href: "#",
+      },
+      {
+        title: "Best Crypto Wallets",
+        href: "#",
+      },
+      {
+        title: "Best Crypto Cold Wallets",
+        href: "#",
+      },
+      {
+        title: "Bitcoin Price Prediction",
+        href: "#",
+      },
+      {
+        title: "Ethereum Price Prediction",
+        href: "#",
+      },
+      {
+        title: "Best Altcoins to Invest In",
+        href: "#",
+      },
+    ],
+  },
+  {
+    title: "iGaming",
+    href: "#",
+    children: [
+      {
+        title: "Bitcoin Casinos",
+        href: "#",
+      },
+      {
+        title: "Crypto Betting",
+        href: "#",
+      },
+      {
+        title: "Bitcoin Gambling Sites",
+        href: "#",
+      },
+      {
+        title: "Instant Withdrawal Bitcoin Casinos",
+        href: "#",
+      },
+      {
+        title: "Fast Payout Online Casinos",
+        href: "#",
+      },
+      {
+        title: "Best Casino Apps",
+        href: "#",
+      },
+      {
+        title: "Best Telegram Casinos",
+        href: "#",
+      },
+      {
+        title: "Best No Account Casinos",
+        href: "#",
+      },
+      {
+        title: "Anonymous Casinos",
+        href: "#",
+      },
+      {
+        title: "Best Offshore Casinos",
+        href: "#",
+      },
+    ],
+  },
+  {
+    title: "About",
+    href: "#",
+    children: [
+      {
+        title: "Contributors",
+        href: "#",
+      },
+      {
+        title: "Editorial Policy",
+        href: "#",
+      },
+      {
+        title: "Events",
+        href: "#",
+      },
+    ],
+  },
+];
+
+export const SOCIAL_LINKS = [
+  {
+    title: "Twitter",
+    icon: "/images/social/twitter.png",
+    href: "#",
+  },
+  {
+    title: "LinkedIn",
+    icon: "/images/social/linkedin.png",
+    href: "#",
+  },
+  {
+    title: "YouTube",
+    icon: "/images/social/youtube.png",
+    href: "#",
+  },
+  {
+    title: "TikTok",
+    icon: "/images/social/tiktok.png",
+    href: "#",
+  },
+  {
+    title: "Telegram",
+    icon: "/images/social/telegram.png",
+    href: "#",
+  },
+];

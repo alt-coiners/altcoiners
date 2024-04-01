@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import BigNewsSection from "@/components/news/BigNewsSection";
 import NewsList from "@/components/news/NewsList";
@@ -22,7 +23,7 @@ export default async function News() {
       </p>
       <div className="lg:flex lg:justify-between lg:gap-10 xl:gap-16">
         <div className="hidden lg:block">
-          <BigNewsSection articles={news.slice(0, 5)} />
+          <BigNewsSection articles={news.slice(1, 5)} />
         </div>
         <div className="flex flex-col gap-6 lg:w-2/5">
           <div className="lg:hidden">
@@ -38,9 +39,11 @@ export default async function News() {
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
+          <AdSection className="h-[500px]" />
         </div>
       </div>
       <NewsListWithImage title="All News" articles={news.slice(0, 6)} />
+      <AdSection className="h-56" />
     </div>
   );
 }

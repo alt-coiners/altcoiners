@@ -11,17 +11,28 @@ datasource db {
 }
 
 model Article {
-    id          Int      @id @default(autoincrement())
-    title       String
-    content     String   @db.Text
-    description String
-    picture     String
-    category    String
-    author      String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+    id             Int          @id @default(autoincrement())
+    title          String
+    content        String       @db.Text
+    description    String
+    picture        String
+    author         String
+    createdAt      DateTime     @default(now())
+    updatedAt      DateTime     @updatedAt
+    category       NewsCategory @relation(fields: [newsCategoryId], references: [id])
+    newsCategoryId Int
 
     @@index([title])
+}
+
+model NewsCategory {
+    id        Int       @id @default(autoincrement())
+    name      String    @unique
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    News      Article[]
+
+    @@index([name])
 }
 
 model Video {

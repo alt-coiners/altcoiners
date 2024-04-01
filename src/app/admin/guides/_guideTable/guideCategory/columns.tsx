@@ -1,14 +1,14 @@
 import { Button } from "@/components/ui/button";
-import type { VideoCategory } from "@prisma/client";
+import type { GuideCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import EditVideoCategory from "../videoItem/create";
+import EditGuideCategory from "./create";
 
-export const columns: ColumnDef<VideoCategory>[] = [
+export const columns: ColumnDef<GuideCategory>[] = [
   {
     id: "edit",
     header: ({ table }) => <Button variant="ghost">Edit</Button>,
-    cell: ({ row }) => <EditVideoCategory videoCategoryId={row.original.id} />,
+    cell: ({ row }) => <EditGuideCategory id={row.original.id} />,
     enableSorting: false,
     enableHiding: false,
   },
@@ -35,20 +35,6 @@ export const columns: ColumnDef<VideoCategory>[] = [
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-  },
-  {
-    accessorKey: "description",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Description
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

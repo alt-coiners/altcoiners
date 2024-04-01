@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import ExchangeCard from "@/components/review/ExchangeCard";
 
@@ -41,6 +42,7 @@ export default function Reviews() {
           <ExchangeCard key={index} {...exchange} />
         ))}
       </div>
+      <AdSection className="h-56" />
     </div>
   );
 }

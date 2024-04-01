@@ -1,3 +1,4 @@
+import AdSection from "@/components/AdSection";
 import { api } from "@/trpc/server";
 import Link from "next/link";
 
@@ -5,9 +6,9 @@ export default async function Guide() {
   const guidesByCategoryData = await api.guide.getAllGuidesByCategory.query();
 
   return (
-    <div className="mb-6 flex flex-col gap-4 p-3">
-      <h1 className="text-2xl font-semibold">Guides</h1>
-      <div className="flex flex-col gap-4 px-6 lg:mx-auto lg:w-3/4 xl:gap-6 2xl:w-2/3">
+    <div className="mx-auto mb-6 flex w-full flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
+      <p className="text-xl font-bold text-primary-dark lg:text-2xl">Guides</p>
+      <div className="mx-auto flex flex-col gap-4 px-6 xl:gap-6">
         {guidesByCategoryData.map((category) => (
           <div key={category.id}>
             <Link href={`/dashboard/guides/${category.id}`}>
@@ -30,6 +31,7 @@ export default async function Guide() {
           </div>
         ))}
       </div>
+      <AdSection className="h-56" />
     </div>
   );
 }

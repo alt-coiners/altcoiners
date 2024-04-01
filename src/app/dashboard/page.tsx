@@ -1,15 +1,16 @@
+import AdSection from "@/components/AdSection";
 import GuideHomeSection from "@/components/guide/GuideHomeSection";
 import MostPopularSection from "@/components/news/MostPopularSection";
 import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
 import NewsListWithImage from "@/components/news/NewsListWithImage";
 import ReadersChoiceSection from "@/components/news/ReadersChoiceSection";
-import { Button } from "@/components/ui/button";
 import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 import { getHowLongAgo } from "@/utils/helper";
 import { ChevronRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default async function Dashboard() {
   const newsData = await api.news.getAllNews.query();
@@ -27,11 +28,17 @@ export default async function Dashboard() {
           <NewsList articles={newsData.slice(0, 5)} />
         </div>
         <div className="flex w-1/2 flex-col gap-4">
-          <div className="flex items-center justify-end gap-1 py-2 text-xs text-primary">
+          <Link
+            className="flex items-center justify-end gap-1 py-2 text-xs text-primary"
+            href="/dashboard/news"
+          >
             <p>More from Crypto News</p>
             <ChevronRight size={12} />
-          </div>
-          <div className="flex flex-col">
+          </Link>
+          <Link
+            className="flex flex-col"
+            href={`/dashboard/news/${mainNews?.category.name}/${mainNews?.id}`}
+          >
             <div className="relative">
               <Image
                 src={mainNews?.picture ?? "/images/placeholder.png"}
@@ -45,10 +52,10 @@ export default async function Dashboard() {
             <div className="flex gap-2">
               <div className="h-full w-8 bg-primary"></div>
               <div className="flex flex-col gap-1 pt-2 xl:w-5/6">
-                <div className="flex w-full items-center justify-between text-[10px] text-gray-400">
+                <div className="flex w-full items-center justify-between text-[10px] text-gray-400 lg:text-xs">
                   <div className="flex items-center gap-1">
                     <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
-                    <p className="text-primary">{mainNews?.category}</p>
+                    <p className="text-primary">{mainNews?.category.name}</p>
                   </div>
                   <p>{mainNews?.author}</p>
                 </div>
@@ -56,12 +63,13 @@ export default async function Dashboard() {
                 <p className="text-sm">{mainNews?.description}</p>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="w-1/4">
           <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
       </div>
+      <AdSection className="hidden h-48 lg:block" />
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
@@ -77,12 +85,14 @@ export default async function Dashboard() {
       <div className="lg:hidden">
         <MostPopularSection articles={newsData.slice(0, 8)} />
       </div>
+      <AdSection className="h-64 lg:hidden" />
       <VideoListCard videos={videosData.slice(0, 4)} />
       <NewsListWithImage
         title="Altcoin News"
         articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news/Altcoin"
       />
+      <AdSection className="h-36" />
       <ReadersChoiceSection />
       <NewsLetter />
       <GuideHomeSection guides={guideData} />
@@ -96,6 +106,7 @@ export default async function Dashboard() {
         articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news/Ethereum"
       />
+      <AdSection className="h-64" />
       <NewsListWithImage
         title="NFT News"
         articles={newsData.slice(0, 8)}
@@ -106,6 +117,7 @@ export default async function Dashboard() {
         articles={newsData.slice(0, 16)}
         moreUrl="/dashboard/news/All"
       />
+      <AdSection className="h-[400px] lg:h-56" />
     </div>
   );
 }

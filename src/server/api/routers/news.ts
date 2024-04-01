@@ -3,30 +3,12 @@ import { z } from "zod";
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const newsRouter = createTRPCRouter({
-  // hello: publicProcedure
-  //   .input(z.object({ text: z.string() }))
-  //   .query(({ input }) => {
-  //     return {
-  //       greeting: `Hello ${input.text}`,
-  //     };
-  //   }),
-
-  // create: publicProcedure
-  //   .input(z.object({ name: z.string().min(1) }))
-  //   .mutation(async ({ ctx, input }) => {
-  //     // simulate a slow db call
-  //     await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  //     return ctx.db.post.create({
-  //       data: {
-  //         name: input.name,
-  //       },
-  //     });
-  //   }),
-
   getAllNews: publicProcedure.query(async ({ ctx }) => {
-    const articles = await ctx.db.article.findMany();
-    return [...articles, ...articles, ...articles];
+    return await ctx.db.article.findMany({
+      include: {
+        category: true,
+      },
+    });
   }),
 
   getNewsById: publicProcedure
@@ -36,6 +18,49 @@ export const newsRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
+        include: {
+          category: true,
+        },
+      });
+    }),
+
+  upsertNews: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        title: z.string(),
+        description: z.string(),
+        picture: z.string(),
+        content: z.string(),
+        author: z.string(),
+        newsCategoryId: z.number(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      if (input.id) {
+        return await ctx.db.article.update({
+          where: {
+            id: input.id,
+          },
+          data: {
+            title: input.title,
+            description: input.description,
+            picture: input.picture,
+            content: input.content,
+            author: input.author,
+            newsCategoryId: input.newsCategoryId,
+          },
+        });
+      }
+      return await ctx.db.article.create({
+        data: {
+          title: input.title,
+          description: input.description,
+          picture: input.picture,
+          content: input.content,
+          author: input.author,
+          newsCategoryId: input.newsCategoryId,
+        },
       });
     }),
 
@@ -44,7 +69,77 @@ export const newsRouter = createTRPCRouter({
       orderBy: {
         updatedAt: "desc",
       },
+      include: {
+        category: true,
+      },
       take: 5,
     });
   }),
+
+  getNewsByCategoryId: publicProcedure
+    .input(z.object({ categoryId: z.number() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.article.findMany({
+        where: {
+          newsCategoryId: input.categoryId,
+        },
+        include: {
+          category: true,
+        },
+      });
+    }),
+
+  getNewsByCategoryName: publicProcedure
+    .input(z.object({ categoryName: z.string() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.article.findMany({
+        where: {
+          category: {
+            name: input.categoryName,
+          },
+        },
+        include: {
+          category: true,
+        },
+      });
+    }),
+
+  getAllCategories: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.newsCategory.findMany();
+  }),
+
+  getCategoryById: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.newsCategory.findUnique({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
+
+  upsertCategory: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        name: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      if (input.id) {
+        return await ctx.db.newsCategory.update({
+          where: {
+            id: input.id,
+          },
+          data: {
+            name: input.name,
+          },
+        });
+      }
+      return await ctx.db.newsCategory.create({
+        data: {
+          name: input.name,
+        },
+      });
+    }),
 });

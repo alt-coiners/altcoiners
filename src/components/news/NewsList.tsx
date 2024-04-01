@@ -1,12 +1,12 @@
 import { getHowLongAgo } from "@/utils/helper";
-import type { Article } from "@prisma/client";
+import { type NewsWithCategory } from "@/utils/types";
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
 interface NewsListProps {
   title?: string;
-  articles: Article[];
+  articles: NewsWithCategory[];
   moreUrl?: string;
   showTitle?: boolean;
 }
@@ -22,19 +22,25 @@ export default function NewsList({
       {!!title?.length && showTitle && (
         <h2 className="text-xl font-bold text-primary-dark">{title}</h2>
       )}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-4">
         {articles.map((article, index) => (
           <>
-            <div key={article.id} className="flex flex-col gap-1">
+            <Link
+              href={`/dashboard/news/${article.category.name}/${article.id}`}
+              key={article.id}
+              className="flex cursor-pointer flex-col gap-1 hover:bg-slate-100"
+            >
               <div className="flex gap-1 text-[10px]">
                 <p>{getHowLongAgo(article.createdAt)}</p>
                 <p>-</p>
-                <p className="text-primary">{article.category}</p>
+                <Link href={`/dashboard/news/${article.category.name}`}>
+                  <p className="text-primary">{article.category.name}</p>
+                </Link>
               </div>
               <h2 className="w-[90%] text-pretty text-sm font-semibold">
                 {article.title}
               </h2>
-            </div>
+            </Link>
             {index + 1 !== articles.length && (
               <div className="h-[0.5px] w-full bg-gray-300"></div>
             )}

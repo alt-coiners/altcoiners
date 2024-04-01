@@ -1,189 +1,16 @@
+import {
+  FOOTER_BOTTOM_LINKS,
+  FOOTER_LINKS,
+  SOCIAL_LINKS,
+} from "@/utils/constant";
 import { Triangle } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
-const FooterLinks = [
-  {
-    title: "Terms & Conditions",
-    href: "#",
-  },
-  {
-    title: "About Us",
-    href: "#",
-  },
-  {
-    title: "Privacy Policy",
-    href: "#",
-  },
-  {
-    title: "Disclaimer",
-    href: "#",
-  },
-];
-
-const FooterBottomLinks = [
-  {
-    title: "Popular Crypto",
-    href: "#",
-    children: [
-      {
-        title: "Bitcoin Price",
-        href: "#",
-      },
-      {
-        title: "Ethereum Price",
-        href: "#",
-      },
-      {
-        title: "Cardano Price",
-        href: "#",
-      },
-      {
-        title: "Solana Price",
-        href: "#",
-      },
-      {
-        title: "Dogecoin Price",
-        href: "#",
-      },
-    ],
-  },
-  {
-    title: "Bitcoin & Crypto",
-    href: "#",
-    children: [
-      {
-        title: "Crypto Price Tracker",
-        href: "#",
-      },
-      {
-        title: "Crypto Converter",
-        href: "#",
-      },
-      {
-        title: "How to Buy Bitcoin",
-        href: "#",
-      },
-      {
-        title: "Best Crypto Wallets",
-        href: "#",
-      },
-      {
-        title: "Best Crypto Cold Wallets",
-        href: "#",
-      },
-      {
-        title: "Bitcoin Price Prediction",
-        href: "#",
-      },
-      {
-        title: "Ethereum Price Prediction",
-        href: "#",
-      },
-      {
-        title: "Best Altcoins to Invest In",
-        href: "#",
-      },
-    ],
-  },
-  {
-    title: "iGaming",
-    href: "#",
-    children: [
-      {
-        title: "Bitcoin Casinos",
-        href: "#",
-      },
-      {
-        title: "Crypto Betting",
-        href: "#",
-      },
-      {
-        title: "Bitcoin Gambling Sites",
-        href: "#",
-      },
-      {
-        title: "Instant Withdrawal Bitcoin Casinos",
-        href: "#",
-      },
-      {
-        title: "Fast Payout Online Casinos",
-        href: "#",
-      },
-      {
-        title: "Best Casino Apps",
-        href: "#",
-      },
-      {
-        title: "Best Telegram Casinos",
-        href: "#",
-      },
-      {
-        title: "Best No Account Casinos",
-        href: "#",
-      },
-      {
-        title: "Anonymous Casinos",
-        href: "#",
-      },
-      {
-        title: "Best Offshore Casinos",
-        href: "#",
-      },
-    ],
-  },
-  {
-    title: "About",
-    href: "#",
-    children: [
-      {
-        title: "Contributors",
-        href: "#",
-      },
-      {
-        title: "Editorial Policy",
-        href: "#",
-      },
-      {
-        title: "Events",
-        href: "#",
-      },
-    ],
-  },
-];
-
-const SocialLinks = [
-  {
-    title: "Twitter",
-    icon: "/images/social/twitter.png",
-    href: "#",
-  },
-  {
-    title: "LinkedIn",
-    icon: "/images/social/linkedin.png",
-    href: "#",
-  },
-  {
-    title: "YouTube",
-    icon: "/images/social/youtube.png",
-    href: "#",
-  },
-  {
-    title: "TikTok",
-    icon: "/images/social/tiktok.png",
-    href: "#",
-  },
-  {
-    title: "Telegram",
-    icon: "/images/social/telegram.png",
-    href: "#",
-  },
-];
-
 export default function Footer() {
   return (
-    <div className="3xl:px-64 flex w-full flex-col gap-3 bg-primary-dark px-3 py-10 text-white min-[425px]:px-5 sm:px-6 lg:gap-6 xl:px-32 2xl:px-52">
+    <div className="flex w-full flex-col gap-3 bg-primary-dark px-3 py-10 text-white min-[425px]:px-5 sm:px-6 lg:gap-6 xl:px-32 2xl:px-52 3xl:px-64">
       <div className="w-full lg:flex lg:justify-between lg:gap-10">
         <div className="flex w-full flex-col gap-3 lg:w-2/5 lg:gap-6">
           <div className="flex items-center gap-2">
@@ -220,7 +47,7 @@ export default function Footer() {
             <span className="underline">Terms of Service</span> apply
           </p>
           <div className="my-4 flex flex-col gap-5 lg:hidden">
-            {FooterLinks.map((link) => (
+            {FOOTER_BOTTOM_LINKS.map((link) => (
               <a key={link.title} href={link.href} className="font-medium">
                 {link.title}
               </a>
@@ -242,7 +69,7 @@ export default function Footer() {
             Promotions Regime and are not intended for UK consumers.
           </p>
           <div className="hidden items-center gap-4 lg:flex">
-            {SocialLinks.map((link) => (
+            {SOCIAL_LINKS.map((link) => (
               <a key={link.title} href={link.href}>
                 <Image
                   src={link.icon}
@@ -256,7 +83,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="hidden gap-6 lg:flex">
-          {FooterBottomLinks.map((link) => (
+          {FOOTER_BOTTOM_LINKS.map((link) => (
             <div key={link.title} className="flex flex-col gap-2">
               <p className="mb-4 text-sm font-semibold">{link.title}</p>
               {link.children.map((child) => (
@@ -273,7 +100,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="my-4 flex w-5/6 justify-center gap-5 self-center lg:hidden">
-        {FooterBottomLinks.map((link) => (
+        {FOOTER_BOTTOM_LINKS.map((link) => (
           <a key={link.title} href={link.href} className="text-sm">
             {link.title}
           </a>
@@ -284,7 +111,7 @@ export default function Footer() {
           © 2024 Altcoiners.live . All rights reserved
         </p>
         <div className="hidden gap-5 lg:flex lg:gap-8">
-          {FooterLinks.map((link) => (
+          {FOOTER_LINKS.map((link) => (
             <a
               key={link.title}
               href={link.href}

@@ -1,12 +1,12 @@
 "use client";
 
-import { columns } from "@/components/admin/video/videoCategory/columns";
-import EditVideo from "@/components/admin/video/videoCategory/create";
-import { columns as videosColumns } from "@/components/admin/video/videoItem/columns";
-import EditVideoCategory from "@/components/admin/video/videoItem/create";
 import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/trpc/react";
+import { columns } from "./_videoTable/videoCategory/columns";
+import EditVideoCategory from "./_videoTable/videoCategory/create";
+import { columns as videosColumns } from "./_videoTable/videoItem/columns";
+import EditVideo from "./_videoTable/videoItem/create";
 
 export default function VideosAdmin() {
   const { data: videoCategories, isLoading: isVideoCategoriesLoading } =
@@ -16,7 +16,7 @@ export default function VideosAdmin() {
 
   return (
     <div>
-      <p className="p-2 text-2xl font-semibold">Holidays</p>
+      <p className="p-2 text-2xl font-semibold">Videos</p>
       <hr />
       <Tabs defaultValue="videos" className="w-full px-4 py-6">
         <TabsList className="w-1/2">
