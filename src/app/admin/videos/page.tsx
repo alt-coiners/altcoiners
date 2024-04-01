@@ -1,12 +1,12 @@
 "use client";
 
-import { columns } from "@/components/admin/video/videoCategory/columns";
-import EditVideo from "@/components/admin/video/videoCategory/create";
-import { columns as videosColumns } from "@/components/admin/video/videoItem/columns";
-import EditVideoCategory from "@/components/admin/video/videoItem/create";
 import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/trpc/react";
+import { columns } from "./_videoTable/videoCategory/columns";
+import EditVideoCategory from "./_videoTable/videoCategory/create";
+import { columns as videosColumns } from "./_videoTable/videoItem/columns";
+import EditVideo from "./_videoTable/videoItem/create";
 
 export default function VideosAdmin() {
   const { data: videoCategories, isLoading: isVideoCategoriesLoading } =

@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import type { VideoCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import EditVideoCategory from "../videoItem/create";
+import EditVideoCategory from "./create";
 
 export const columns: ColumnDef<VideoCategory>[] = [
   {
