@@ -1,43 +1,43 @@
 "use client";
 
-import { columns } from "@/components/admin/video/videoCategory/columns";
-import EditVideo from "@/components/admin/video/videoCategory/create";
-import { columns as videosColumns } from "@/components/admin/video/videoItem/columns";
-import EditVideoCategory from "@/components/admin/video/videoItem/create";
 import { DataTable } from "@/components/ui/data-table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { api } from "@/trpc/react";
+import { columns as categoryColumns } from "./_newsTable/newsCategory/columns";
+import EditNewsCategory from "./_newsTable/newsCategory/create";
+import { columns } from "./_newsTable/newsItem/columns";
+import EditNews from "./_newsTable/newsItem/create";
 
-export default function NewsAdmin() {
-  const { data: videoCategories, isLoading: isVideoCategoriesLoading } =
-    api.video.getVideoCategories.useQuery();
-  const { data: videos, isLoading: isVideosLoading } =
-    api.video.getAllVideos.useQuery();
+export default function GuidesAdmin() {
+  const { data: categories, isLoading: isCategoriesLoading } =
+    api.news.getAllCategories.useQuery();
+  const { data: news, isLoading: isNewsLoading } =
+    api.news.getAllNews.useQuery();
 
   return (
     <div>
-      <p className="p-2 text-2xl font-semibold">Holidays</p>
+      <p className="p-2 text-2xl font-semibold">News</p>
       <hr />
-      <Tabs defaultValue="videos" className="w-full px-4 py-6">
+      <Tabs defaultValue="news" className="w-full px-4 py-6">
         <TabsList className="w-1/2">
-          <TabsTrigger value="videos" className="w-full">
-            Videos
+          <TabsTrigger value="news" className="w-full">
+            News
           </TabsTrigger>
           <TabsTrigger value="category" className="w-full">
-            Video Categories
+            Categories
           </TabsTrigger>
         </TabsList>
-        <TabsContent value="videos">
+        <TabsContent value="news">
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex w-full flex-col">
-              <p className="text-lg font-medium">Videos</p>
+              <p className="text-lg font-medium">News</p>
               <DataTable
-                columns={videosColumns}
-                data={videos ?? []}
+                columns={columns}
+                data={news ?? []}
                 sortColumnAccessor="title"
                 sortColumnName="Title"
-                isLoading={isVideosLoading}
-                createComponent={<EditVideo videoId={-1} />}
+                isLoading={isNewsLoading}
+                createComponent={<EditNews id={-1} />}
               />
             </div>
           </div>
@@ -45,14 +45,14 @@ export default function NewsAdmin() {
         <TabsContent value="category">
           <div className="flex flex-col items-center justify-center gap-4">
             <div className="flex w-full flex-col">
-              <p className="text-lg font-medium">Video Categories</p>
+              <p className="text-lg font-medium">Categories</p>
               <DataTable
-                columns={columns}
-                data={videoCategories ?? []}
-                isLoading={isVideoCategoriesLoading}
+                columns={categoryColumns}
+                data={categories ?? []}
+                isLoading={isCategoriesLoading}
                 sortColumnAccessor="name"
                 sortColumnName="Name"
-                createComponent={<EditVideoCategory videoCategoryId={-1} />}
+                createComponent={<EditNewsCategory id={-1} />}
               />
             </div>
           </div>

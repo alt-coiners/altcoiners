@@ -24,6 +24,46 @@ export const newsRouter = createTRPCRouter({
       });
     }),
 
+  upsertNews: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        title: z.string(),
+        description: z.string(),
+        picture: z.string(),
+        content: z.string(),
+        author: z.string(),
+        newsCategoryId: z.number(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      if (input.id) {
+        return await ctx.db.article.update({
+          where: {
+            id: input.id,
+          },
+          data: {
+            title: input.title,
+            description: input.description,
+            picture: input.picture,
+            content: input.content,
+            author: input.author,
+            newsCategoryId: input.newsCategoryId,
+          },
+        });
+      }
+      return await ctx.db.article.create({
+        data: {
+          title: input.title,
+          description: input.description,
+          picture: input.picture,
+          content: input.content,
+          author: input.author,
+          newsCategoryId: input.newsCategoryId,
+        },
+      });
+    }),
+
   getLatestNews: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.article.findMany({
       orderBy: {
@@ -67,4 +107,39 @@ export const newsRouter = createTRPCRouter({
   getAllCategories: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.newsCategory.findMany();
   }),
+
+  getCategoryById: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .query(async ({ input, ctx }) => {
+      return await ctx.db.newsCategory.findUnique({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
+
+  upsertCategory: publicProcedure
+    .input(
+      z.object({
+        id: z.number().optional(),
+        name: z.string(),
+      }),
+    )
+    .mutation(async ({ input, ctx }) => {
+      if (input.id) {
+        return await ctx.db.newsCategory.update({
+          where: {
+            id: input.id,
+          },
+          data: {
+            name: input.name,
+          },
+        });
+      }
+      return await ctx.db.newsCategory.create({
+        data: {
+          name: input.name,
+        },
+      });
+    }),
 });
