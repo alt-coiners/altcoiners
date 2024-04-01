@@ -2,15 +2,16 @@ import { Button } from "@/components/ui/button";
 import type { Guide, GuideCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import EditGuide from "./create";
 
 export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
-  // {
-  //   id: "edit",
-  //   header: ({ table }) => <Button variant="ghost">Edit</Button>,
-  //   cell: ({ row }) => <EditVideo videoId={row.original.id} />,
-  //   enableSorting: false,
-  //   enableHiding: false,
-  // },
+  {
+    id: "edit",
+    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    cell: ({ row }) => <EditGuide id={row.original.id} />,
+    enableSorting: false,
+    enableHiding: false,
+  },
   {
     accessorKey: "id",
     header: ({ column }) => {

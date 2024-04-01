@@ -27,10 +27,13 @@ export default async function Dashboard() {
           <NewsList articles={newsData.slice(0, 5)} />
         </div>
         <div className="flex w-1/2 flex-col gap-4">
-          <div className="flex items-center justify-end gap-1 py-2 text-xs text-primary">
+          <Link
+            className="flex items-center justify-end gap-1 py-2 text-xs text-primary"
+            href="/dashboard/news"
+          >
             <p>More from Crypto News</p>
             <ChevronRight size={12} />
-          </div>
+          </Link>
           <Link
             className="flex flex-col"
             href={`/dashboard/news/${mainNews?.category.name}/${mainNews?.id}`}

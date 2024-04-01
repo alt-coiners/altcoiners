@@ -18,6 +18,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,7 +40,7 @@ const formSchema = z.object({
   title: z.string().min(1),
   picture: z.string().min(1),
   content: z.string().min(1),
-  categoryId: z.number(),
+  categoryId: z.string(),
 });
 
 export default function EditGuide({ id }: Props) {
@@ -49,6 +56,7 @@ export default function EditGuide({ id }: Props) {
       toast({ title: id === -1 ? "Created" : "Updated" });
     },
   });
+  const { data: categories } = api.guide.getGuideCategories.useQuery();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -56,7 +64,7 @@ export default function EditGuide({ id }: Props) {
       title: data?.title ?? "",
       picture: data?.picture ?? "",
       content: data?.content ?? "",
-      categoryId: data?.categoryId ?? 0,
+      categoryId: data?.categoryId.toString() ?? "0",
     },
   });
 
@@ -65,14 +73,18 @@ export default function EditGuide({ id }: Props) {
       form.setValue("title", data.title);
       form.setValue("picture", data.picture);
       form.setValue("content", data.content);
-      form.setValue("categoryId", data.categoryId);
+      form.setValue("categoryId", data.categoryId.toString());
     }
   }, [data, form]);
 
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await upsertMutation.mutateAsync({ id: id, ...values });
+    await upsertMutation.mutateAsync({
+      id: id,
+      ...values,
+      categoryId: parseInt(values.categoryId),
+    });
   }
 
   return (
@@ -134,7 +146,38 @@ export default function EditGuide({ id }: Props) {
                     </FormItem>
                   )}
                 />
-
+                <FormField
+                  control={form.control}
+                  name="categoryId"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Category<span className="text-red-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a Category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {categories?.map((category) => (
+                              <SelectItem
+                                key={category.id}
+                                value={category.id.toString()}
+                              >
+                                {category.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
                 <Button type="submit" className="hidden" ref={submitButtonRef}>
                   Submit
                 </Button>

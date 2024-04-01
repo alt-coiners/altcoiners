@@ -6,6 +6,7 @@ import { api } from "@/trpc/react";
 import { columns as categoryColumns } from "./_guideTable/guideCategory/columns";
 import EditGuideCategory from "./_guideTable/guideCategory/create";
 import { columns } from "./_guideTable/guideItem/columns";
+import EditGuide from "./_guideTable/guideItem/create";
 
 export default function GuidesAdmin() {
   const { data: guideCategories, isLoading: isCategoriesLoading } =
@@ -36,7 +37,7 @@ export default function GuidesAdmin() {
                 sortColumnAccessor="title"
                 sortColumnName="Title"
                 isLoading={isGuidesLoading}
-                // createComponent={<EditVideo videoId={-1} />}
+                createComponent={<EditGuide id={-1} />}
               />
             </div>
           </div>

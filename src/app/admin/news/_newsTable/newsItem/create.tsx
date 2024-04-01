@@ -18,6 +18,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
@@ -34,7 +41,7 @@ const formSchema = z.object({
   title: z.string().min(1),
   picture: z.string().min(1),
   content: z.string().min(1),
-  newsCategoryId: z.number(),
+  newsCategoryId: z.string(),
   description: z.string().min(1),
   author: z.string().min(1),
 });
@@ -52,6 +59,7 @@ export default function EditNews({ id }: Props) {
       toast({ title: id === -1 ? "Created" : "Updated" });
     },
   });
+  const { data: newsCategories } = api.news.getAllCategories.useQuery();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,7 +67,7 @@ export default function EditNews({ id }: Props) {
       title: data?.title ?? "",
       picture: data?.picture ?? "",
       content: data?.content ?? "",
-      newsCategoryId: data?.newsCategoryId ?? 0,
+      newsCategoryId: data?.newsCategoryId?.toString() ?? "0",
       description: data?.description ?? "",
       author: data?.author ?? "",
     },
@@ -70,7 +78,7 @@ export default function EditNews({ id }: Props) {
       form.setValue("title", data.title);
       form.setValue("picture", data.picture);
       form.setValue("content", data.content);
-      form.setValue("newsCategoryId", data.newsCategoryId);
+      form.setValue("newsCategoryId", data.newsCategoryId.toString());
       form.setValue("description", data.description);
       form.setValue("author", data.author);
     }
@@ -79,7 +87,11 @@ export default function EditNews({ id }: Props) {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await upsertMutation.mutateAsync({ id: id, ...values });
+    await upsertMutation.mutateAsync({
+      id: id,
+      ...values,
+      newsCategoryId: +values.newsCategoryId,
+    });
   }
 
   return (
@@ -166,6 +178,38 @@ export default function EditNews({ id }: Props) {
                       </FormLabel>
                       <FormControl>
                         <Input placeholder="Enter Author" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="newsCategoryId"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        News Category<span className="text-red-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a News Category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {newsCategories?.map((category) => (
+                              <SelectItem
+                                key={category.id}
+                                value={category.id.toString()}
+                              >
+                                {category.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                       </FormControl>
                       <FormMessage />
                     </FormItem>
