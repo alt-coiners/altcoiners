@@ -23,7 +23,11 @@ export default function VideoListCard({ videos }: VideoListProps) {
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
         {videos.map((video, index) => (
-          <div key={video.id} className="flex flex-col gap-2">
+          <Link
+            key={video.id}
+            className="duration-30 flex transform flex-col gap-2 transition-transform hover:scale-[1.01]"
+            href={`/dashboard/videos/${video.VideoCategory.name}/${video.id}`}
+          >
             <div className="relative">
               <Image
                 src={video.picture}
@@ -44,7 +48,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
             <h2 className="text-sm font-semibold sm:text-base">
               {video.title}
             </h2>
-          </div>
+          </Link>
         ))}
       </div>
       <Link href={"/dashboard/news/category/videos"}>
