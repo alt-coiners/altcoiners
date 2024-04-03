@@ -125,52 +125,6 @@ export const FOOTER_BOTTOM_LINKS = [
     ],
   },
   {
-    title: "iGaming",
-    href: "#",
-    children: [
-      {
-        title: "Bitcoin Casinos",
-        href: "#",
-      },
-      {
-        title: "Crypto Betting",
-        href: "#",
-      },
-      {
-        title: "Bitcoin Gambling Sites",
-        href: "#",
-      },
-      {
-        title: "Instant Withdrawal Bitcoin Casinos",
-        href: "#",
-      },
-      {
-        title: "Fast Payout Online Casinos",
-        href: "#",
-      },
-      {
-        title: "Best Casino Apps",
-        href: "#",
-      },
-      {
-        title: "Best Telegram Casinos",
-        href: "#",
-      },
-      {
-        title: "Best No Account Casinos",
-        href: "#",
-      },
-      {
-        title: "Anonymous Casinos",
-        href: "#",
-      },
-      {
-        title: "Best Offshore Casinos",
-        href: "#",
-      },
-    ],
-  },
-  {
     title: "About",
     href: "#",
     children: [
