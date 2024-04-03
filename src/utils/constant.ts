@@ -14,7 +14,7 @@ export const MENU_NAV_LINKS = [
   },
   {
     title: "Exclusives",
-    subMenus: [{ title: "Opinions", url: "/dashboard/exclusives/Opinions" }],
+    subMenus: [{ title: "Opinions", url: "/dashboard/exclusives" }],
   },
   {
     title: "Videos",
@@ -120,52 +120,6 @@ export const FOOTER_BOTTOM_LINKS = [
       },
       {
         title: "Best Altcoins to Invest In",
-        href: "#",
-      },
-    ],
-  },
-  {
-    title: "iGaming",
-    href: "#",
-    children: [
-      {
-        title: "Bitcoin Casinos",
-        href: "#",
-      },
-      {
-        title: "Crypto Betting",
-        href: "#",
-      },
-      {
-        title: "Bitcoin Gambling Sites",
-        href: "#",
-      },
-      {
-        title: "Instant Withdrawal Bitcoin Casinos",
-        href: "#",
-      },
-      {
-        title: "Fast Payout Online Casinos",
-        href: "#",
-      },
-      {
-        title: "Best Casino Apps",
-        href: "#",
-      },
-      {
-        title: "Best Telegram Casinos",
-        href: "#",
-      },
-      {
-        title: "Best No Account Casinos",
-        href: "#",
-      },
-      {
-        title: "Anonymous Casinos",
-        href: "#",
-      },
-      {
-        title: "Best Offshore Casinos",
         href: "#",
       },
     ],

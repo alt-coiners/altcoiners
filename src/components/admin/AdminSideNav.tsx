@@ -1,4 +1,3 @@
-import { Triangle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -14,6 +13,10 @@ const sideBarLinks = [
   {
     title: "Guides",
     href: "/admin/guides",
+  },
+  {
+    title: "Exchanges",
+    href: "/admin/exchanges",
   },
 ];
 

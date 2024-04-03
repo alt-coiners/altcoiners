@@ -13,7 +13,11 @@ export default function VideoList({ videos }: VideoListProps) {
   return (
     <div className="mx-auto my-6 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {videos.map((video, index) => (
-        <div key={video.id} className="flex flex-col gap-2">
+        <Link
+          key={video.id}
+          className="flex flex-col gap-2"
+          href={`/dashboard/videos/${video.VideoCategory.name}/${video.id}`}
+        >
           <div className="relative">
             <Image
               src={video.picture}
@@ -34,7 +38,7 @@ export default function VideoList({ videos }: VideoListProps) {
           <h2 className="text-sm font-semibold text-primary-dark">
             {video.title}
           </h2>
-        </div>
+        </Link>
       ))}
       {/* TODO: Add pagination */}
       {/* <Link href={"/dashboard/news/category/videos"}>

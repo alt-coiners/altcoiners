@@ -7,18 +7,25 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { MENU_NAV_LINKS } from "@/utils/constant";
-import { ChevronDown, Menu, Search, Triangle } from "lucide-react";
+import { ChevronDown, Menu, Search } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between border border-primary/50 px-5 py-3">
+    <div className="flex items-center justify-between border border-primary/50 px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
       <Link href="/dashboard">
-        <div className="flex items-center gap-1 text-lg font-medium text-primary">
+        {/* <div className="flex items-center gap-1 text-lg font-medium text-primary">
           <Triangle className="size-6" />
           <p>AltCoiners.live</p>
-        </div>
+        </div> */}
+        <Image
+          src="/images/altcoiners-logo.png"
+          width={125}
+          height={75}
+          alt="logo"
+        />
       </Link>
       <Menubar className="hidden border-0 lg:flex 2xl:gap-5">
         {MENU_NAV_LINKS.map((menu, index) => (

@@ -3,7 +3,6 @@ import {
   FOOTER_LINKS,
   SOCIAL_LINKS,
 } from "@/utils/constant";
-import { Triangle } from "lucide-react";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -13,10 +12,12 @@ export default function Footer() {
     <div className="flex w-full flex-col gap-3 bg-primary-dark px-3 py-10 text-white min-[425px]:px-5 sm:px-6 lg:gap-6 xl:px-32 2xl:px-52 3xl:px-64">
       <div className="w-full lg:flex lg:justify-between lg:gap-10">
         <div className="flex w-full flex-col gap-3 lg:w-2/5 lg:gap-6">
-          <div className="flex items-center gap-2">
-            <Triangle className="size-8 text-primary" />
-            <p className="text-lg font-medium">AltCoiners.live</p>
-          </div>
+          <Image
+            src="/images/altcoiners-logo.png"
+            width={125}
+            height={75}
+            alt="logo"
+          />
           <p className="text-sm text-gray-400">
             A quick 3min read about today&apos;s crypto news!
           </p>

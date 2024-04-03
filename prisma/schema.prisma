@@ -81,3 +81,14 @@ model Guide {
 
     @@index([title])
 }
+
+model Exchange {
+    id        Int      @id @default(autoincrement())
+    name      String   @unique
+    url       String
+    info      String   @db.Text
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([name])
+}
