@@ -1,4 +1,5 @@
 import AdSection from "@/components/AdSection";
+import AdSlider from "@/components/advertisement/AdSlider";
 import GuideHomeSection from "@/components/guide/GuideHomeSection";
 import MostPopularSection from "@/components/news/MostPopularSection";
 import NewsLetter from "@/components/news/NewsLetter";
@@ -69,11 +70,7 @@ export default async function Dashboard() {
           <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
       </div>
-      <div className="mx-auto hidden w-full max-w-3xl items-center justify-between gap-8 lg:flex xl:max-w-5xl 2xl:max-w-7xl">
-        <AdSection className="hidden h-48 lg:block" />
-        <AdSection className="hidden h-48 lg:block" />
-        <AdSection className="hidden h-48 lg:block" />
-      </div>
+      <AdSlider />
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
