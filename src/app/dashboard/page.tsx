@@ -72,7 +72,6 @@ export default async function Dashboard() {
         <div className="w-1/4">
           <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
-        CoinPricesCarousel
       </div>
       <AdSlider />
       <NewsListWithImage
