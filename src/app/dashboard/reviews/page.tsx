@@ -1,29 +1,11 @@
 import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import ExchangeCard from "@/components/review/ExchangeCard";
+import { api } from "@/trpc/server";
 
-const exchangesInfo = [
-  {
-    name: "Prime XBT",
-    url: "https://primexbt.com",
-    info: [
-      "Multi-asset crypto-based platform particular trading account",
-      "Highly customizable user interface",
-      "Excellent cryptocurrency and crypto futures trading platform",
-    ],
-  },
-  {
-    name: "KuCoin",
-    url: "https://kucoin.com",
-    info: [
-      "Multi-asset crypto-based platform particular trading account",
-      "Highly customizable user interface",
-      "Excellent cryptocurrency and crypto futures trading platform",
-    ],
-  },
-];
+export default async function Reviews() {
+  const exchanges = await api.exchange.getAllExchanges.query();
 
-export default function Reviews() {
   const breadcrumbs = [
     {
       name: "Reviews",
@@ -37,9 +19,9 @@ export default function Reviews() {
       <p className="w-[90%] text-pretty text-xl font-bold text-primary-dark lg:text-2xl">
         Reviews
       </p>
-      <div className="grid grid-cols-1 gap-4 px-3 py-4 md:grid-cols-2 xl:grid-cols-3 xl:gap-6">
-        {exchangesInfo.map((exchange, index) => (
-          <ExchangeCard key={index} {...exchange} />
+      <div className="grid grid-cols-1 gap-4 px-3 py-4 md:grid-cols-2 lg:pb-10 xl:grid-cols-3 xl:gap-6">
+        {exchanges.map((exchange, index) => (
+          <ExchangeCard key={index} exchange={exchange} />
         ))}
       </div>
       <AdSection className="h-56" />

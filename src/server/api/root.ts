@@ -1,4 +1,5 @@
 import { createTRPCRouter } from "@/server/api/trpc";
+import { exchangeRouter } from "./routers/exchange";
 import { guideRouter } from "./routers/guide";
 import { newsRouter } from "./routers/news";
 import { videoRouter } from "./routers/video";
@@ -12,6 +13,7 @@ export const appRouter = createTRPCRouter({
   news: newsRouter,
   video: videoRouter,
   guide: guideRouter,
+  exchange: exchangeRouter,
 });
 
 // export type definition of API
