@@ -69,7 +69,11 @@ export default async function Dashboard() {
           <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
       </div>
-      <AdSection className="hidden h-48 lg:block" />
+      <div className="mx-auto hidden w-full max-w-3xl items-center justify-between gap-8 lg:flex xl:max-w-5xl 2xl:max-w-7xl">
+        <AdSection className="hidden h-48 lg:block" />
+        <AdSection className="hidden h-48 lg:block" />
+        <AdSection className="hidden h-48 lg:block" />
+      </div>
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
