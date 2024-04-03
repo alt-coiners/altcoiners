@@ -1,5 +1,6 @@
 import AdSection from "@/components/AdSection";
 import AdSlider from "@/components/advertisement/AdSlider";
+import CoinPricesCarousel from "@/components/crypto/CoinPricesCarousel";
 import GuideHomeSection from "@/components/guide/GuideHomeSection";
 import MostPopularSection from "@/components/news/MostPopularSection";
 import NewsLetter from "@/components/news/NewsLetter";
@@ -18,9 +19,11 @@ export default async function Dashboard() {
   const videosData = await api.video.getAllVideos.query();
   const guideData = await api.guide.getAllGuidesByCategory.query();
   const mainNews = newsData[0];
+  const cryptoCoinData = await api.crypto.getAllCoins.query();
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">
+      <CoinPricesCarousel coinsData={cryptoCoinData} />
       <div className="mx-auto hidden max-w-3xl gap-1 lg:flex xl:max-w-5xl xl:gap-4 xl:py-6 2xl:max-w-7xl 2xl:gap-8">
         <div className="flex w-1/4 flex-col gap-4">
           <h2 className="text-xl font-bold text-primary-dark">
@@ -69,6 +72,7 @@ export default async function Dashboard() {
         <div className="w-1/4">
           <MostPopularSection articles={newsData.slice(0, 5)} />
         </div>
+        CoinPricesCarousel
       </div>
       <AdSlider />
       <NewsListWithImage
