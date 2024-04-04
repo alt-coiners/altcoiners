@@ -11,6 +11,7 @@ import { ChevronDown, Menu, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
+import SearchBar from "./searchBar";
 
 export default function Navbar() {
   return (
@@ -49,6 +50,7 @@ export default function Navbar() {
       <div className="flex items-center gap-3">
         <HamburgerMenu />
         {/* <Search className="size-6 text-primary" /> */}
+        <SearchBar />
       </div>
     </div>
   );
