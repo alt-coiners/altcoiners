@@ -17,7 +17,7 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
           <Image
             src={article.picture}
             alt={article.title}
-            className="h-full w-1/3 object-cover"
+            className="h-full object-cover"
             width={200}
             height={100}
           />
