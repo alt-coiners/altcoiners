@@ -63,7 +63,10 @@ export default function EditGuideCategory({ id }: Props) {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await upsertMutation.mutateAsync({ id: id, ...values });
+    await upsertMutation.mutateAsync({
+      id: id === -1 ? undefined : id,
+      ...values,
+    });
   }
 
   return (

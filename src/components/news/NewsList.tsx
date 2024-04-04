@@ -1,3 +1,5 @@
+"use client";
+
 import { getHowLongAgo } from "@/utils/helper";
 import { type NewsWithCategory } from "@/utils/types";
 import { ChevronRight } from "lucide-react";
@@ -9,6 +11,7 @@ interface NewsListProps {
   articles: NewsWithCategory[];
   moreUrl?: string;
   showTitle?: boolean;
+  setMainNews?: (news: NewsWithCategory) => void;
 }
 
 export default function NewsList({
@@ -16,6 +19,7 @@ export default function NewsList({
   articles,
   moreUrl,
   showTitle = true,
+  setMainNews,
 }: NewsListProps) {
   return (
     <section className="flex flex-col gap-4">
@@ -29,6 +33,9 @@ export default function NewsList({
               href={`/dashboard/news/${article.category.name}/${article.id}`}
               key={article.id}
               className="flex cursor-pointer flex-col gap-1 hover:bg-slate-100"
+              onMouseEnter={() => {
+                if (setMainNews) setMainNews(article);
+              }}
             >
               <div className="flex gap-1 text-[10px]">
                 <p>{getHowLongAgo(article.createdAt)}</p>
