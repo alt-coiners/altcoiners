@@ -72,7 +72,10 @@ export default function EditVideo({ videoId }: EditVideoProps) {
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    await updateVideoMutation.mutateAsync({ id: videoId, ...values });
+    await updateVideoMutation.mutateAsync({
+      id: videoId === -1 ? undefined : videoId,
+      ...values,
+    });
   }
 
   return (

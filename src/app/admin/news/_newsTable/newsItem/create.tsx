@@ -28,6 +28,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
+import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -88,7 +89,7 @@ export default function EditNews({ id }: Props) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await upsertMutation.mutateAsync({
-      id: id,
+      id: id === -1 ? undefined : id,
       ...values,
       newsCategoryId: +values.newsCategoryId,
     });
@@ -131,9 +132,16 @@ export default function EditNews({ id }: Props) {
                       <FormLabel>
                         Picture<span className="text-red-600">*</span>
                       </FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter Picture" {...field} />
-                      </FormControl>
+                      <UploadButton
+                        endpoint="imageUploader"
+                        onClientUploadComplete={(res) => {
+                          toast({ title: "Image uploaded" });
+                          form.setValue("picture", res[0]?.url ?? "");
+                        }}
+                        onUploadError={(error: Error) => {
+                          alert(`ERROR! ${error.message}`);
+                        }}
+                      />
                       <FormMessage />
                     </FormItem>
                   )}
