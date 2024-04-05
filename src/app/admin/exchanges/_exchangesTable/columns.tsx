@@ -1,3 +1,4 @@
+import DeleteItem from "@/components/admin/DeleteItem";
 import { Button } from "@/components/ui/button";
 import type { Exchange } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
@@ -9,6 +10,13 @@ export const columns: ColumnDef<Exchange>[] = [
     id: "edit",
     header: ({ table }) => <Button variant="ghost">Edit</Button>,
     cell: ({ row }) => <EditExchange id={row.original.id} />,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    id: "delete",
+    header: ({}) => <Button variant="ghost">Delete</Button>,
+    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="exchange" />,
     enableSorting: false,
     enableHiding: false,
   },

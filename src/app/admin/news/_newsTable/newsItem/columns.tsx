@@ -1,3 +1,4 @@
+import DeleteItem from "@/components/admin/DeleteItem";
 import { Button } from "@/components/ui/button";
 import type { Article, NewsCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
@@ -7,8 +8,15 @@ import EditNews from "./create";
 export const columns: ColumnDef<Article & { category: NewsCategory }>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
     cell: ({ row }) => <EditNews id={row.original.id} />,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    id: "delete",
+    header: ({}) => <Button variant="ghost">Delete</Button>,
+    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="news" />,
     enableSorting: false,
     enableHiding: false,
   },
