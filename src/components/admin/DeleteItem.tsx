@@ -17,7 +17,7 @@ import { toast } from "../ui/use-toast";
 
 interface DeleteItemProps {
   id: number;
-  itemType: "news" | "guide" | "exchange" | "video";
+  itemType: "news" | "guide" | "exchange" | "video" | "exclusive" | "podcast";
 }
 
 export default function DeleteItem({ id, itemType }: DeleteItemProps) {
@@ -25,6 +25,8 @@ export default function DeleteItem({ id, itemType }: DeleteItemProps) {
   const deleteGuideMutation = api.guide.delete.useMutation();
   const deleteExchangeMutation = api.exchange.delete.useMutation();
   const deleteVideoMutation = api.video.deleteVideo.useMutation();
+  const deleteExclusiveMutation = api.exclusive.delete.useMutation();
+  const deletePodcastMutation = api.podcast.delete.useMutation();
 
   function deleteItemMutation() {
     switch (itemType) {
@@ -39,6 +41,12 @@ export default function DeleteItem({ id, itemType }: DeleteItemProps) {
         break;
       case "video":
         deleteVideoMutation.mutate({ id });
+        break;
+      case "exclusive":
+        deleteExclusiveMutation.mutate({ id });
+        break;
+      case "podcast":
+        deletePodcastMutation.mutate({ id });
         break;
       default:
         break;
