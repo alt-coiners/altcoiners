@@ -142,4 +142,14 @@ export const newsRouter = createTRPCRouter({
         },
       });
     }),
+
+  deleteNews: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.db.article.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });

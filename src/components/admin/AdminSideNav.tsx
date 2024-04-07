@@ -18,6 +18,14 @@ const sideBarLinks = [
     title: "Exchanges",
     href: "/admin/exchanges",
   },
+  {
+    title: "Exclusives",
+    href: "/admin/exclusives",
+  },
+  {
+    title: "Podcasts",
+    href: "/admin/podcasts",
+  },
 ];
 
 export default function AdminSideNav() {

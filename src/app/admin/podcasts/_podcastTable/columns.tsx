@@ -1,22 +1,22 @@
 import DeleteItem from "@/components/admin/DeleteItem";
 import { Button } from "@/components/ui/button";
-import type { Guide, GuideCategory } from "@prisma/client";
+import type { Podcast } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import EditGuide from "./create";
+import EditPodcast from "./create";
 
-export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
+export const columns: ColumnDef<Podcast>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
-    cell: ({ row }) => <EditGuide id={row.original.id} />,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
+    cell: ({ row }) => <EditPodcast id={row.original.id} />,
     enableSorting: false,
     enableHiding: false,
   },
   {
     id: "delete",
     header: ({}) => <Button variant="ghost">Delete</Button>,
-    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="guide" />,
+    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="podcast" />,
     enableSorting: false,
     enableHiding: false,
   },
@@ -49,28 +49,28 @@ export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
     },
   },
   {
-    accessorKey: "picture",
+    accessorKey: "url",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Picture
+          URL
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "category.name",
+    accessorKey: "description",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Category
+          Description
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

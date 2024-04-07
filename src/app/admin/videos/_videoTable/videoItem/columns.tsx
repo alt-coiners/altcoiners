@@ -1,3 +1,4 @@
+import DeleteItem from "@/components/admin/DeleteItem";
 import { Button } from "@/components/ui/button";
 import type { Video, VideoCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
@@ -7,8 +8,15 @@ import EditVideo from "./create";
 export const columns: ColumnDef<Video & { VideoCategory: VideoCategory }>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
     cell: ({ row }) => <EditVideo videoId={row.original.id} />,
+    enableSorting: false,
+    enableHiding: false,
+  },
+  {
+    id: "delete",
+    header: ({}) => <Button variant="ghost">Delete</Button>,
+    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="video" />,
     enableSorting: false,
     enableHiding: false,
   },

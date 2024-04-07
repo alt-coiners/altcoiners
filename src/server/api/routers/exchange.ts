@@ -43,4 +43,14 @@ export const exchangeRouter = createTRPCRouter({
         },
       });
     }),
+
+  delete: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .mutation(async ({ input, ctx }) => {
+      return await ctx.db.exchange.delete({
+        where: {
+          id: input.id,
+        },
+      });
+    }),
 });

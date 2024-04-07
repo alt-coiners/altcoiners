@@ -1,22 +1,22 @@
 import DeleteItem from "@/components/admin/DeleteItem";
 import { Button } from "@/components/ui/button";
-import type { Guide, GuideCategory } from "@prisma/client";
+import type { Exclusive } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
-import EditGuide from "./create";
+import EditExclusive from "./create";
 
-export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
+export const columns: ColumnDef<Exclusive>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
-    cell: ({ row }) => <EditGuide id={row.original.id} />,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
+    cell: ({ row }) => <EditExclusive id={row.original.id} />,
     enableSorting: false,
     enableHiding: false,
   },
   {
     id: "delete",
     header: ({}) => <Button variant="ghost">Delete</Button>,
-    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="guide" />,
+    cell: ({ row }) => <DeleteItem id={row.original.id} itemType="exclusive" />,
     enableSorting: false,
     enableHiding: false,
   },
@@ -49,31 +49,51 @@ export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
     },
   },
   {
-    accessorKey: "picture",
+    accessorKey: "url",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Picture
+          URL
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
   },
   {
-    accessorKey: "category.name",
+    accessorKey: "description",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Category
+          Description
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
+    },
+  },
+  {
+    accessorKey: "content",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Content
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+    cell: ({ row }) => {
+      if (row.original.content.length > 200) {
+        return row.original.content.slice(0, 200) + "...";
+      }
+      return row.original.content;
     },
   },
 ];
