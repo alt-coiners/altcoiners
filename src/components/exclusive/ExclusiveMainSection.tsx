@@ -1,25 +1,25 @@
 import { getHowLongAgo } from "@/utils/helper";
-import { type NewsWithCategory } from "@/utils/types";
-import { ChevronRight } from "lucide-react";
+import type { Exclusive } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
 
-interface BigNewsSectionProps {
-  articles: NewsWithCategory[];
+interface ExclusiveMainSectionProps {
+  articles: Exclusive[];
 }
 
-export default function BigNewsSection({ articles }: BigNewsSectionProps) {
+export default function ExclusiveMainSection({
+  articles,
+}: ExclusiveMainSectionProps) {
   return (
     <section className="flex flex-col gap-6">
       {articles.map((article) => (
         <Link
           key={article.id}
           className="flex gap-4 xl:gap-6"
-          href={`/dashboard/news/${article.category.name}/${article.id}`}
+          href={`/dashboard/exclusives/${article.id}`}
         >
           <Image
-            src={article.picture}
+            src={article.url}
             alt={article.title}
             className="h-full object-cover"
             width={200}
@@ -29,7 +29,7 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
             <div className="flex gap-1 text-[10px]">
               <p>{getHowLongAgo(article.createdAt)}</p>
               <p>-</p>
-              <p className="text-primary">{article.category.name}</p>
+              <p className="text-primary">Exclusives</p>
             </div>
             <h2 className="w-[90%] text-pretty text-sm font-semibold xl:text-base 2xl:text-lg">
               {article.title}
@@ -37,17 +37,6 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
             <p className="text-[10px] xl:text-xs 2xl:text-sm">
               {article.description}
             </p>
-            <Link
-              href={`/dashboard/news/${article.category.name}/${article.id}`}
-            >
-              <Button
-                variant={"ghost"}
-                className="items-center px-0 text-[10px] xl:text-xs 2xl:text-sm"
-              >
-                <p>Read More</p>
-                <ChevronRight size={12} />
-              </Button>
-            </Link>
           </div>
         </Link>
       ))}
