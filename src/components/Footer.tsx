@@ -1,8 +1,4 @@
-import {
-  FOOTER_BOTTOM_LINKS,
-  FOOTER_LINKS,
-  SOCIAL_LINKS,
-} from "@/utils/constant";
+import { FOOTER_LINKS, MENU_NAV_LINKS, SOCIAL_LINKS } from "@/utils/constant";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -48,7 +44,7 @@ export default function Footer() {
             <span className="underline">Terms of Service</span> apply
           </p>
           <div className="my-4 flex flex-col gap-5 lg:hidden">
-            {FOOTER_BOTTOM_LINKS.map((link) => (
+            {MENU_NAV_LINKS.map((link) => (
               <a key={link.title} href={link.href} className="font-medium">
                 {link.title}
               </a>
@@ -84,13 +80,13 @@ export default function Footer() {
           </div>
         </div>
         <div className="hidden gap-6 lg:flex">
-          {FOOTER_BOTTOM_LINKS.map((link) => (
+          {MENU_NAV_LINKS.map((link) => (
             <div key={link.title} className="flex flex-col gap-2">
               <p className="mb-4 text-sm font-semibold">{link.title}</p>
-              {link.children.map((child) => (
+              {link.subMenus.map((child) => (
                 <a
                   key={child.title}
-                  href={child.href}
+                  href={child.url}
                   className="text-xs text-gray-400 hover:underline"
                 >
                   {child.title}
@@ -101,7 +97,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="my-4 flex w-5/6 justify-center gap-5 self-center lg:hidden">
-        {FOOTER_BOTTOM_LINKS.map((link) => (
+        {MENU_NAV_LINKS.map((link) => (
           <a key={link.title} href={link.href} className="text-sm">
             {link.title}
           </a>
