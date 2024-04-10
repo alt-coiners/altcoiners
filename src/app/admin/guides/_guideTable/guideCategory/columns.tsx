@@ -7,7 +7,7 @@ import EditGuideCategory from "./create";
 export const columns: ColumnDef<GuideCategory>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
     cell: ({ row }) => <EditGuideCategory id={row.original.id} />,
     enableSorting: false,
     enableHiding: false,

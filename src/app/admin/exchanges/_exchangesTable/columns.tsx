@@ -8,7 +8,7 @@ import EditExchange from "./create";
 export const columns: ColumnDef<Exchange>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
     cell: ({ row }) => <EditExchange id={row.original.id} />,
     enableSorting: false,
     enableHiding: false,

@@ -22,7 +22,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
         </Link>
       </div>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
-        {videos.map((video, index) => (
+        {videos.map((video) => (
           <Link
             key={video.id}
             className="duration-30 flex transform flex-col gap-2 transition-transform hover:scale-[1.01]"

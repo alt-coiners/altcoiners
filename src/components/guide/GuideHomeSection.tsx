@@ -6,8 +6,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "@/components/ui/carousel";
 import type { Guide, GuideCategory } from "@prisma/client";
 import Autoplay from "embla-carousel-autoplay";

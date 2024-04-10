@@ -2,10 +2,7 @@ import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
 import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
-import NewsListWithImage from "@/components/news/NewsListWithImage";
 import { api } from "@/trpc/server";
-import { calculateReadingTime, formatDate } from "@/utils/helper";
-import Image from "next/image";
 
 export default async function VideoId({
   params,

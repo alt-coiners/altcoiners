@@ -1,7 +1,6 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
-import { type Guide } from "@prisma/client";
 
 export const guideRouter = createTRPCRouter({
   getGuideCategories: publicProcedure.query(async ({ ctx }) => {

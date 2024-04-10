@@ -7,7 +7,7 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 import { MENU_NAV_LINKS } from "@/utils/constant";
-import { ChevronDown, Menu, Search } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";

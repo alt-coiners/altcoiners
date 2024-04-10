@@ -7,7 +7,7 @@ import EditVideoCategory from "./create";
 export const columns: ColumnDef<VideoCategory>[] = [
   {
     id: "edit",
-    header: ({ table }) => <Button variant="ghost">Edit</Button>,
+    header: ({}) => <Button variant="ghost">Edit</Button>,
     cell: ({ row }) => <EditVideoCategory videoCategoryId={row.original.id} />,
     enableSorting: false,
     enableHiding: false,

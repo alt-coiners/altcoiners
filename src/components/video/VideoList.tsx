@@ -1,9 +1,8 @@
 import { getHowLongAgo } from "@/utils/helper";
 import type { Video, VideoCategory } from "@prisma/client";
-import { ChevronRight, PlayCircle } from "lucide-react";
+import { PlayCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../ui/button";
 
 interface VideoListProps {
   videos: (Video & { VideoCategory: VideoCategory })[];
@@ -12,7 +11,7 @@ interface VideoListProps {
 export default function VideoList({ videos }: VideoListProps) {
   return (
     <div className="mx-auto my-6 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {videos.map((video, index) => (
+      {videos.map((video) => (
         <Link
           key={video.id}
           className="flex flex-col gap-2"
