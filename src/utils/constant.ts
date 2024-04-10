@@ -149,28 +149,23 @@ export const FOOTER_BOTTOM_LINKS = [
 
 export const SOCIAL_LINKS = [
   {
-    title: "Twitter",
+    title: "X",
     icon: "/images/social/twitter.png",
-    href: "#",
-  },
-  {
-    title: "LinkedIn",
-    icon: "/images/social/linkedin.png",
-    href: "#",
+    href: "https://x.com/alt_coiners?s=21",
   },
   {
     title: "YouTube",
     icon: "/images/social/youtube.png",
-    href: "#",
+    href: "https://youtube.com/@alt_coiners?si=b7vR-RAflFtH_fT3",
   },
   {
-    title: "TikTok",
-    icon: "/images/social/tiktok.png",
-    href: "#",
+    title: "Instagram",
+    icon: "/images/social/instagram.png",
+    href: "https://youtube.com/@alt_coiners?si=b7vR-RAflFtH_fT3",
   },
   {
     title: "Telegram",
     icon: "/images/social/telegram.png",
-    href: "#",
+    href: "https://t.me/AltCoinersCommunity",
   },
 ];
