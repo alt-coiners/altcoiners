@@ -17,14 +17,11 @@ export default function Navbar() {
   return (
     <div className="flex items-center justify-between border border-primary/50 px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
       <Link href="/dashboard">
-        {/* <div className="flex items-center gap-1 text-lg font-medium text-primary">
-          <Triangle className="size-6" />
-          <p>AltCoiners.live</p>
-        </div> */}
         <Image
           src="/images/altcoiners-logo.png"
           width={125}
           height={75}
+          quality={100}
           alt="logo"
         />
       </Link>
@@ -49,7 +46,6 @@ export default function Navbar() {
       </Menubar>
       <div className="flex items-center gap-3">
         <HamburgerMenu />
-        {/* <Search className="size-6 text-primary" /> */}
         <SearchBar />
       </div>
     </div>

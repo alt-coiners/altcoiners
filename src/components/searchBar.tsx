@@ -44,15 +44,19 @@ export default function SearchBar() {
             <div>Loading...</div>
           ) : (
             <ul className="flex flex-col divide-y divide-gray-400 text-xs *:mb-2">
-              {searchResults?.map((result) => (
-                <Link
-                  key={result.id}
-                  href={result.url}
-                  className="hover:bg-gray-50"
-                >
-                  {result.title}
-                </Link>
-              ))}
+              {searchResults?.length ? (
+                <p>No results found</p>
+              ) : (
+                searchResults?.map((result) => (
+                  <Link
+                    key={result.id}
+                    href={result.url}
+                    className="hover:bg-gray-50"
+                  >
+                    {result.title}
+                  </Link>
+                ))
+              )}
             </ul>
           )}
         </PopoverContent>
