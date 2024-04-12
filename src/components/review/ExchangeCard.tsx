@@ -7,7 +7,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { type Exchange } from "@prisma/client";
-import { ArrowRight, Circle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Button } from "../ui/button";
 
@@ -22,7 +22,6 @@ export default function ExchangeCard({ exchange }: ExchangeCardProps) {
       <CardHeader>
         <CardTitle className="flex items-center justify-between text-lg">
           <div className="flex items-center gap-2">
-            {/* <Circle size={16} /> */}
             <p>{name}</p>
           </div>
           <Button size="sm" className="h-8 bg-primary-dark text-xs">

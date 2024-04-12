@@ -127,7 +127,7 @@ export default function EditNews({ id }: Props) {
                 <FormField
                   control={form.control}
                   name="picture"
-                  render={({ field }) => (
+                  render={({}) => (
                     <FormItem>
                       <FormLabel>
                         Picture<span className="text-red-600">*</span>
