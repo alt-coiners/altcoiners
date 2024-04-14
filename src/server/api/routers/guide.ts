@@ -27,6 +27,9 @@ export const guideRouter = createTRPCRouter({
         where: {
           id: input.id,
         },
+        include: {
+          category: true,
+        },
       });
     }),
 
