@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 
 import { Noto_Sans } from "next/font/google";
 
+import { Toaster } from "@/components/ui/toaster";
 import { TRPCReactProvider } from "@/trpc/react";
 
 const noto_sans = Noto_Sans({
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans ${noto_sans.variable}`}>
+        <Toaster />
         <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
