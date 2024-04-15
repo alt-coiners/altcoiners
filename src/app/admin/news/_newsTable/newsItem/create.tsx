@@ -30,6 +30,7 @@ import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -132,6 +133,15 @@ export default function EditNews({ id }: Props) {
                       <FormLabel>
                         Picture<span className="text-red-600">*</span>
                       </FormLabel>
+                      {(form.watch("picture") || !!data?.picture?.length) && (
+                        <Image
+                          src={form.watch("picture") ?? data?.picture}
+                          width={200}
+                          height={200}
+                          className="mx-auto"
+                          alt="image"
+                        />
+                      )}
                       <UploadButton
                         endpoint="imageUploader"
                         onClientUploadComplete={(res) => {
