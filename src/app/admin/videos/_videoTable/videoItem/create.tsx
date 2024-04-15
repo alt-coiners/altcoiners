@@ -22,6 +22,7 @@ import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -38,7 +39,7 @@ const formSchema = z.object({
 });
 
 export default function EditVideo({ videoId }: EditVideoProps) {
-  const { data: videoData } = api.video.getVideoById.useQuery(
+  const { data } = api.video.getVideoById.useQuery(
     { id: videoId },
     { enabled: videoId !== -1 },
   );
@@ -54,21 +55,21 @@ export default function EditVideo({ videoId }: EditVideoProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: videoData?.title ?? "",
-      url: videoData?.url ?? "",
-      picture: videoData?.picture ?? "",
-      categoryId: videoData?.VideoCategory.id ?? 0,
+      title: data?.title ?? "",
+      url: data?.url ?? "",
+      picture: data?.picture ?? "",
+      categoryId: data?.VideoCategory.id ?? 0,
     },
   });
 
   useEffect(() => {
-    if (videoData) {
-      form.setValue("title", videoData.title ?? "");
-      form.setValue("url", videoData.url ?? "");
-      form.setValue("picture", videoData.picture ?? "");
-      form.setValue("categoryId", videoData.VideoCategory.id ?? 0);
+    if (data) {
+      form.setValue("title", data.title ?? "");
+      form.setValue("url", data.url ?? "");
+      form.setValue("picture", data.picture ?? "");
+      form.setValue("categoryId", data.VideoCategory.id ?? 0);
     }
-  }, [videoData, form]);
+  }, [data, form]);
 
   const submitButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -131,6 +132,15 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                       <FormLabel>
                         Picture<span className="text-red-600">*</span>
                       </FormLabel>
+                      {(form.watch("picture") || !!data?.picture?.length) && (
+                        <Image
+                          src={form.watch("picture") ?? data?.picture}
+                          width={200}
+                          height={200}
+                          className="mx-auto"
+                          alt="image"
+                        />
+                      )}
                       <UploadButton
                         endpoint="imageUploader"
                         onClientUploadComplete={(res) => {
@@ -165,7 +175,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                   className="w-[45%] justify-center rounded-xl"
                   onClick={() => submitButtonRef.current?.click()}
                 >
-                  {videoData ? "Update" : "Create"}
+                  {data ? "Update" : "Create"}
                 </Button>
               </DialogTrigger>
             </div>
