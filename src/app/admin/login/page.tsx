@@ -26,7 +26,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 
 const ADMIN_USERNAME = "altcoiners";
-const ADMIN_PASSWORD = "altcoiners@12345678";
+const ADMIN_PASSWORD = "vgfk@1565";
 
 const formSchema = z.object({
   username: z.string().min(1),
