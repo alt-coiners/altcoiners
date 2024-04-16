@@ -64,7 +64,7 @@ export default function EditGuideCategory({ id }: Props) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     await upsertMutation.mutateAsync({
-      id: id === -1 ? undefined : id,
+      id: id,
       ...values,
     });
   }
