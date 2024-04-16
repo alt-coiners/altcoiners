@@ -42,7 +42,7 @@ const formSchema = z.object({
   title: z.string().min(1),
   url: z.string().min(1),
   picture: z.string().min(1),
-  categoryId: z.number(),
+  categoryId: z.string(),
 });
 
 export default function EditVideo({ videoId }: EditVideoProps) {
@@ -66,7 +66,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
       title: data?.title ?? "",
       url: data?.url ?? "",
       picture: data?.picture ?? "",
-      categoryId: data?.VideoCategory.id ?? 0,
+      categoryId: data?.VideoCategory.id.toString() ?? "0",
     },
   });
 
@@ -75,7 +75,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
       form.setValue("title", data.title ?? "");
       form.setValue("url", data.url ?? "");
       form.setValue("picture", data.picture ?? "");
-      form.setValue("categoryId", data.VideoCategory.id ?? 0);
+      form.setValue("categoryId", data.VideoCategory.id.toString() ?? "0");
     }
   }, [data, form]);
 
@@ -85,6 +85,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
     await updateVideoMutation.mutateAsync({
       id: videoId,
       ...values,
+      categoryId: parseInt(values.categoryId),
     });
   }
 
@@ -174,7 +175,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                       <FormControl>
                         <Select
                           onValueChange={field.onChange}
-                          defaultValue={field.value.toString()}
+                          defaultValue={field.value}
                         >
                           <SelectTrigger>
                             <SelectValue placeholder="Select a News Category" />
