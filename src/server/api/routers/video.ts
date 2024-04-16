@@ -35,7 +35,11 @@ export const videoRouter = createTRPCRouter({
           name: input.category,
         },
         include: {
-          Videos: true,
+          Videos: {
+            orderBy: {
+              id: "asc",
+            },
+          },
         },
       });
     }),
