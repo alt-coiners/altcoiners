@@ -4,7 +4,11 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const exchangeRouter = createTRPCRouter({
   getAllExchanges: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.exchange.findMany();
+    return await ctx.db.exchange.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
   }),
 
   getExchangeById: publicProcedure

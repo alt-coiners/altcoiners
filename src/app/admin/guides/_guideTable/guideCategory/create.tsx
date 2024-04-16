@@ -70,7 +70,7 @@ export default function EditGuideCategory({ id }: Props) {
   }
 
   return (
-    <Dialog>
+    <Dialog key={id}>
       <DialogTrigger>
         <Button>{id === -1 ? "Add" : "Edit"}</Button>
       </DialogTrigger>

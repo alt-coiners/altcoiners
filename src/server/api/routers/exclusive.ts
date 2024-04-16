@@ -4,7 +4,11 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const exclusiveRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.exclusive.findMany({});
+    return await ctx.db.exclusive.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
   }),
 
   getById: publicProcedure

@@ -4,7 +4,11 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const guideRouter = createTRPCRouter({
   getGuideCategories: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.guideCategory.findMany();
+    return await ctx.db.guideCategory.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
   }),
 
   getGuideCategoryById: publicProcedure
@@ -62,6 +66,9 @@ export const guideRouter = createTRPCRouter({
     return await ctx.db.guide.findMany({
       include: {
         category: true,
+      },
+      orderBy: {
+        id: "asc",
       },
     });
   }),
