@@ -8,6 +8,9 @@ export const videoRouter = createTRPCRouter({
       include: {
         VideoCategory: true,
       },
+      orderBy: {
+        id: "asc",
+      },
     });
   }),
 
@@ -48,7 +51,11 @@ export const videoRouter = createTRPCRouter({
     }),
 
   getVideoCategories: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.videoCategory.findMany();
+    return await ctx.db.videoCategory.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
   }),
 
   upsertVideo: publicProcedure

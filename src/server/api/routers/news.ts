@@ -8,6 +8,9 @@ export const newsRouter = createTRPCRouter({
       include: {
         category: true,
       },
+      orderBy: {
+        id: "asc",
+      },
     });
   }),
 
@@ -105,7 +108,11 @@ export const newsRouter = createTRPCRouter({
     }),
 
   getAllCategories: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.newsCategory.findMany();
+    return await ctx.db.newsCategory.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
   }),
 
   getCategoryById: publicProcedure

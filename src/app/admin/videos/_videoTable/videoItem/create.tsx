@@ -18,6 +18,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
 import { UploadButton } from "@/utils/uploadthing";
@@ -44,6 +51,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
     { enabled: videoId !== -1 },
   );
   const { refetch: refetchVideos } = api.video.getAllVideos.useQuery();
+  const { data: categories } = api.video.getVideoCategories.useQuery();
   const updateVideoMutation = api.video.upsertVideo.useMutation({
     onSuccess: () => {
       void refetchVideos();
@@ -81,7 +89,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
   }
 
   return (
-    <Dialog>
+    <Dialog key={videoId}>
       <DialogTrigger>
         <Button>{videoId === -1 ? "Add Video" : "Edit"}</Button>
       </DialogTrigger>
@@ -151,6 +159,38 @@ export default function EditVideo({ videoId }: EditVideoProps) {
                           alert(`ERROR! ${error.message}`);
                         }}
                       />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="categoryId"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        News Category<span className="text-red-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Select
+                          onValueChange={field.onChange}
+                          defaultValue={field.value.toString()}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select a News Category" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {categories?.map((category) => (
+                              <SelectItem
+                                key={category.id}
+                                value={category.id.toString()}
+                              >
+                                {category.name}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}

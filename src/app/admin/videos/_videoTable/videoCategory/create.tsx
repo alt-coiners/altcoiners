@@ -77,7 +77,7 @@ export default function EditVideoCategory({ videoCategoryId }: EditVideoProps) {
   }
 
   return (
-    <Dialog>
+    <Dialog key={videoCategoryId}>
       <DialogTrigger>
         <Button>
           {videoCategoryId === -1 ? "Add Video Category" : "Edit"}
