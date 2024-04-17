@@ -17,6 +17,7 @@ export const searchRouter = createTRPCRouter({
           where: {
             title: {
               contains: input.query,
+              mode: "insensitive",
             },
           },
           include: {
@@ -28,6 +29,7 @@ export const searchRouter = createTRPCRouter({
           where: {
             title: {
               contains: input.query,
+              mode: "insensitive",
             },
           },
           include: {
@@ -39,6 +41,7 @@ export const searchRouter = createTRPCRouter({
           where: {
             name: {
               contains: input.query,
+              mode: "insensitive",
             },
           },
           take: 5,
@@ -47,6 +50,7 @@ export const searchRouter = createTRPCRouter({
           where: {
             title: {
               contains: input.query,
+              mode: "insensitive",
             },
           },
           include: {
@@ -55,7 +59,6 @@ export const searchRouter = createTRPCRouter({
           take: 5,
         }),
       ]);
-      console.log("fuzzySearch", news, videos, exchanges, guide);
 
       // process all search results and combine them into a single array
       const results = [
