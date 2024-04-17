@@ -1,8 +1,8 @@
 import AdSection from "@/components/AdSection";
 import BreadcrumbComponent from "@/components/breadcrumb";
+import ExclusiveList from "@/components/exclusive/ExclusiveList";
 import ExclusiveMainSection from "@/components/exclusive/ExclusiveMainSection";
 import NewsList from "@/components/news/NewsList";
-import NewsListWithImage from "@/components/news/NewsListWithImage";
 import { api } from "@/trpc/server";
 
 export default async function Exclusives() {
@@ -43,7 +43,7 @@ export default async function Exclusives() {
           <AdSection className="h-[500px]" />
         </div>
       </div>
-      <NewsListWithImage title="All News" articles={news.slice(0, 6)} />
+      <ExclusiveList title="All News" articles={exclusives} />
       <AdSection className="h-56" />
     </div>
   );

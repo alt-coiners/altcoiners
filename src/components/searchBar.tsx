@@ -25,7 +25,6 @@ export default function SearchBar() {
       enabled: !!debouncedSearchTerm,
     },
   );
-
   return (
     <div className="flex items-center gap-2">
       {showInput && (
@@ -39,19 +38,19 @@ export default function SearchBar() {
         <PopoverTrigger>
           <Search className="size-6" onClick={() => setShowInput(true)} />
         </PopoverTrigger>
-        <PopoverContent>
+        <PopoverContent className={`${searchTerm.length ? "block" : "hidden"}`}>
           {isLoading ? (
-            <div>Loading...</div>
+            <div>Searching...</div>
           ) : (
-            <ul className="flex flex-col divide-y divide-gray-400 text-xs *:mb-2">
-              {searchResults?.length ? (
+            <ul className="flex flex-col gap-2 divide-y divide-gray-400 text-xs">
+              {!searchResults?.length ? (
                 <p>No results found</p>
               ) : (
-                searchResults?.map((result) => (
+                searchResults?.splice(0, 8).map((result) => (
                   <Link
                     key={result.id}
                     href={result.url}
-                    className="hover:bg-gray-50"
+                    className="pt-2 hover:bg-gray-50"
                   >
                     {result.title}
                   </Link>

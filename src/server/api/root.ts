@@ -1,4 +1,5 @@
 import { createTRPCRouter } from "@/server/api/trpc";
+import { bannerRouter } from "./routers/banner";
 import { cryptoRouter } from "./routers/crypto";
 import { exchangeRouter } from "./routers/exchange";
 import { exclusiveRouter } from "./routers/exclusive";
@@ -22,6 +23,7 @@ export const appRouter = createTRPCRouter({
   search: searchRouter,
   exclusive: exclusiveRouter,
   podcast: podcastRouter,
+  banner: bannerRouter,
 });
 
 // export type definition of API
