@@ -1,13 +1,14 @@
+"use client";
+
 import {
-  Menubar,
-  MenubarContent,
-  MenubarItem,
-  MenubarMenu,
-  MenubarSeparator,
-  MenubarTrigger,
-} from "@/components/ui/menubar";
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { MENU_NAV_LINKS } from "@/utils/constant";
-import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import HamburgerMenu from "./HamburgerMenu";
@@ -25,25 +26,29 @@ export default function Navbar() {
           className="-my-4"
         />
       </Link>
-      <Menubar className="hidden border-0 lg:flex 2xl:gap-5">
-        {MENU_NAV_LINKS.map((menu, index) => (
-          <MenubarMenu key={index}>
-            <MenubarTrigger>
-              {menu.title} <ChevronDown className="size-4" />
-            </MenubarTrigger>
-            <MenubarContent>
-              {menu.subMenus.map((subMenu, index) => (
-                <>
-                  <Link href={subMenu.url} key={index}>
-                    <MenubarItem key={index}>{subMenu.title}</MenubarItem>
-                  </Link>
-                  {index !== menu.subMenus.length - 1 && <MenubarSeparator />}
-                </>
-              ))}
-            </MenubarContent>
-          </MenubarMenu>
-        ))}
-      </Menubar>
+      <NavigationMenu className="hidden border-0 lg:flex 2xl:gap-5">
+        <NavigationMenuList>
+          {MENU_NAV_LINKS.map((menu, index) => (
+            <NavigationMenuItem key={index}>
+              <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <div className="grid grid-cols-1 gap-2 rounded-lg p-4 shadow-md md:w-[400px] md:grid-cols-2 lg:w-[500px] lg:grid-cols-2 lg:gap-3">
+                  {menu.subMenus.map((subMenu, index) => (
+                    <Link href={subMenu.url} key={index} passHref>
+                      <NavigationMenuLink
+                        key={index}
+                        className="flex items-center gap-1 text-sm"
+                      >
+                        {subMenu.title}
+                      </NavigationMenuLink>
+                    </Link>
+                  ))}
+                </div>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ))}
+        </NavigationMenuList>
+      </NavigationMenu>
       <div className="flex items-center gap-3">
         <HamburgerMenu />
         <SearchBar />

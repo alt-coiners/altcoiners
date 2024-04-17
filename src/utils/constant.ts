@@ -18,7 +18,7 @@ export const MENU_NAV_LINKS = [
     href: "/dashboard/exclusives",
     subMenus: [
       { title: "Opinions", url: "/dashboard/exclusives" },
-      { title: "Podcasts", url: "/dashboard/podcasts" },
+      { title: "Podcasts", url: "/dashboard/exclusives/podcasts" },
     ],
   },
   {
