@@ -18,11 +18,11 @@ export default function Navbar() {
     <div className="flex items-center justify-between border border-primary/50 px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
       <Link href="/dashboard">
         <Image
-          src="/images/altcoiners-logo.png"
-          width={125}
-          height={75}
-          quality={100}
+          src="/images/altcoiners-logo.svg"
           alt="logo"
+          width={160}
+          height={120}
+          className="-my-4"
         />
       </Link>
       <Menubar className="hidden border-0 lg:flex 2xl:gap-5">
