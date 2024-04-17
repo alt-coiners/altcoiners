@@ -43,7 +43,7 @@ export default async function VideoId({
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            className="mx-auto my-6 aspect-video w-[90%] object-cover lg:mt-10 xl:w-5/6"
+            className="mx-auto my-6 aspect-video w-[90%] object-cover lg:mt-10 xl:w-full"
           ></iframe>
 
           <div className="mb-4 px-2 xl:hidden">
