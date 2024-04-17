@@ -15,7 +15,7 @@ import SearchBar from "./searchBar";
 
 export default function Navbar() {
   return (
-    <div className="flex items-center justify-between border border-primary/50 px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
+    <div className="fixed left-0 top-0 z-10 flex w-full items-center justify-between border border-primary/50 bg-white px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
       <Link href="/dashboard">
         <Image
           src="/images/altcoiners-logo.svg"
