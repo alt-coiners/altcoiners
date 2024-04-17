@@ -42,7 +42,7 @@ export default async function News() {
           <AdSection className="h-[500px]" />
         </div>
       </div>
-      <NewsListWithImage title="All News" articles={news.slice(0, 6)} />
+      <NewsListWithImage title="All News" articles={news} />
       <AdSection className="h-56" />
     </div>
   );
