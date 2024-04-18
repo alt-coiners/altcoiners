@@ -18,6 +18,7 @@ export default async function VideoCategory({
       VideoCategory: videoCategoryData,
     };
   });
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -62,7 +63,12 @@ export default async function VideoCategory({
       </p>
       {/* @ts-expect-error - TODO: Fix this */}
       <VideoList videos={videoListArray} />
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

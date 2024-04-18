@@ -8,6 +8,7 @@ import { api } from "@/trpc/server";
 export default async function Exclusives() {
   const news = await api.news.getAllNews.query();
   const podcasts = await api.podcast.getAll.query();
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -44,11 +45,22 @@ export default async function Exclusives() {
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
-          <AdSection className="h-[500px]" />
+          <AdSection
+            className="h-[500px]"
+            url={
+              adPictures.find((banner) => banner.name === "ARTICLE_PAGE")
+                ?.url ?? ""
+            }
+          />
         </div>
       </div>
       <NewsListWithImage title="All News" articles={news.slice(0, 6)} />
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

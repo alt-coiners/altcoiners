@@ -7,6 +7,7 @@ import { api } from "@/trpc/server";
 
 export default async function News() {
   const news = await api.news.getAllNews.query();
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -39,11 +40,23 @@ export default async function News() {
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
-          <AdSection className="h-[500px]" />
+          <AdSection
+            className="h-[500px]"
+            url={
+              adPictures.find(
+                (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+              )?.url ?? ""
+            }
+          />
         </div>
       </div>
       <NewsListWithImage title="All News" articles={news} />
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

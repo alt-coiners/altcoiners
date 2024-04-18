@@ -15,12 +15,18 @@ export default async function Dashboard() {
   const videosData = await api.video.getAllVideos.query();
   const guideData = await api.guide.getAllGuidesByCategory.query();
   const cryptoCoinData = await api.crypto.getAllCoins.query();
+  const adPictures = await api.banner.getAll.query();
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">
       <CoinPricesCarousel coinsData={cryptoCoinData} />
       <DashboardMainSection newsData={newsData} />
-      <AdSlider />
+      {/* only take the banners which start with	CAROUSEL */}
+      <AdSlider
+        adPictures={adPictures
+          .filter((banner) => banner.name.startsWith("CAROUSEL"))
+          .map((banner) => banner.url)}
+      />
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
@@ -36,14 +42,28 @@ export default async function Dashboard() {
       <div className="lg:hidden">
         <MostPopularSection articles={newsData.slice(0, 8)} />
       </div>
-      <AdSection className="h-64 lg:hidden" />
+      <AdSection
+        className="h-64 lg:hidden"
+        url={
+          adPictures.find(
+            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+          )?.url ?? ""
+        }
+      />
       <VideoListCard videos={videosData.slice(0, 4)} />
       <NewsListWithImage
         title="Altcoin News"
         articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news/Altcoin"
       />
-      <AdSection className="h-36" />
+      <AdSection
+        className="h-36"
+        url={
+          adPictures.find(
+            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+          )?.url ?? ""
+        }
+      />
       <ReadersChoiceSection />
       <NewsLetter />
       <GuideHomeSection guides={guideData} />
@@ -57,7 +77,14 @@ export default async function Dashboard() {
         articles={newsData.slice(0, 8)}
         moreUrl="/dashboard/news/Ethereum"
       />
-      <AdSection className="h-64" />
+      <AdSection
+        className="h-64"
+        url={
+          adPictures.find(
+            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+          )?.url ?? ""
+        }
+      />
       <NewsListWithImage
         title="NFT News"
         articles={newsData.slice(0, 8)}
@@ -68,7 +95,12 @@ export default async function Dashboard() {
         articles={newsData.slice(0, 16)}
         moreUrl="/dashboard/news/All"
       />
-      <AdSection className="h-[400px] lg:h-56" />
+      <AdSection
+        className="h-[400px] lg:h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

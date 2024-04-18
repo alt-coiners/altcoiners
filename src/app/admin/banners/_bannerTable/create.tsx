@@ -97,7 +97,7 @@ export default function EditBanner({ id }: Props) {
                         Name<span className="text-red-600">*</span>
                       </FormLabel>
                       <FormControl>
-                        <Input placeholder="Enter name" {...field} disabled />
+                        <Input placeholder="Enter name" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>

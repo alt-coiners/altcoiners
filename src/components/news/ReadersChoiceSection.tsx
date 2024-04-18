@@ -9,6 +9,7 @@ import NewsList from "./NewsList";
 export default async function ReadersChoiceSection() {
   const readersNews = await api.news.getAllNews.query();
   const mainNews = readersNews[0];
+  const adPictures = await api.banner.getAll.query();
 
   return (
     <section className="mx-auto flex flex-col gap-4 px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
@@ -66,7 +67,13 @@ export default async function ReadersChoiceSection() {
             title="Readers' choice"
             showTitle={false}
           />
-          <AdSection className="h-full" />
+          <AdSection
+            className="h-full"
+            url={
+              adPictures.find((banner) => banner.name === "READERS_CHOICE")
+                ?.url ?? ""
+            }
+          />
         </div>
       </div>
     </section>

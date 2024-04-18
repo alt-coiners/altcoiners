@@ -14,6 +14,7 @@ export default async function NewsId({
 }) {
   const newsArticle = await api.news.getNewsById.query({ id: +params.id });
   const latestNews = await api.news.getLatestNews.query();
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -59,7 +60,13 @@ export default async function NewsId({
             className="prose prose-sm px-2 py-6 text-gray-700 sm:prose-base lg:prose-lg"
             dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
           ></article>
-          <AdSection className="h-56 lg:hidden" />
+          <AdSection
+            className="h-56 lg:hidden"
+            url={
+              adPictures.find((banner) => banner.name === "ARTICLE_PAGE")
+                ?.url ?? ""
+            }
+          />
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
               articles={latestNews}
@@ -78,7 +85,14 @@ export default async function NewsId({
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
-          <AdSection className="h-[600px]" />
+          <AdSection
+            className="h-[600px]"
+            url={
+              adPictures.find(
+                (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+              )?.url ?? ""
+            }
+          />
           <NewsList
             articles={latestNews}
             moreUrl="/dashboard/news"
@@ -86,7 +100,14 @@ export default async function NewsId({
           />
         </div>
       </div>
-      <AdSection className="h-56 px-2" />
+      <AdSection
+        className="h-56 px-2"
+        url={
+          adPictures.find(
+            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+          )?.url ?? ""
+        }
+      />
       <NewsListWithImage
         articles={latestNews.slice(0, 4)}
         title="Similar News"

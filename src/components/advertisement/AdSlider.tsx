@@ -13,7 +13,11 @@ import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 import AdSection from "../AdSection";
 
-export default function AdSlider() {
+interface AdSliderProps {
+  adPictures: string[];
+}
+
+export default function AdSlider({ adPictures }: AdSliderProps) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
@@ -30,22 +34,16 @@ export default function AdSlider() {
       >
         <CarouselContent>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" />
+            <AdSection className="h-48" url={adPictures[0] ?? ""} />
           </CarouselItem>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" />
+            <AdSection className="h-48" url={adPictures[1] ?? ""} />
           </CarouselItem>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" />
+            <AdSection className="h-48" url={adPictures[2] ?? ""} />
           </CarouselItem>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" />
-          </CarouselItem>
-          <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" />
-          </CarouselItem>
-          <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" />
+            <AdSection className="h-48" url={adPictures[3] ?? ""} />
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious />

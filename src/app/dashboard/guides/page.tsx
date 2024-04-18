@@ -4,6 +4,7 @@ import Link from "next/link";
 
 export default async function Guide() {
   const guidesByCategoryData = await api.guide.getAllGuidesByCategory.query();
+  const adPictures = await api.banner.getAll.query();
 
   return (
     <div className="mx-auto mb-6 flex w-full flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
@@ -23,7 +24,7 @@ export default async function Guide() {
                     className="h-full rounded-lg bg-white px-4 py-6 shadow-lg lg:py-8"
                   >
                     <h3 className="text-lg font-semibold">{guide.title}</h3>
-                    <p className="text-gray-500">{guide.content}</p>
+                    {/* <p className="text-gray-500">{guide.content}</p> */}
                   </Link>
                 ))}
               </div>
@@ -31,7 +32,12 @@ export default async function Guide() {
           </div>
         ))}
       </div>
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

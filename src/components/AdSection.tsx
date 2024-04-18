@@ -2,10 +2,11 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 interface AdSectionProps {
+  url: string;
   className?: string;
 }
 
-export default function AdSection({ className }: AdSectionProps) {
+export default function AdSection({ url, className }: AdSectionProps) {
   return (
     <div
       className={cn(
@@ -14,7 +15,7 @@ export default function AdSection({ className }: AdSectionProps) {
       )}
     >
       <Image
-        src="/images/ad-placeholder.jpeg"
+        src={url}
         alt="Ad"
         width={300}
         height={250}
