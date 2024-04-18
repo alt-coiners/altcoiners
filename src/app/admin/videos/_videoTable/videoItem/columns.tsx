@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import type { Video, VideoCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import Image from "next/image";
 import EditVideo from "./create";
 
 export const columns: ColumnDef<Video & { VideoCategory: VideoCategory }>[] = [
@@ -73,6 +74,16 @@ export const columns: ColumnDef<Video & { VideoCategory: VideoCategory }>[] = [
           Picture
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <Image
+          src={row.original.picture}
+          alt="image"
+          width={100}
+          height={100}
+        />
       );
     },
   },

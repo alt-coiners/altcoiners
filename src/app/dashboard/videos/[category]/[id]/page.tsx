@@ -11,6 +11,7 @@ export default async function VideoId({
 }) {
   const video = await api.video.getVideoById.query({ id: +params.id });
   const latestNews = await api.news.getLatestNews.query();
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -65,7 +66,12 @@ export default async function VideoId({
           />
         </div>
       </div>
-      <AdSection className="mb-8 h-56 px-2" />
+      <AdSection
+        className="mb-8 h-56 px-2"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

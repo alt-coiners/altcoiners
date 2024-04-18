@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import type { Guide, GuideCategory } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import Image from "next/image";
 import EditGuide from "./create";
 
 export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
@@ -59,6 +60,16 @@ export const columns: ColumnDef<Guide & { category: GuideCategory }>[] = [
           Picture
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <Image
+          src={row.original.picture}
+          alt="image"
+          width={100}
+          height={100}
+        />
       );
     },
   },

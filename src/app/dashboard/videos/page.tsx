@@ -5,6 +5,7 @@ import { api } from "@/trpc/server";
 
 export default async function Videos() {
   const videos = await api.video.getAllVideos.query();
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -40,7 +41,12 @@ export default async function Videos() {
         of the best ways to stay on top of the game.
       </p>
       <VideoList videos={videos} />
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

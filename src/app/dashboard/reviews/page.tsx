@@ -5,6 +5,7 @@ import { api } from "@/trpc/server";
 
 export default async function Reviews() {
   const exchanges = await api.exchange.getAllExchanges.query();
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -24,7 +25,12 @@ export default async function Reviews() {
           <ExchangeCard key={index} exchange={exchange} />
         ))}
       </div>
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }

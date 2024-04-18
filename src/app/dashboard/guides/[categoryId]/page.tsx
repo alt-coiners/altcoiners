@@ -12,6 +12,7 @@ export default async function GuideCategory({
   const categoryData = await api.guide.getGuidesByCategory.query({
     id: Number(categoryId),
   });
+  const adPictures = await api.banner.getAll.query();
 
   const breadcrumbs = [
     {
@@ -43,7 +44,12 @@ export default async function GuideCategory({
           ))}
         </div>
       </div>
-      <AdSection className="h-56" />
+      <AdSection
+        className="h-56"
+        url={
+          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
+        }
+      />
     </div>
   );
 }
