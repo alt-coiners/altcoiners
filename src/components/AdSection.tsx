@@ -19,6 +19,7 @@ export default function AdSection({ url, className }: AdSectionProps) {
         alt="Ad"
         width={300}
         height={250}
+        quality={100}
         className="h-full w-full rounded-xl object-cover"
       />
     </div>
