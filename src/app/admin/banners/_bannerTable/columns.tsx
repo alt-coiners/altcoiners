@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import type { Banner } from "@prisma/client";
 import { type ColumnDef } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
+import Image from "next/image";
 import EditBanner from "./create";
 
 export const columns: ColumnDef<Banner>[] = [
@@ -51,6 +52,11 @@ export const columns: ColumnDef<Banner>[] = [
           URL
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <Image src={row.original.url} alt="image" width={100} height={100} />
       );
     },
   },
