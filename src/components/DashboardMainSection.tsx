@@ -46,7 +46,7 @@ export default function DashboardMainSection({
               alt={mainNews?.title ?? "Placeholder"}
               width={500}
               height={300}
-              className="h-48 w-full object-cover xl:h-52 2xl:h-56"
+              className="aspect-video w-full"
             />
             <div className="absolute bottom-0 h-8 w-full bg-primary-dark"></div>
           </div>
