@@ -12,6 +12,8 @@ export default function Footer() {
             src="/images/altcoiners-logo.png"
             width={125}
             height={75}
+            className="lg:h-auto lg:w-36"
+            quality={100}
             alt="logo"
           />
           <p className="text-sm text-gray-400">

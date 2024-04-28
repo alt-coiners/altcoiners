@@ -23,7 +23,7 @@ export default function CoinPricesCarousel({
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 xl:max-w-5xl 2xl:max-w-7xl">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 lg:-mb-8 xl:max-w-5xl 2xl:max-w-7xl">
       <h2 className="text-xl font-bold text-primary-dark">
         Buy/Sell At the Best Prices
       </h2>

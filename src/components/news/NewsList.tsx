@@ -22,7 +22,7 @@ export default function NewsList({
   setMainNews,
 }: NewsListProps) {
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-4" key={title}>
       {!!title?.length && showTitle && (
         <h2 className="text-xl font-bold text-primary-dark">{title}</h2>
       )}
