@@ -11,11 +11,14 @@ import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 
 export default async function Dashboard() {
-  const newsData = await api.news.getAllNews.query();
-  const videosData = await api.video.getAllVideos.query();
-  const guideData = await api.guide.getAllGuidesByCategory.query();
-  const cryptoCoinData = await api.crypto.getAllCoins.query();
-  const adPictures = await api.banner.getAll.query();
+  const [newsData, videosData, guideData, cryptoCoinData, adPictures] =
+    await Promise.all([
+      api.news.getAllNews.query(),
+      api.video.getAllVideos.query(),
+      api.guide.getAllGuidesByCategory.query(),
+      api.crypto.getAllCoins.query(),
+      api.banner.getAll.query(),
+    ]);
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">
