@@ -28,6 +28,28 @@ export default function Navbar() {
       </Link>
       <NavigationMenu className="hidden border-0 lg:flex 2xl:gap-5">
         <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>All</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <div className="grid grid-cols-1 gap-2 rounded-lg p-4 shadow-md md:w-[400px] md:grid-cols-2 lg:w-[500px] lg:grid-cols-2 lg:gap-3 xl:w-[600px] xl:grid-cols-3 xl:gap-5 2xl:w-[700px] 2xl:grid-cols-5">
+                {MENU_NAV_LINKS.map((menu, index) => (
+                  <div key={index}>
+                    <div className="font-bold">{menu.title}</div>
+                    {menu.subMenus.map((subMenu, subIndex) => (
+                      <Link href={subMenu.url} key={subIndex} passHref>
+                        <NavigationMenuLink
+                          key={subIndex}
+                          className="mt-1 flex items-center gap-1 text-sm"
+                        >
+                          {subMenu.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
           {MENU_NAV_LINKS.map((menu, index) => (
             <NavigationMenuItem key={index}>
               <NavigationMenuTrigger>{menu.title}</NavigationMenuTrigger>
