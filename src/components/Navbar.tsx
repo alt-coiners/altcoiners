@@ -23,7 +23,7 @@ export default function Navbar() {
           alt="logo"
           width={160}
           height={120}
-          className="-my-4"
+          className="-my-4 lg:h-auto lg:w-52"
         />
       </Link>
       <NavigationMenu className="hidden border-0 lg:flex 2xl:gap-5">
