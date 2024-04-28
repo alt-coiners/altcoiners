@@ -5,7 +5,7 @@ import NewsListWithImage from "@/components/news/NewsListWithImage";
 import PodcastMainSection from "@/components/podcast/PodcastMainSection";
 import { api } from "@/trpc/server";
 
-export default async function Exclusives() {
+export default async function Podcasts() {
   const news = await api.news.getAllNews.query();
   const podcasts = await api.podcast.getAll.query();
   const adPictures = await api.banner.getAll.query();
