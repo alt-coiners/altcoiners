@@ -28,18 +28,8 @@ export default function Footer() {
               type="email"
               placeholder="Email"
               className="w-full rounded-none"
-              style={{
-                clipPath: "polygon(0 0, 95% 0, 100% 35%, 100% 100%, 0 100%)",
-              }}
             />
-            <Button
-              className="w-full rounded-none py-6"
-              style={{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 65%)",
-              }}
-            >
-              Sign Up
-            </Button>
+            <Button className="w-1/2 rounded-none py-5">Sign Up</Button>
           </div>
           <p className="text-xs text-gray-400">
             This site is protected by reCAPTCHA and the Google{" "}
