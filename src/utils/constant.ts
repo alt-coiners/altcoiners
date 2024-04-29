@@ -80,7 +80,7 @@ export const SOCIAL_LINKS = [
   {
     title: "LinkedIn",
     icon: "/images/social/linkedin.png",
-    href: "https://youtube.com/@alt_coiners?si=b7vR-RAflFtH_fT3",
+    href: "https://www.linkedin.com/company/altcoiners/",
   },
   {
     title: "Telegram",
@@ -90,6 +90,6 @@ export const SOCIAL_LINKS = [
   {
     title: "Discord",
     icon: "/images/social/discord.svg",
-    href: "https://x.com/alt_coiners?s=21",
+    href: "https://discord.gg/Wym7EH5vdG",
   },
 ];
