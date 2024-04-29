@@ -27,9 +27,7 @@ export default async function Reviews() {
       </div>
       <AdSection
         className="h-56"
-        url={
-          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
-        }
+        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
       />
     </div>
   );

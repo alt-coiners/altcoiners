@@ -9,15 +9,16 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import type { Banner } from "@prisma/client";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 import AdSection from "../AdSection";
 
 interface AdSliderProps {
-  adPictures: string[];
+  ads: Banner[];
 }
 
-export default function AdSlider({ adPictures }: AdSliderProps) {
+export default function AdSlider({ ads }: AdSliderProps) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
 
   return (
@@ -34,16 +35,16 @@ export default function AdSlider({ adPictures }: AdSliderProps) {
       >
         <CarouselContent>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" url={adPictures[0] ?? ""} />
+            <AdSection className="h-48" banner={ads[0]} />
           </CarouselItem>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" url={adPictures[1] ?? ""} />
+            <AdSection className="h-48" banner={ads[1]} />
           </CarouselItem>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" url={adPictures[2] ?? ""} />
+            <AdSection className="h-48" banner={ads[2]} />
           </CarouselItem>
           <CarouselItem className="w-full basis-1/3">
-            <AdSection className="h-48" url={adPictures[3] ?? ""} />
+            <AdSection className="h-48" banner={ads[3]} />
           </CarouselItem>
         </CarouselContent>
         <CarouselPrevious />

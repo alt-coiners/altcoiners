@@ -70,10 +70,9 @@ export default async function ReadersChoiceSection() {
           />
           <AdSection
             className="h-full"
-            url={
-              adPictures.find((banner) => banner.name === "READERS_CHOICE")
-                ?.url ?? ""
-            }
+            banner={adPictures.find(
+              (banner) => banner.name === "READERS_CHOICE",
+            )}
           />
         </div>
       </div>

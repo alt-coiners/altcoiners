@@ -65,9 +65,7 @@ export default async function VideoCategory({
       <VideoList videos={videoListArray} />
       <AdSection
         className="h-56"
-        url={
-          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
-        }
+        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
       />
     </div>
   );

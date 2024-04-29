@@ -117,9 +117,10 @@ model Podcast {
 }
 
 model Banner {
-    id        Int      @id @default(autoincrement())
-    name      String   @unique
-    url       String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    id          Int      @id @default(autoincrement())
+    name        String   @unique
+    url         String
+    redirectUrl String
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
 }

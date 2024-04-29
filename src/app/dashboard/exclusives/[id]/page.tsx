@@ -62,11 +62,9 @@ export default async function ExclusivesId({
           ></article>
           <AdSection
             className="h-56 lg:hidden"
-            url={
-              adPictures.find(
-                (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
-              )?.url ?? ""
-            }
+            banner={adPictures.find(
+              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+            )}
           />
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
@@ -88,11 +86,9 @@ export default async function ExclusivesId({
           />
           <AdSection
             className="h-[600px]"
-            url={
-              adPictures.find(
-                (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
-              )?.url ?? ""
-            }
+            banner={adPictures.find(
+              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+            )}
           />
           <NewsList
             articles={latestNews}
@@ -103,9 +99,7 @@ export default async function ExclusivesId({
       </div>
       <AdSection
         className="h-56 px-2"
-        url={
-          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
-        }
+        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
       />
       <NewsListWithImage
         articles={latestNews.slice(0, 4)}
