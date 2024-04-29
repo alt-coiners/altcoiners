@@ -77,7 +77,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="hidden gap-6 lg:flex">
+        <div className="hidden grid-cols-5 gap-4 lg:grid">
           {MENU_NAV_LINKS.map((link) => (
             <div key={link.title} className="flex flex-col gap-2">
               <p className="mb-4 text-sm font-semibold">{link.title}</p>
