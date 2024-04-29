@@ -56,7 +56,7 @@ export default async function GuideId({
             className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"
           />
           <article
-            className="prose prose-sm px-2 py-6 text-gray-700 sm:prose-base lg:prose-lg"
+            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base lg:prose-lg"
             dangerouslySetInnerHTML={{ __html: guideData?.content ?? "" }}
           ></article>
           <AdSection
