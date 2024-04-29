@@ -21,6 +21,19 @@ export default function HamburgerMenu() {
       </PopoverTrigger>
       <PopoverContent className="w-screen">
         <Accordion type="single" collapsible className="w-full">
+          {/* create a all accordian which contain all the other titles and their submenus */}
+          <AccordionItem value="menu-all" className="outline-none">
+            <AccordionTrigger className="outline-none">All</AccordionTrigger>
+            <AccordionContent>
+              <ul className="flex flex-col gap-3 pl-4">
+                {MENU_NAV_LINKS.map((menu, index) => (
+                  <ul key={index}>
+                    <Link href={menu.href ?? ""}>{menu.title}</Link>
+                  </ul>
+                ))}
+              </ul>
+            </AccordionContent>
+          </AccordionItem>
           {MENU_NAV_LINKS.map((menu, index) => (
             <AccordionItem
               key={index}

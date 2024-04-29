@@ -29,7 +29,7 @@ export default function Footer() {
               placeholder="Email"
               className="w-full rounded-none"
             />
-            <Button className="w-1/2 rounded-none py-5">Sign Up</Button>
+            <Button className="w-full rounded-none py-5">Sign Up</Button>
           </div>
           <p className="text-xs text-gray-400">
             This site is protected by reCAPTCHA and the Google{" "}
