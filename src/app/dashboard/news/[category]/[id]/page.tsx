@@ -52,6 +52,7 @@ export default async function NewsId({
           <Image
             src={newsArticle?.picture ?? ""}
             alt={newsArticle?.title ?? "Article"}
+            quality={100}
             width={400}
             height={300}
             className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"

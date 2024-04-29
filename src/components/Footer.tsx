@@ -75,6 +75,7 @@ export default function Footer() {
                   alt={link.title}
                   width={16}
                   height={16}
+                  quality={100}
                   className="hover:opacity-80"
                 />
               </a>

@@ -27,6 +27,7 @@ export default function NewsCard({
         alt={title}
         width={300}
         height={200}
+        quality={100}
         className="h-48 w-full object-cover lg:h-40"
       />
       <div className="flex items-center gap-2 text-xs">

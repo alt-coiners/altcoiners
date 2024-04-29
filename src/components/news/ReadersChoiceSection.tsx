@@ -33,6 +33,7 @@ export default async function ReadersChoiceSection() {
               alt={mainNews?.title ?? "Picture"}
               width={400}
               height={200}
+              quality={100}
               className="h-48 w-full object-cover lg:h-52 2xl:h-56"
             />
             <div className="absolute bottom-0 h-8 w-full bg-primary-dark"></div>

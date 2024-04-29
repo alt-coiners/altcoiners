@@ -23,6 +23,7 @@ export default function Navbar() {
           alt="logo"
           width={160}
           height={120}
+          quality={100}
           className="-my-4 lg:h-auto lg:w-52"
         />
       </Link>

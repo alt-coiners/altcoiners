@@ -33,6 +33,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
                 src={video.picture}
                 width={350}
                 height={200}
+                quality={100}
                 alt={video.VideoCategory.name}
                 className="h-[200px] w-full object-cover lg:h-40 xl:h-48"
               />

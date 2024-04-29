@@ -44,6 +44,7 @@ export default function DashboardMainSection({
             <Image
               src={mainNews?.picture ?? "/images/placeholder.png"}
               alt={mainNews?.title ?? "Placeholder"}
+              quality={100}
               width={500}
               height={300}
               className="aspect-video w-full"

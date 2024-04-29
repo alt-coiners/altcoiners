@@ -22,6 +22,7 @@ export default function VideoList({ videos }: VideoListProps) {
               src={video.picture}
               width={350}
               height={180}
+              quality={100}
               alt={video.VideoCategory.name}
               className="w-full object-cover"
             />

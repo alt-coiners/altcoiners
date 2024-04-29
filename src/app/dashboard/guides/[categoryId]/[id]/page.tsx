@@ -51,6 +51,7 @@ export default async function GuideId({
           <Image
             src={guideData?.picture ?? ""}
             alt={guideData?.title ?? "Article"}
+            quality={100}
             width={400}
             height={300}
             className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"
