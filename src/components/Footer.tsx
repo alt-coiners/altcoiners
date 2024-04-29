@@ -1,5 +1,6 @@
 import { FOOTER_LINKS, MENU_NAV_LINKS, SOCIAL_LINKS } from "@/utils/constant";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -27,18 +28,8 @@ export default function Footer() {
               type="email"
               placeholder="Email"
               className="w-full rounded-none"
-              style={{
-                clipPath: "polygon(0 0, 95% 0, 100% 35%, 100% 100%, 0 100%)",
-              }}
             />
-            <Button
-              className="w-full rounded-none py-6"
-              style={{
-                clipPath: "polygon(0 0, 100% 0, 100% 100%, 8% 100%, 0 65%)",
-              }}
-            >
-              Sign Up
-            </Button>
+            <Button className="w-full rounded-none py-5">Sign Up</Button>
           </div>
           <p className="text-xs text-gray-400">
             This site is protected by reCAPTCHA and the Google{" "}
@@ -47,9 +38,13 @@ export default function Footer() {
           </p>
           <div className="my-4 flex flex-col gap-5 lg:hidden">
             {MENU_NAV_LINKS.map((link) => (
-              <a key={link.title} href={link.href} className="font-medium">
+              <Link
+                key={link.title}
+                href={link.href ?? ""}
+                className="font-medium"
+              >
                 {link.title}
-              </a>
+              </Link>
             ))}
           </div>
           <p className="w-5/6 text-xs text-gray-400">
@@ -69,30 +64,31 @@ export default function Footer() {
           </p>
           <div className="hidden items-center gap-4 lg:flex">
             {SOCIAL_LINKS.map((link) => (
-              <a key={link.title} href={link.href}>
+              <a key={link.title} href={link.href} target="_blank">
                 <Image
                   src={link.icon}
                   alt={link.title}
                   width={16}
                   height={16}
+                  quality={100}
                   className="hover:opacity-80"
                 />
               </a>
             ))}
           </div>
         </div>
-        <div className="hidden gap-6 lg:flex">
+        <div className="hidden grid-cols-5 gap-4 lg:grid">
           {MENU_NAV_LINKS.map((link) => (
             <div key={link.title} className="flex flex-col gap-2">
               <p className="mb-4 text-sm font-semibold">{link.title}</p>
               {link.subMenus.map((child) => (
-                <a
+                <Link
                   key={child.title}
                   href={child.url}
                   className="text-xs text-gray-400 hover:underline"
                 >
                   {child.title}
-                </a>
+                </Link>
               ))}
             </div>
           ))}
@@ -100,9 +96,9 @@ export default function Footer() {
       </div>
       <div className="my-4 flex w-5/6 justify-center gap-5 self-center lg:hidden">
         {MENU_NAV_LINKS.map((link) => (
-          <a key={link.title} href={link.href} className="text-sm">
+          <Link key={link.title} href={link.href ?? ""} className="text-sm">
             {link.title}
-          </a>
+          </Link>
         ))}
       </div>
       <div className="mt-8 lg:flex lg:items-center lg:justify-between">
@@ -111,19 +107,28 @@ export default function Footer() {
         </p>
         <div className="hidden gap-5 lg:flex lg:gap-8">
           {FOOTER_LINKS.map((link) => (
-            <a
+            <Link
               key={link.title}
               href={link.href}
               className="font-medium hover:underline"
             >
               {link.title}
-            </a>
+            </Link>
           ))}
         </div>
       </div>
       <div className="hidden justify-end gap-8 lg:flex">
         <p className="text-center text-sm text-gray-400">Have a story?</p>
-        <p className="text-center text-sm text-gray-400">Advertising</p>
+        <Link
+          href={
+            "https://docs.google.com/forms/d/e/1FAIpQLSdlW0aeiOr2R4SlZP1yCLpQw-vDXDudx0CetWidp6tAT1Hu2g/viewform?usp=sf_link"
+          }
+          target="_blank"
+        >
+          <p className="text-center text-sm text-gray-400 hover:underline">
+            Advertising
+          </p>
+        </Link>
       </div>
     </div>
   );

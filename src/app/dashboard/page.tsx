@@ -26,9 +26,7 @@ export default async function Dashboard() {
       <DashboardMainSection newsData={newsData} />
       {/* only take the banners which start with	CAROUSEL */}
       <AdSlider
-        adPictures={adPictures
-          .filter((banner) => banner.name.startsWith("CAROUSEL"))
-          .map((banner) => banner.url)}
+        ads={adPictures.filter((banner) => banner.name.startsWith("CAROUSEL"))}
       />
       <NewsListWithImage
         title="Crypto News"
@@ -47,11 +45,9 @@ export default async function Dashboard() {
       </div>
       <AdSection
         className="h-64 lg:hidden"
-        url={
-          adPictures.find(
-            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
-          )?.url ?? ""
-        }
+        banner={adPictures.find(
+          (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+        )}
       />
       <VideoListCard videos={videosData.slice(0, 4)} />
       <NewsListWithImage
@@ -61,11 +57,9 @@ export default async function Dashboard() {
       />
       <AdSection
         className="h-36"
-        url={
-          adPictures.find(
-            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
-          )?.url ?? ""
-        }
+        banner={adPictures.find(
+          (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+        )}
       />
       <ReadersChoiceSection />
       <NewsLetter />
@@ -82,11 +76,9 @@ export default async function Dashboard() {
       />
       <AdSection
         className="h-64"
-        url={
-          adPictures.find(
-            (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
-          )?.url ?? ""
-        }
+        banner={adPictures.find(
+          (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+        )}
       />
       <NewsListWithImage
         title="NFT News"
@@ -100,9 +92,7 @@ export default async function Dashboard() {
       />
       <AdSection
         className="h-[400px] lg:h-56"
-        url={
-          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
-        }
+        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
       />
     </div>
   );

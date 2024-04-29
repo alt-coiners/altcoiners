@@ -60,4 +60,18 @@ export const columns: ColumnDef<Banner>[] = [
       );
     },
   },
+  {
+    accessorKey: "redirectUrl",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Redirect Url
+          <ArrowUpDown className="ml-2 h-4 w-4" />
+        </Button>
+      );
+    },
+  },
 ];

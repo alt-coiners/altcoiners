@@ -24,6 +24,7 @@ export default function ExclusiveMainSection({
             className="h-full object-cover"
             width={200}
             height={100}
+            quality={100}
           />
           <div className="flex flex-col gap-1">
             <div className="flex gap-1 text-[10px]">

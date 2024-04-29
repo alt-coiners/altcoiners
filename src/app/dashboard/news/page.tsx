@@ -42,20 +42,16 @@ export default async function News() {
           />
           <AdSection
             className="h-[500px]"
-            url={
-              adPictures.find(
-                (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
-              )?.url ?? ""
-            }
+            banner={adPictures.find(
+              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+            )}
           />
         </div>
       </div>
       <NewsListWithImage title="All News" articles={news} />
       <AdSection
         className="h-56"
-        url={
-          adPictures.find((banner) => banner.name === "ABOVE_FOOTER")?.url ?? ""
-        }
+        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
       />
     </div>
   );

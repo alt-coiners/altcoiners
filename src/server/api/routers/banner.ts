@@ -37,6 +37,7 @@ export const bannerRouter = createTRPCRouter({
         id: z.number().optional(),
         name: z.string(),
         url: z.string(),
+        redirectUrl: z.string(),
       }),
     )
     .mutation(async ({ input, ctx }) => {
@@ -48,6 +49,7 @@ export const bannerRouter = createTRPCRouter({
           data: {
             name: input.name,
             url: input.url,
+            redirectUrl: input.redirectUrl,
           },
         });
       }
@@ -55,6 +57,7 @@ export const bannerRouter = createTRPCRouter({
         data: {
           name: input.name,
           url: input.url,
+          redirectUrl: input.redirectUrl,
         },
       });
     }),

@@ -34,6 +34,7 @@ interface Props {
 const formSchema = z.object({
   name: z.string().min(1),
   url: z.string().min(1),
+  redirectUrl: z.string().min(1),
 });
 
 export default function EditBanner({ id }: Props) {
@@ -55,6 +56,7 @@ export default function EditBanner({ id }: Props) {
     defaultValues: {
       name: data?.name ?? "",
       url: data?.url ?? "",
+      redirectUrl: data?.redirectUrl ?? "",
     },
   });
 
@@ -62,6 +64,7 @@ export default function EditBanner({ id }: Props) {
     if (data) {
       form.setValue("name", data.name);
       form.setValue("url", data.url);
+      form.setValue("redirectUrl", data.redirectUrl);
     }
   }, [data, form]);
 
@@ -130,6 +133,21 @@ export default function EditBanner({ id }: Props) {
                           alert(`ERROR! ${error.message}`);
                         }}
                       />
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="redirectUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>
+                        Redirect URL<span className="text-red-600">*</span>
+                      </FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter redirect URL" {...field} />
+                      </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}

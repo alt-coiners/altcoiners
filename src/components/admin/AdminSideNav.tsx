@@ -50,6 +50,7 @@ export default function AdminSideNav() {
               width={180}
               height={180}
               className=""
+              quality={100}
             />
           </div>
           <div className="flex flex-col gap-2">
