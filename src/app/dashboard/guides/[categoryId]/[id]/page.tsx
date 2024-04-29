@@ -53,7 +53,7 @@ export default async function GuideId({
             alt={guideData?.title ?? "Article"}
             width={400}
             height={300}
-            className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-3/4"
+            className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"
           />
           <article
             className="prose prose-sm px-2 py-6 text-gray-700 sm:prose-base lg:prose-lg"
