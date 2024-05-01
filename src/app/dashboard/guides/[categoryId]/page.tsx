@@ -28,7 +28,7 @@ export default async function GuideCategory({
   return (
     <div className="lg mx-auto mb-6 flex flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <BreadcrumbComponent links={breadcrumbs} />
-      <h1 className="text-2xl font-semibold lg:mx-auto lg:w-3/4">
+      <h1 className="text-3xl font-semibold lg:mx-auto lg:w-3/4">
         {categoryData.name}
       </h1>
       <div className="flex justify-center lg:mx-auto lg:w-3/4">

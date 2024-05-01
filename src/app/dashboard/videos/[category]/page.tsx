@@ -38,10 +38,10 @@ export default async function VideoCategory({
   return (
     <div className="mx-auto flex flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <BreadcrumbComponent links={breadcrumbs} />
-      <p className="w-[90%] text-pretty text-xl font-bold text-primary-dark lg:text-2xl">
+      <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
         Videos
       </p>
-      <p className="text-sm">
+      <p className="">
         Cryptocurrency has clearly been a booming topic for several years now.
         Even though discussions around cryptocurrencies are very common, not
         everyone understands their underlying concept. This is why we curate the

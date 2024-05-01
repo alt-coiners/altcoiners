@@ -23,14 +23,14 @@ export default function DashboardMainSection({
   return (
     <div className="mx-auto hidden max-w-3xl gap-1 lg:flex xl:max-w-5xl xl:gap-4 xl:py-6 2xl:max-w-7xl 2xl:gap-8">
       <div className="flex w-1/4 flex-col gap-4">
-        <h2 className="text-xl font-bold text-primary-dark">
+        <h2 className="text-2xl font-bold text-primary-dark">
           Latest Crypto News
         </h2>
         <NewsList articles={newsData.slice(0, 5)} setMainNews={setMainNews} />
       </div>
       <div className="flex w-1/2 flex-col gap-4">
         <Link
-          className="flex items-center justify-end gap-1 py-2 text-xs text-primary"
+          className="flex items-center justify-end gap-1 py-2 text-sm text-primary"
           href="/dashboard/news"
         >
           <p>More from Crypto News</p>
@@ -54,7 +54,7 @@ export default function DashboardMainSection({
           <div className="flex gap-2">
             <div className="h-full w-8 bg-primary"></div>
             <div className="flex flex-col gap-1 pt-2 xl:w-5/6">
-              <div className="flex w-full items-center justify-between text-[10px] text-gray-400 lg:text-xs">
+              <div className="flex w-full items-center justify-between text-xs text-gray-400 lg:text-sm">
                 <div className="flex items-center gap-1">
                   <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
                   <p className="text-primary">{mainNews?.category.name}</p>
@@ -62,7 +62,7 @@ export default function DashboardMainSection({
                 <p>{mainNews?.author}</p>
               </div>
               <h3 className="font-semibold">{mainNews?.title}</h3>
-              <p className="text-sm">{mainNews?.description}</p>
+              <p className="">{mainNews?.description}</p>
             </div>
           </div>
         </Link>

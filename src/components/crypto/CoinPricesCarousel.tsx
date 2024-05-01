@@ -24,7 +24,7 @@ export default function CoinPricesCarousel({
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 lg:-mb-8 xl:max-w-5xl 2xl:max-w-7xl">
-      <h2 className="text-xl font-bold text-primary-dark">
+      <h2 className="text-2xl font-bold text-primary-dark">
         Buy/Sell At the Best Prices
       </h2>
       <Carousel
@@ -60,20 +60,20 @@ function CoinCard({ coin }: { coin: Coin }) {
       <div className="flex items-center justify-between">
         <p className="font-semibold">{coin.name}</p>
         <p
-          className={`text-xs ${coin.quotes.USD.percent_change_1h < 0 ? "text-red-500" : "text-green-500"}`}
+          className={`text-sm ${coin.quotes.USD.percent_change_1h < 0 ? "text-red-500" : "text-green-500"}`}
         >
           {coin.quotes.USD.percent_change_1h}
         </p>
       </div>
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-xs">
+          <p className="text-sm">
             Buy for{" "}
             <span className="font-medium">
               {coin.quotes.USD.price.toFixed(5)}
             </span>
           </p>
-          <p className="text-xs">
+          <p className="text-sm">
             Sell for{" "}
             <span className="font-medium">
               {coin.quotes.USD.price.toFixed(5)}

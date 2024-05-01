@@ -24,7 +24,7 @@ export default function NewsList({
   return (
     <section className="flex flex-col gap-4" key={title}>
       {!!title?.length && showTitle && (
-        <h2 className="text-xl font-bold text-primary-dark">{title}</h2>
+        <h2 className="text-2xl font-bold text-primary-dark">{title}</h2>
       )}
       <div className="flex flex-col gap-4">
         {articles.map((article, index) => (
@@ -37,14 +37,14 @@ export default function NewsList({
                 if (setMainNews) setMainNews(article);
               }}
             >
-              <div className="flex gap-1 text-[10px]">
+              <div className="flex gap-1 text-xs">
                 <p>{getHowLongAgo(article.createdAt)}</p>
                 <p>-</p>
                 <Link href={`/dashboard/news/${article.category.name}`}>
                   <p className="text-primary">{article.category.name}</p>
                 </Link>
               </div>
-              <h2 className="w-[90%] text-pretty text-sm font-semibold">
+              <h2 className="w-[90%] text-pretty  font-semibold">
                 {article.title}
               </h2>
             </Link>

@@ -12,7 +12,7 @@ export default function PodcastAdmin() {
 
   return (
     <div>
-      <p className="p-2 text-2xl font-semibold">Podcasts</p>
+      <p className="p-2 text-3xl font-semibold">Podcasts</p>
       <hr />
       <Tabs defaultValue="exchanges" className="w-full px-4 py-6">
         <TabsList className="w-1/2">

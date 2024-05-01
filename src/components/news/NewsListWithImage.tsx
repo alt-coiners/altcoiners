@@ -26,12 +26,12 @@ export default function NewsListWithImage({
       )}
     >
       <div className="flex items-center justify-between">
-        <p className="text-xl font-bold text-primary-dark">{title}</p>
+        <p className="text-2xl font-bold text-primary-dark">{title}</p>
         {moreUrl && (
           <Link href={moreUrl} passHref>
             <Button
               variant="ghost"
-              className="ml-auto hidden items-center gap-1 text-xs text-primary lg:ml-0 lg:flex"
+              className="ml-auto hidden items-center gap-1 text-sm text-primary lg:ml-0 lg:flex"
             >
               <p>More from {title}</p>
               <ChevronRight size={12} />

@@ -61,7 +61,7 @@ export default function LoginForm() {
     <div className="fixed inset-0 flex h-screen w-full items-center justify-center bg-gray-200">
       <Card className="w-full max-w-sm">
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-3xl">Login</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4">
           <Form {...form}>

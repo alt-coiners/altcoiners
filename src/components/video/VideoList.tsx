@@ -30,14 +30,12 @@ export default function VideoList({ videos }: VideoListProps) {
               <PlayCircle size={32} className="" />
             </div>
           </div>
-          <div className="flex gap-1 text-[10px]">
+          <div className="flex gap-1 text-xs">
             <p>{getHowLongAgo(video.createdAt)}</p>
             <p>-</p>
             <p className="text-primary">{video.VideoCategory.name}</p>
           </div>
-          <h2 className="text-sm font-semibold text-primary-dark">
-            {video.title}
-          </h2>
+          <h2 className=" font-semibold text-primary-dark">{video.title}</h2>
         </Link>
       ))}
       {/* TODO: Add pagination */}

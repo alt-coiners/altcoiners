@@ -11,7 +11,7 @@ export default function BannerAdmin() {
 
   return (
     <div>
-      <p className="p-2 text-2xl font-semibold">Banners</p>
+      <p className="p-2 text-3xl font-semibold">Banners</p>
       <hr />
       <Tabs defaultValue="exchanges" className="w-full px-4 py-6">
         <TabsList className="w-1/2">

@@ -24,7 +24,7 @@ export default function ExchangeCard({ exchange }: ExchangeCardProps) {
           <div className="flex items-center gap-2">
             <p>{name}</p>
           </div>
-          <Button size="sm" className="h-8 bg-primary-dark text-xs">
+          <Button size="sm" className="h-8 bg-primary-dark text-sm">
             Premium
           </Button>
         </CardTitle>

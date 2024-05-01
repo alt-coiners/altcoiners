@@ -17,7 +17,7 @@ export default function Footer() {
             quality={100}
             alt="logo"
           />
-          <p className="text-sm text-gray-400">
+          <p className=" text-gray-400">
             A quick 3min read about today&apos;s crypto news!
           </p>
           <p className="text-pretty text-lg font-semibold">
@@ -31,7 +31,7 @@ export default function Footer() {
             />
             <Button className="w-full rounded-none py-5">Sign Up</Button>
           </div>
-          <p className="text-xs text-gray-400">
+          <p className="text-sm text-gray-400">
             This site is protected by reCAPTCHA and the Google{" "}
             <span className="underline">Privacy Policy</span> and{" "}
             <span className="underline">Terms of Service</span> apply
@@ -47,18 +47,18 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-          <p className="w-5/6 text-xs text-gray-400">
+          <p className="w-5/6 text-sm text-gray-400">
             The information on this website is for educational purposes only,
             and investing carries risks. Always do your research before
             investing, and be prepared for potential losses.
           </p>
-          <p className="w-5/6 text-xs text-gray-400">
+          <p className="w-5/6 text-sm text-gray-400">
             18+ and Gambling: Online gambling rules vary by country; please
             follow them. This website provides entertainment content, and using
             it means you accept out terms. We may include partnership links, but
             they don&apos;t affect our ratings or recommendations.
           </p>
-          <p className="w-5/6 text-xs text-gray-400">
+          <p className="w-5/6 text-sm text-gray-400">
             Crypto promotions on this site do not comply with the UK Financial
             Promotions Regime and are not intended for UK consumers.
           </p>
@@ -80,12 +80,12 @@ export default function Footer() {
         <div className="hidden grid-cols-5 gap-4 lg:grid">
           {MENU_NAV_LINKS.map((link) => (
             <div key={link.title} className="flex flex-col gap-2">
-              <p className="mb-4 text-sm font-semibold">{link.title}</p>
+              <p className="mb-4  font-semibold">{link.title}</p>
               {link.subMenus.map((child) => (
                 <Link
                   key={child.title}
                   href={child.url}
-                  className="text-xs text-gray-400 hover:underline"
+                  className="text-sm text-gray-400 hover:underline"
                 >
                   {child.title}
                 </Link>
@@ -96,13 +96,13 @@ export default function Footer() {
       </div>
       <div className="my-4 flex w-5/6 justify-center gap-5 self-center lg:hidden">
         {MENU_NAV_LINKS.map((link) => (
-          <Link key={link.title} href={link.href ?? ""} className="text-sm">
+          <Link key={link.title} href={link.href ?? ""} className="">
             {link.title}
           </Link>
         ))}
       </div>
       <div className="mt-8 lg:flex lg:items-center lg:justify-between">
-        <p className="text-center text-sm text-gray-400">
+        <p className="text-center  text-gray-400">
           © 2024 Altcoiners.live . All rights reserved
         </p>
         <div className="hidden gap-5 lg:flex lg:gap-8">
@@ -118,14 +118,14 @@ export default function Footer() {
         </div>
       </div>
       <div className="hidden justify-end gap-8 lg:flex">
-        <p className="text-center text-sm text-gray-400">Have a story?</p>
+        <p className="text-center  text-gray-400">Have a story?</p>
         <Link
           href={
             "https://docs.google.com/forms/d/e/1FAIpQLSdlW0aeiOr2R4SlZP1yCLpQw-vDXDudx0CetWidp6tAT1Hu2g/viewform?usp=sf_link"
           }
           target="_blank"
         >
-          <p className="text-center text-sm text-gray-400 hover:underline">
+          <p className="text-center  text-gray-400 hover:underline">
             Advertising
           </p>
         </Link>

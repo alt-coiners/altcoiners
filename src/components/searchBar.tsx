@@ -42,7 +42,7 @@ export default function SearchBar() {
           {isLoading ? (
             <div>Searching...</div>
           ) : (
-            <ul className="flex flex-col gap-2 divide-y divide-gray-400 text-xs">
+            <ul className="flex flex-col gap-2 divide-y divide-gray-400 text-sm">
               {!searchResults?.length ? (
                 <p>No results found</p>
               ) : (

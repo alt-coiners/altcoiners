@@ -36,12 +36,12 @@ export default async function NewsId({
       <div className="xl:flex xl:justify-between xl:gap-12">
         <div className="flex flex-col gap-4 p-3">
           <BreadcrumbComponent links={breadcrumbs} />
-          <p className="w-[90%] text-pretty text-xl font-bold text-primary-dark lg:text-2xl">
+          <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
             {newsArticle?.title}
           </p>
           <div>
-            <p className="text-xs text-gray-600">{newsArticle?.author}</p>
-            <div className="flex gap-0.5 text-[10px] text-gray-400">
+            <p className="text-sm text-gray-600">{newsArticle?.author}</p>
+            <div className="flex gap-0.5 text-xs text-gray-400">
               <p>
                 Last updated: {formatDate(newsArticle?.updatedAt ?? new Date())}
               </p>
@@ -58,7 +58,7 @@ export default async function NewsId({
             className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"
           />
           <article
-            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base lg:prose-lg"
+            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl"
             dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
           ></article>
           <AdSection
