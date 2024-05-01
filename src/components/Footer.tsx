@@ -10,10 +10,10 @@ export default function Footer() {
       <div className="w-full lg:flex lg:justify-between lg:gap-10">
         <div className="flex w-full flex-col gap-3 lg:w-2/5 lg:gap-6">
           <Image
-            src="/images/altcoiners-logo.png"
-            width={125}
-            height={75}
-            className="lg:h-auto lg:w-36"
+            src="/images/altcoiners-white-logo.svg"
+            width={150}
+            height={90}
+            className="lg:h-auto lg:w-44"
             quality={100}
             alt="logo"
           />
