@@ -11,7 +11,7 @@ export default function MostPopularSection({
 }: MostPopularSectionProps) {
   return (
     <div className="flex flex-col gap-4">
-      <h2 className="text-xl font-bold text-primary-dark">Most Popular</h2>
+      <h2 className="text-2xl font-bold text-primary-dark">Most Popular</h2>
       <div className="flex flex-col gap-5 bg-primary-dark px-3 py-4 text-white">
         {articles.map((article, index) => (
           <>
@@ -21,14 +21,14 @@ export default function MostPopularSection({
               href={`/dashboard/news/${article.category.name}/${article.id}`}
             >
               <div className="flex items-center gap-2">
-                <span className="text-xs">
+                <span className="text-sm">
                   {getHowLongAgo(article.createdAt)}
                 </span>
-                <span className="text-xs text-gray-200">
+                <span className="text-sm text-gray-200">
                   {article.category.name}
                 </span>
               </div>
-              <h3 className="text-sm font-semibold">{article.title}</h3>
+              <h3 className=" font-semibold">{article.title}</h3>
             </Link>
             {index + 1 !== articles.length && (
               <div className="h-[0.5px] w-full bg-gray-400"></div>

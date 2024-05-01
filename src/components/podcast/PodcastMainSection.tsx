@@ -23,17 +23,15 @@ export default function PodcastMainSection({
             className="aspect-video w-[80%]"
           ></iframe>
           <div className="flex w-[80%] flex-col gap-1">
-            <div className="flex gap-1 text-[10px]">
+            <div className="flex gap-1 text-xs">
               <p>{getHowLongAgo(podcast.createdAt)}</p>
               <p>-</p>
               <p className="text-primary">Podcast</p>
             </div>
-            <h2 className="w-[90%] text-pretty text-sm font-semibold xl:text-base 2xl:text-lg">
+            <h2 className="w-[90%] text-pretty  font-semibold xl:text-xl 2xl:text-lg">
               {podcast.title}
             </h2>
-            <p className="text-[10px] xl:text-xs 2xl:text-sm">
-              {podcast.description}
-            </p>
+            <p className="2xl: text-xs xl:text-sm">{podcast.description}</p>
           </div>
         </div>
       ))}

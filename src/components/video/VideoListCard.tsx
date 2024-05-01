@@ -13,10 +13,10 @@ export default function VideoListCard({ videos }: VideoListProps) {
   return (
     <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
       <div className="flex items-center justify-between">
-        <h3 className="text-xl font-semibold">Videos</h3>
+        <h3 className="text-2xl font-semibold">Videos</h3>
         <Link href={"/dashboard/videos"}>
           <Button variant="ghost" className="hidden items-center gap-1 lg:flex">
-            <p className="text-xs">More Videos</p>
+            <p className="text-sm">More Videos</p>
             <ChevronRight size={12} />
           </Button>
         </Link>
@@ -41,14 +41,12 @@ export default function VideoListCard({ videos }: VideoListProps) {
                 <PlayCircle size={32} />
               </div>
             </div>
-            <div className="flex gap-1 text-[10px] sm:text-xs">
+            <div className="flex gap-1 text-xs sm:text-sm">
               <p>{getHowLongAgo(video.createdAt)}</p>
               <p>-</p>
               <p className="text-gray-300">{video.VideoCategory.name}</p>
             </div>
-            <h2 className="text-sm font-semibold sm:text-base">
-              {video.title}
-            </h2>
+            <h2 className=" font-semibold sm:text-xl">{video.title}</h2>
           </Link>
         ))}
       </div>

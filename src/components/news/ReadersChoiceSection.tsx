@@ -14,10 +14,10 @@ export default async function ReadersChoiceSection() {
   return (
     <section className="mx-auto flex flex-col gap-4 px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-primary-dark">
+        <h1 className="text-2xl font-bold text-primary-dark">
           Reader&apos;s choice
         </h1>
-        <div className="flex items-center gap-1 text-xs text-primary">
+        <div className="flex items-center gap-1 text-sm text-primary">
           <p>More from Crypto News</p>
           <ChevronRight size={12} />
         </div>
@@ -40,7 +40,7 @@ export default async function ReadersChoiceSection() {
           </div>
           <div className="flex justify-between gap-2">
             <div className="flex flex-col gap-2 pt-3">
-              <div className="flex items-center justify-between text-xs">
+              <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-1">
                   <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
                   <p className="text-primary">{mainNews?.category?.name}</p>
@@ -48,7 +48,7 @@ export default async function ReadersChoiceSection() {
                 <p>{mainNews?.author}</p>
               </div>
               <p className="font-semibold">{mainNews?.title}</p>
-              <p className="text-sm">{mainNews?.description}</p>
+              <p className="">{mainNews?.description}</p>
             </div>
             <div className="min-h-full w-10 bg-primary"></div>
           </div>

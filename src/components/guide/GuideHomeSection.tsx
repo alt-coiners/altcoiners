@@ -44,11 +44,9 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
           <CarouselContent>
             {guides.map((category) => (
               <CarouselItem key={category.id}>
-                <h2 className="text-sm font-semibold opacity-80">
-                  {category.name}
-                </h2>
+                <h2 className=" font-semibold opacity-80">{category.name}</h2>
                 <div className="flex h-full flex-col gap-4 py-4 font-semibold">
-                  {category.Guide.slice(0, 5).map((guide) => (
+                  {category.Guide.slice(0, 4).map((guide) => (
                     <p key={guide.id}>{guide.title}</p>
                   ))}
                 </div>
@@ -62,11 +60,9 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
         <div className="mx-auto hidden grid-cols-4 gap-4 lg:grid lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
           {guides.slice(0, 4).map((category) => (
             <div key={category.id}>
-              <h2 className="text-sm font-semibold opacity-80">
-                {category.name}
-              </h2>
+              <h2 className=" font-semibold opacity-80">{category.name}</h2>
               <div className="flex h-full flex-col gap-4 py-4 font-semibold lg:gap-6">
-                {category.Guide.slice(0, 5).map((guide) => (
+                {category.Guide.slice(0, 4).map((guide) => (
                   <p key={guide.id}>{guide.title}</p>
                 ))}
               </div>

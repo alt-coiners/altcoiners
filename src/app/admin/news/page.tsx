@@ -16,7 +16,7 @@ export default function GuidesAdmin() {
 
   return (
     <div>
-      <p className="p-2 text-2xl font-semibold">News</p>
+      <p className="p-2 text-3xl font-semibold">News</p>
       <hr />
       <Tabs defaultValue="news" className="w-full px-4 py-6">
         <TabsList className="w-1/2">

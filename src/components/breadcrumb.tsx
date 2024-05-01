@@ -21,7 +21,7 @@ export default function BreadcrumbComponent({
       <BreadcrumbList>
         {links.map((link, index) => (
           <>
-            <BreadcrumbItem key={index} className="text-xs">
+            <BreadcrumbItem key={index} className="text-sm">
               <BreadcrumbLink href={link.url}>
                 {link.name.length > 40
                   ? link.name.substring(0, 40) + "..."

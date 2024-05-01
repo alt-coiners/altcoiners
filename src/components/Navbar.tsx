@@ -40,7 +40,7 @@ export default function Navbar() {
                       <Link href={subMenu.url} key={subIndex} passHref>
                         <NavigationMenuLink
                           key={subIndex}
-                          className="mt-1 flex items-center gap-1 text-sm"
+                          className="mt-1 flex items-center gap-1 "
                         >
                           {subMenu.title}
                         </NavigationMenuLink>
@@ -60,7 +60,7 @@ export default function Navbar() {
                     <Link href={subMenu.url} key={index} passHref>
                       <NavigationMenuLink
                         key={index}
-                        className="flex items-center gap-1 text-sm"
+                        className="flex items-center gap-1 "
                       >
                         {subMenu.title}
                       </NavigationMenuLink>

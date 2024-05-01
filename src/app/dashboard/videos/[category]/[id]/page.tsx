@@ -33,7 +33,7 @@ export default async function VideoId({
       <div className="xl:flex xl:justify-between xl:gap-12">
         <div className="flex flex-col gap-4 p-3">
           <BreadcrumbComponent links={breadcrumbs} />
-          <p className="w-[90%] text-pretty text-xl font-bold text-primary-dark lg:text-2xl">
+          <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
             {video?.title}
           </p>
           <iframe
