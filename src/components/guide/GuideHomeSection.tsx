@@ -48,7 +48,7 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
                   {category.name}
                 </h2>
                 <div className="flex h-full flex-col gap-4 py-4 font-semibold">
-                  {category.Guide.slice(0, 5).map((guide) => (
+                  {category.Guide.slice(0, 4).map((guide) => (
                     <p key={guide.id}>{guide.title}</p>
                   ))}
                 </div>
@@ -66,7 +66,7 @@ export default function GuideHomeSection({ guides }: GuideHomeSectionProps) {
                 {category.name}
               </h2>
               <div className="flex h-full flex-col gap-4 py-4 font-semibold lg:gap-6">
-                {category.Guide.slice(0, 5).map((guide) => (
+                {category.Guide.slice(0, 4).map((guide) => (
                   <p key={guide.id}>{guide.title}</p>
                 ))}
               </div>
