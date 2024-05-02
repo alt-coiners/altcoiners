@@ -84,7 +84,9 @@ export default async function GuideId({
           />
           <AdSection
             className="h-[600px]"
-            banner={adPictures.find((banner) => banner.name === "ARTICLE_PAGE")}
+            banner={adPictures.find(
+              (banner) => banner.name === "GUIDE_ARTICLE_PAGE",
+            )}
           />
           <NewsList
             articles={latestNews}
@@ -96,7 +98,7 @@ export default async function GuideId({
       <AdSection
         className="h-56 px-2"
         banner={adPictures.find(
-          (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+          (banner) => banner.name === "BETWEEN_NEWS_SECTION_GUIDE",
         )}
       />
       <NewsListWithImage

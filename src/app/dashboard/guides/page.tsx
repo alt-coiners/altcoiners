@@ -34,7 +34,9 @@ export default async function Guide() {
       </div>
       <AdSection
         className="h-56"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_GUIDE",
+        )}
       />
     </div>
   );

@@ -92,7 +92,9 @@ export default async function Dashboard() {
       />
       <AdSection
         className="h-[400px] lg:h-56"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_HOME",
+        )}
       />
     </div>
   );

@@ -54,7 +54,7 @@ export default async function CategoryNews({
           <AdSection
             className="h-[500px]"
             banner={adPictures.find(
-              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+              (banner) => banner.name === "BETWEEN_NEWS_SECTION_NEWS_CATEGORY",
             )}
           />
         </div>
@@ -62,7 +62,9 @@ export default async function CategoryNews({
       <NewsListWithImage title="All News" articles={news} />
       <AdSection
         className="h-56"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_NEWS_CATEGORY",
+        )}
       />
     </div>
   );

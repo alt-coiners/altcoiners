@@ -86,7 +86,8 @@ export default async function NewsId({
           <AdSection
             className="h-[600px]"
             banner={adPictures.find(
-              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+              (banner) =>
+                banner.name === "BETWEEN_NEWS_SECTION_NEWS_ARTICLE_FIRST",
             )}
           />
           <NewsList
@@ -99,7 +100,8 @@ export default async function NewsId({
       <AdSection
         className="h-56 px-2"
         banner={adPictures.find(
-          (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+          (banner) =>
+            banner.name === "BETWEEN_NEWS_SECTION_NEWS_ARTICLE_SECOND",
         )}
       />
       <NewsListWithImage
