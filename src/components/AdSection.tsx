@@ -14,6 +14,8 @@ export default function AdSection({ banner, className }: AdSectionProps) {
   return (
     <Link
       href={redirectUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       className={cn(
         "mx-auto w-full rounded-xl hover:opacity-90 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl",
         className,

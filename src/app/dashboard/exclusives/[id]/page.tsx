@@ -7,6 +7,14 @@ import { api } from "@/trpc/server";
 import { calculateReadingTime, formatDate } from "@/utils/helper";
 import Image from "next/image";
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const news = await api.exclusive.getById.query({ id: +params.id });
+  return {
+    title: news?.title + " - Altcoiners",
+    image: news?.url,
+  };
+}
+
 export default async function ExclusivesId({
   params,
 }: {
@@ -63,7 +71,8 @@ export default async function ExclusivesId({
           <AdSection
             className="h-56 lg:hidden"
             banner={adPictures.find(
-              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+              (banner) =>
+                banner.name === "BETWEEN_NEWS_SECTION_EXCLUSIVE_ARTICLE_FIRST",
             )}
           />
           <div className="mb-4 px-2 xl:hidden">
@@ -87,7 +96,8 @@ export default async function ExclusivesId({
           <AdSection
             className="h-[600px]"
             banner={adPictures.find(
-              (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
+              (banner) =>
+                banner.name === "BETWEEN_NEWS_SECTION_EXCLUSIVE_ARTICLE_SECOND",
             )}
           />
           <NewsList
@@ -99,7 +109,9 @@ export default async function ExclusivesId({
       </div>
       <AdSection
         className="h-56 px-2"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_EXCLUSIVE_ARTICLE",
+        )}
       />
       <NewsListWithImage
         articles={latestNews.slice(0, 4)}

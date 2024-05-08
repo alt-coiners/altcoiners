@@ -43,7 +43,9 @@ export default async function Videos() {
       <VideoList videos={videos} />
       <AdSection
         className="h-56"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_VIDEO",
+        )}
       />
     </div>
   );

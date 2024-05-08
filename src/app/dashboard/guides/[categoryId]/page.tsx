@@ -46,7 +46,9 @@ export default async function GuideCategory({
       </div>
       <AdSection
         className="h-56"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_GUIDE_CATEGORY",
+        )}
       />
     </div>
   );

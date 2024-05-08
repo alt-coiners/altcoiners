@@ -43,14 +43,18 @@ export default async function Exclusives() {
           />
           <AdSection
             className="h-[500px]"
-            banner={adPictures.find((banner) => banner.name === "ARTICLE_PAGE")}
+            banner={adPictures.find(
+              (banner) => banner.name === "EXCLUSIVE_ARTICLE_PAGE",
+            )}
           />
         </div>
       </div>
       <ExclusiveList title="All News" articles={exclusives} />
       <AdSection
         className="h-56"
-        banner={adPictures.find((banner) => banner.name === "ABOVE_FOOTER")}
+        banner={adPictures.find(
+          (banner) => banner.name === "ABOVE_FOOTER_EXCLUSIVE",
+        )}
       />
     </div>
   );
