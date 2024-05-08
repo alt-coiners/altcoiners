@@ -7,6 +7,14 @@ import { api } from "@/trpc/server";
 import { calculateReadingTime, formatDate } from "@/utils/helper";
 import Image from "next/image";
 
+export async function generateMetadata({ params }: { params: { id: string } }) {
+  const news = await api.exclusive.getById.query({ id: +params.id });
+  return {
+    title: news?.title + " - Altcoiners",
+    image: news?.url,
+  };
+}
+
 export default async function ExclusivesId({
   params,
 }: {

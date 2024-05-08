@@ -4,6 +4,18 @@ import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
 import { api } from "@/trpc/server";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string; category: string };
+}) {
+  const video = await api.video.getVideoById.query({ id: +params.id });
+  return {
+    title: video?.title + " - Altcoiners",
+    image: video?.picture,
+  };
+}
+
 export default async function VideoId({
   params,
 }: {

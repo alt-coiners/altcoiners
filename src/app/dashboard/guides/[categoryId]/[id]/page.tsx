@@ -7,6 +7,18 @@ import { api } from "@/trpc/server";
 import { calculateReadingTime, formatDate } from "@/utils/helper";
 import Image from "next/image";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string; category: string };
+}) {
+  const guide = await api.guide.getGuideById.query({ id: +params.id });
+  return {
+    title: guide?.title + " - Altcoiners",
+    image: guide?.picture,
+  };
+}
+
 export default async function GuideId({
   params,
 }: {
