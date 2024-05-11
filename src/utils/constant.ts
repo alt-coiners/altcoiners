@@ -42,7 +42,7 @@ export const MENU_NAV_LINKS = [
     ],
   },
   {
-    title: "Exchanges",
+    title: "Earn",
     subMenus: [{ title: "Earn", url: "/dashboard/reviews" }],
   },
 ];
