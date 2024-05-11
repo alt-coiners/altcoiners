@@ -5,17 +5,24 @@ import NewsList from "@/components/news/NewsList";
 import NewsListWithImage from "@/components/news/NewsListWithImage";
 import { api } from "@/trpc/server";
 import { calculateReadingTime, formatDate } from "@/utils/helper";
+import { type Metadata, type ResolvingMetadata } from "next";
 import Image from "next/image";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string; category: string };
-}) {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { id: string; category: string };
+  },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const guide = await api.guide.getGuideById.query({ id: +params.id });
+  const previousImages = (await parent).openGraph?.images ?? [];
   return {
     title: guide?.title + " - Altcoiners",
-    image: guide?.picture,
+    openGraph: {
+      images: [guide?.picture ?? "", ...previousImages],
+    },
   };
 }
 
