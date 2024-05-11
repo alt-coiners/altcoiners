@@ -78,7 +78,7 @@ export default async function NewsId({
             className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"
           />
           <article
-            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl"
+            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base xl:prose-lg"
             dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
           ></article>
           <AdSection
@@ -97,7 +97,7 @@ export default async function NewsId({
             <NewsLetter />
           </div>
         </div>
-        <div className="mt-36 hidden flex-col gap-8 xl:flex xl:w-1/3">
+        <div className="sticky top-20 mt-36 hidden flex-col gap-8 xl:flex xl:w-1/3">
           <NewsList
             articles={latestNews}
             moreUrl="/dashboard/news"
