@@ -1,8 +1,7 @@
 import { FOOTER_LINKS, MENU_NAV_LINKS, SOCIAL_LINKS } from "@/utils/constant";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { NewsLetterFooter } from "./news/NewsLetter";
 
 export default function Footer() {
   return (
@@ -23,14 +22,7 @@ export default function Footer() {
           <p className="text-pretty text-lg font-semibold">
             Enter your email for our Free Daily Newsletter
           </p>
-          <div className="sm:mx-auto sm:w-3/4 lg:mx-0 lg:flex lg:items-center">
-            <Input
-              type="email"
-              placeholder="Email"
-              className="w-full rounded-none"
-            />
-            <Button className="w-full rounded-none py-5">Sign Up</Button>
-          </div>
+          <NewsLetterFooter />
           <p className="text-sm text-gray-400">
             This site is protected by reCAPTCHA and the Google{" "}
             <span className="underline">Privacy Policy</span> and{" "}

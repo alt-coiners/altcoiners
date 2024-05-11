@@ -33,6 +33,10 @@ const sideBarLinks = [
     title: "Banners",
     href: "/admin/banners",
   },
+  {
+    title: "NewsLetter Mails",
+    href: "/admin/newsletter",
+  },
 ];
 
 export default function AdminSideNav() {
