@@ -3,16 +3,23 @@ import BreadcrumbComponent from "@/components/breadcrumb";
 import NewsLetter from "@/components/news/NewsLetter";
 import NewsList from "@/components/news/NewsList";
 import { api } from "@/trpc/server";
+import { type Metadata, type ResolvingMetadata } from "next";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: { id: string; category: string };
-}) {
+export async function generateMetadata(
+  {
+    params,
+  }: {
+    params: { id: string; category: string };
+  },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const video = await api.video.getVideoById.query({ id: +params.id });
+  const previousImages = (await parent).openGraph?.images ?? [];
   return {
     title: video?.title + " - Altcoiners",
-    image: video?.picture,
+    openGraph: {
+      images: [video?.url ?? "", ...previousImages],
+    },
   };
 }
 
