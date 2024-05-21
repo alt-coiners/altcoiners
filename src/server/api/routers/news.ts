@@ -95,6 +95,13 @@ export const newsRouter = createTRPCRouter({
   getNewsByCategoryName: publicProcedure
     .input(z.object({ categoryName: z.string() }))
     .query(async ({ input, ctx }) => {
+      if (input.categoryName.toLowerCase() === "all") {
+        return await ctx.db.article.findMany({
+          include: {
+            category: true,
+          },
+        });
+      }
       return await ctx.db.article.findMany({
         where: {
           category: {

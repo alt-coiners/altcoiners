@@ -70,7 +70,7 @@ export default async function ExclusivesId({
             quality={100}
             width={400}
             height={300}
-            className="mx-auto h-52 w-[90%] object-cover sm:h-60 xl:w-full"
+            className="mx-auto h-52 w-[90%]  sm:h-60 xl:w-full"
           />
           <article
             className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl"

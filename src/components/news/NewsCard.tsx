@@ -28,7 +28,7 @@ export default function NewsCard({
         width={300}
         height={200}
         quality={100}
-        className="h-48 w-full object-cover lg:h-40"
+        className="h-48 w-full lg:h-full"
       />
       <div className="flex items-center gap-2 text-sm">
         <p className="text-gray-600">{getHowLongAgo(date)}</p>

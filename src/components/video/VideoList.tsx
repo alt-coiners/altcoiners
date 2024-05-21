@@ -24,7 +24,7 @@ export default function VideoList({ videos }: VideoListProps) {
               height={180}
               quality={100}
               alt={video.VideoCategory.name}
-              className="w-full object-cover"
+              className="w-full "
             />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white">
               <PlayCircle size={32} className="" />
