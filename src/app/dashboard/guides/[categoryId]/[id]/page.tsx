@@ -73,7 +73,7 @@ export default async function GuideId({
             quality={100}
             width={400}
             height={300}
-            className="mx-auto h-52 w-[90%]  sm:h-60 xl:w-full"
+            className="mx-auto w-[90%]"
           />
           <article
             className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base xl:prose-lg"
