@@ -27,7 +27,7 @@ export default function AdSection({ banner, className }: AdSectionProps) {
         width={300}
         height={250}
         quality={100}
-        className="w-full rounded-xl"
+        className="h-full w-full rounded-xl "
       />
     </Link>
   );
