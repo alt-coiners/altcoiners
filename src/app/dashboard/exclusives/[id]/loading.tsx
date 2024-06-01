@@ -11,7 +11,7 @@ export default function VideoIdLoading() {
           <Skeleton className="mx-auto my-6 aspect-video w-[90%] rounded lg:mt-10 xl:w-full" />
           <Skeleton className="h-6 w-full rounded" />
           <Skeleton className="h-6 w-full rounded" />
-          <Skeleton className="h-56 lg:hidden" />
+          <Skeleton className="h-[300px] lg:hidden" />
           <Skeleton className="h-6 w-full rounded" />
           <Skeleton className="h-6 w-full rounded" />
         </div>

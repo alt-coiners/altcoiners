@@ -80,7 +80,7 @@ export default async function GuideId({
             dangerouslySetInnerHTML={{ __html: guideData?.content ?? "" }}
           ></article>
           <AdSection
-            className="h-56 lg:hidden"
+            className="h-[300px] lg:hidden"
             banner={adPictures.find((banner) => banner.name === "ARTICLE_PAGE")}
           />
           <div className="mb-4 px-2 xl:hidden">
@@ -115,7 +115,7 @@ export default async function GuideId({
         </div>
       </div>
       <AdSection
-        className="h-56 px-2"
+        className="h-[300px] px-2"
         banner={adPictures.find(
           (banner) => banner.name === "BETWEEN_NEWS_SECTION_GUIDE",
         )}

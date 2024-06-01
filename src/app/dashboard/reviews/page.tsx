@@ -26,7 +26,7 @@ export default async function Reviews() {
         ))}
       </div>
       <AdSection
-        className="h-56"
+        className="h-[300px]"
         banner={adPictures.find(
           (banner) => banner.name === "ABOVE_FOOTER_EXCHANGE",
         )}

@@ -19,7 +19,7 @@ export default function VideosCategoryLoading() {
             </div>
           ))}
       </div>
-      <Skeleton className="h-56 w-full rounded" /> {/* AdSection */}
+      <Skeleton className="h-[300px] w-full rounded" /> {/* AdSection */}
     </div>
   );
 }

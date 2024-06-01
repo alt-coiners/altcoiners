@@ -53,7 +53,7 @@ export default async function Podcasts() {
       </div>
       <NewsListWithImage title="All News" articles={news.slice(0, 6)} />
       <AdSection
-        className="h-56"
+        className="h-[300px]"
         banner={adPictures.find(
           (banner) => banner.name === "ABOVE_FOOTER_PODCASTS",
         )}

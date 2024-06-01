@@ -50,7 +50,7 @@ export default function DashboardLoading() {
       {/* NewsListWithImage "NFT News" */}
       <Skeleton className="h-52 w-full rounded" />{" "}
       {/* NewsListWithImage "All News" */}
-      <Skeleton className="h-400px w-full rounded lg:h-56" /> {/* AdSection */}
+      <Skeleton className="h-[300px] w-full rounded" /> {/* AdSection */}
     </div>
   );
 }

@@ -77,7 +77,7 @@ export default async function ExclusivesId({
             dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
           ></article>
           <AdSection
-            className="h-56 lg:hidden"
+            className="h-[300px] lg:hidden"
             banner={adPictures.find(
               (banner) =>
                 banner.name === "BETWEEN_NEWS_SECTION_EXCLUSIVE_ARTICLE_FIRST",
@@ -116,7 +116,7 @@ export default async function ExclusivesId({
         </div>
       </div>
       <AdSection
-        className="h-56 px-2"
+        className="h-[300px] px-2"
         banner={adPictures.find(
           (banner) => banner.name === "ABOVE_FOOTER_EXCLUSIVE_ARTICLE",
         )}

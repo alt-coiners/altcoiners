@@ -31,11 +31,12 @@ export default function PodcastsLoading() {
             <Skeleton className="h-36 w-full rounded" /> {/* NewsList */}
           </div>
           <Skeleton className="h-36 w-full rounded" /> {/* NewsList */}
-          <Skeleton className="h-56 w-full rounded" /> {/* AdSection */}
+          <Skeleton className="h-[300px] w-full rounded" /> {/* AdSection */}
         </div>
       </div>
-      <Skeleton className="h-56 w-full rounded" /> {/* NewsListWithImage */}
-      <Skeleton className="h-56 w-full rounded" /> {/* AdSection */}
+      <Skeleton className="h-[300px] w-full rounded" />{" "}
+      {/* NewsListWithImage */}
+      <Skeleton className="h-[300px] w-full rounded" /> {/* AdSection */}
     </div>
   );
 }

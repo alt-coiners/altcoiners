@@ -86,7 +86,7 @@ export default async function VideoId({
         </div>
       </div>
       <AdSection
-        className="mb-8 h-56 px-2"
+        className="mb-8 h-[300px] px-2"
         banner={adPictures.find(
           (banner) => banner.name === "ABOVE_FOOTER_VIDEO_ITEM",
         )}

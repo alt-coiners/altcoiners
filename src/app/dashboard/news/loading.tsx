@@ -30,7 +30,7 @@ export default function NewsLoading() {
         </div>
       </div>
       <Skeleton className="h-52 w-full rounded" />
-      <Skeleton className="h-56" />
+      <Skeleton className="h-[300px]" />
     </div>
   );
 }

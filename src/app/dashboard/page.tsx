@@ -56,7 +56,7 @@ export default async function Dashboard() {
         moreUrl="/dashboard/news/Altcoin"
       />
       <AdSection
-        className="h-36"
+        className="h-[300px]"
         banner={adPictures.find(
           (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
         )}
@@ -75,7 +75,7 @@ export default async function Dashboard() {
         moreUrl="/dashboard/news/Ethereum"
       />
       <AdSection
-        className="h-64"
+        className="h-[300px]"
         banner={adPictures.find(
           (banner) => banner.name === "BETWEEN_NEWS_SECTION_HOME",
         )}
@@ -91,7 +91,7 @@ export default async function Dashboard() {
         moreUrl="/dashboard/news/All"
       />
       <AdSection
-        className="h-[400px] lg:h-56"
+        className="h-[300px]"
         banner={adPictures.find(
           (banner) => banner.name === "ABOVE_FOOTER_HOME",
         )}

@@ -12,7 +12,7 @@ export default function NewsIdLoading() {
           <Skeleton className="mx-auto h-52 w-[90%] rounded sm:h-60 xl:w-full" />
           <Skeleton className="h-6 w-full rounded" />
           <Skeleton className="h-6 w-full rounded" />
-          <Skeleton className="h-56 lg:hidden" />
+          <Skeleton className="h-[300px] lg:hidden" />
           <Skeleton className="h-6 w-full rounded" />
           <Skeleton className="h-6 w-full rounded" />
         </div>
@@ -22,7 +22,7 @@ export default function NewsIdLoading() {
           <Skeleton className="h-6 w-full rounded" />
         </div>
       </div>
-      <Skeleton className="h-56 px-2" />
+      <Skeleton className="h-[300px] px-2" />
       <Skeleton className="h-6 w-full rounded" />
     </div>
   );

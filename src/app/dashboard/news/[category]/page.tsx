@@ -61,7 +61,7 @@ export default async function CategoryNews({
       </div>
       <NewsListWithImage title="All News" articles={news} />
       <AdSection
-        className="h-56"
+        className="h-[300px]"
         banner={adPictures.find(
           (banner) => banner.name === "ABOVE_FOOTER_NEWS_CATEGORY",
         )}
