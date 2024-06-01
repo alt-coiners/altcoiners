@@ -20,8 +20,20 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images ?? [];
   return {
     title: guide?.title + " - Altcoiners",
+    description: guide?.content?.slice(0, 20) + "...",
+    keywords: "cryptocurrency, news, altcoiners",
     openGraph: {
+      title: guide?.title + " - Altcoiners",
+      description: guide?.content?.slice(0, 20) + "...",
+      url: `https://altcoiners.com/dashboard/guide/${params.category}/${params.id}`,
       images: [guide?.picture ?? "", ...previousImages],
+    },
+    twitter: {
+      title: guide?.title + " - Altcoiners",
+      description: guide?.content?.slice(0, 20) + "...",
+      card: "summary_large_image",
+      site: "@altcoiners",
+      images: guide?.picture ?? "",
     },
   };
 }

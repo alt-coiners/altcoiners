@@ -17,8 +17,20 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images ?? [];
   return {
     title: video?.title + " - Altcoiners",
+    description: video?.title,
+    keywords: "cryptocurrency, news, altcoiners",
     openGraph: {
-      images: [video?.url ?? "", ...previousImages],
+      title: video?.title + " - Altcoiners",
+      description: video?.title,
+      url: `https://altcoiners.com/dashboard/videos/${params.category}/${params.id}`,
+      images: [video?.picture ?? "", ...previousImages],
+    },
+    twitter: {
+      title: video?.title + " - Altcoiners",
+      description: video?.title,
+      card: "summary_large_image",
+      site: "@altcoiners",
+      images: video?.picture ?? "",
     },
   };
 }
