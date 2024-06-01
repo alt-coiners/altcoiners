@@ -17,17 +17,17 @@ export async function generateMetadata(
 
   return {
     title: news?.title + " - Altcoiners",
-    description: news?.content?.slice(0, 20) + "...",
+    description: news?.title.slice(0, 50) + "...",
     keywords: "cryptocurrency, news, altcoiners",
     openGraph: {
       title: news?.title + " - Altcoiners",
-      description: news?.content?.slice(0, 20) + "...",
+      description: news?.title.slice(0, 50) + "...",
       url: `https://altcoiners.com/dashboard/exclusives/${params.id}`,
       images: [news?.url ?? "", ...previousImages],
     },
     twitter: {
       title: news?.title + " - Altcoiners",
-      description: news?.content?.slice(0, 20) + "...",
+      description: news?.title.slice(0, 50) + "...",
       card: "summary_large_image",
       site: "@altcoiners",
       images: news?.url ?? "",
