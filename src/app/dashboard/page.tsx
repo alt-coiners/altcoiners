@@ -11,14 +11,29 @@ import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 
 export default async function Dashboard() {
-  const [newsData, videosData, guideData, cryptoCoinData, adPictures] =
-    await Promise.all([
-      api.news.getAllNews.query(),
-      api.video.getAllVideos.query(),
-      api.guide.getAllGuidesByCategory.query(),
-      api.crypto.getAllCoins.query(),
-      api.banner.getAll.query(),
-    ]);
+  const [
+    newsData,
+    bitcoinNewsData,
+    financeNewsData,
+    ethereumNewsData,
+    altcoinNewsData,
+    nftNewsData,
+    videosData,
+    guideData,
+    cryptoCoinData,
+    adPictures,
+  ] = await Promise.all([
+    api.news.getAllNews.query(),
+    api.news.getNewsByCategoryName.query({ categoryName: "Bitcoin" }),
+    api.news.getNewsByCategoryName.query({ categoryName: "Finance" }),
+    api.news.getNewsByCategoryName.query({ categoryName: "Ethereum" }),
+    api.news.getNewsByCategoryName.query({ categoryName: "Altcoin" }),
+    api.news.getNewsByCategoryName.query({ categoryName: "NFT" }),
+    api.video.getAllVideos.query(),
+    api.guide.getAllGuidesByCategory.query(),
+    api.crypto.getAllCoins.query(),
+    api.banner.getAll.query(),
+  ]);
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">
@@ -35,9 +50,13 @@ export default async function Dashboard() {
       />
       <div className="lg:hidden">
         <NewsListWithImage
-          title="Latest News"
-          articles={newsData.slice(0, 8)}
-          moreUrl="/dashboard/news/Latest"
+          title="Finance News"
+          articles={
+            financeNewsData.length > 0
+              ? financeNewsData.slice(0, 8)
+              : newsData.slice(0, 8)
+          }
+          moreUrl="/dashboard/news/Finance"
         />
       </div>
       <div className="lg:hidden">
@@ -52,7 +71,11 @@ export default async function Dashboard() {
       <VideoListCard videos={videosData.slice(0, 4)} />
       <NewsListWithImage
         title="Altcoin News"
-        articles={newsData.slice(0, 8)}
+        articles={
+          altcoinNewsData.length > 0
+            ? altcoinNewsData.slice(0, 8)
+            : newsData.slice(0, 8)
+        }
         moreUrl="/dashboard/news/Altcoin"
       />
       <AdSection
@@ -66,12 +89,20 @@ export default async function Dashboard() {
       <GuideHomeSection guides={guideData} />
       <NewsListWithImage
         title="Bitcoin News"
-        articles={newsData.slice(0, 8)}
+        articles={
+          bitcoinNewsData.length > 0
+            ? bitcoinNewsData.slice(0, 8)
+            : newsData.slice(0, 8)
+        }
         moreUrl="/dashboard/news/Bitcoin"
       />
       <NewsListWithImage
         title="Ethereum News"
-        articles={newsData.slice(0, 8)}
+        articles={
+          ethereumNewsData.length > 0
+            ? ethereumNewsData.slice(0, 8)
+            : newsData.slice(0, 8)
+        }
         moreUrl="/dashboard/news/Ethereum"
       />
       <AdSection
@@ -82,7 +113,11 @@ export default async function Dashboard() {
       />
       <NewsListWithImage
         title="NFT News"
-        articles={newsData.slice(0, 8)}
+        articles={
+          nftNewsData.length > 0
+            ? nftNewsData.slice(0, 8)
+            : newsData.slice(0, 8)
+        }
         moreUrl="/dashboard/news/NFT"
       />
       <NewsListWithImage

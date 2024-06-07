@@ -1,133 +1,130 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider = "postgresql"
-    url      = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model Article {
-    id             Int          @id @default(autoincrement())
-    title          String
-    content        String       @db.Text
-    description    String
-    picture        String
-    author         String
-    createdAt      DateTime     @default(now())
-    updatedAt      DateTime     @updatedAt
-    category       NewsCategory @relation(fields: [newsCategoryId], references: [id])
-    newsCategoryId Int
+  id             Int          @id @default(autoincrement())
+  title          String
+  content        String
+  picture        String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+  author         String
+  description    String
+  newsCategoryId Int
+  category       NewsCategory @relation(fields: [newsCategoryId], references: [id])
 
-    @@index([title])
+  @@index([title])
 }
 
 model NewsCategory {
-    id        Int       @id @default(autoincrement())
-    name      String    @unique
-    createdAt DateTime  @default(now())
-    updatedAt DateTime  @updatedAt
-    News      Article[]
+  id        Int       @id @default(autoincrement())
+  name      String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  News      Article[]
 
-    @@index([name])
+  @@index([name])
 }
 
 model Video {
-    id              Int           @id @default(autoincrement())
-    title           String
-    url             String
-    picture         String
-    createdAt       DateTime      @default(now())
-    updatedAt       DateTime      @updatedAt
-    VideoCategory   VideoCategory @relation(fields: [videoCategoryId], references: [id])
-    videoCategoryId Int
+  id              Int           @id @default(autoincrement())
+  title           String
+  url             String
+  picture         String
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+  videoCategoryId Int
+  VideoCategory   VideoCategory @relation(fields: [videoCategoryId], references: [id])
 
-    @@index([title])
+  @@index([title])
 }
 
 model VideoCategory {
-    id          Int      @id @default(autoincrement())
-    name        String   @unique
-    description String   @db.Text
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
-    Videos      Video[]
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  Videos      Video[]
 
-    @@index([name])
+  @@index([name])
 }
 
 model GuideCategory {
-    id        Int      @id @default(autoincrement())
-    name      String   @unique
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-    Guide     Guide[]
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Guide     Guide[]
 
-    @@index([name])
+  @@index([name])
 }
 
 model Guide {
-    id         Int           @id @default(autoincrement())
-    title      String
-    content    String        @db.Text
-    picture    String
-    category   GuideCategory @relation(fields: [categoryId], references: [id])
-    categoryId Int
-    createdAt  DateTime      @default(now())
-    updatedAt  DateTime      @updatedAt
+  id         Int           @id @default(autoincrement())
+  title      String
+  content    String
+  picture    String
+  categoryId Int
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+  category   GuideCategory @relation(fields: [categoryId], references: [id])
 
-    @@index([title])
+  @@index([title])
 }
 
 model Exchange {
-    id        Int      @id @default(autoincrement())
-    name      String   @unique
-    url       String
-    info      String   @db.Text
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  name      String   @unique
+  url       String
+  info      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-    @@index([name])
+  @@index([name])
 }
 
 model Exclusive {
-    id          Int      @id @default(autoincrement())
-    title       String
-    description String
-    content     String   @db.Text
-    url         String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  content     String
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-    @@index([title])
+  @@index([title])
 }
 
 model Podcast {
-    id          Int      @id @default(autoincrement())
-    title       String
-    description String
-    url         String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
-    @@index([title])
+  @@index([title])
 }
 
 model Banner {
-    id          Int      @id @default(autoincrement())
-    name        String   @unique
-    url         String
-    redirectUrl String
-    createdAt   DateTime @default(now())
-    updatedAt   DateTime @updatedAt
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  url         String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  redirectUrl String
 }
 
 model NewsLetter {
-    id        Int      @id @default(autoincrement())
-    email     String   @unique
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
