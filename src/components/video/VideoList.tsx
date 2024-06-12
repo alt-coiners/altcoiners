@@ -31,7 +31,7 @@ export default function VideoList({ videos }: VideoListProps) {
             </div>
           </div>
           <div className="flex gap-1 text-xs">
-            <p>{getHowLongAgo(video.createdAt)}</p>
+            <p>{getHowLongAgo(video.updatedAt)}</p>
             <p>-</p>
             <p className="text-primary">{video.VideoCategory.name}</p>
           </div>

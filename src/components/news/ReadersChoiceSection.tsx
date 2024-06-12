@@ -42,7 +42,7 @@ export default async function ReadersChoiceSection() {
             <div className="flex flex-col gap-2 pt-3">
               <div className="flex items-center justify-between text-sm">
                 <div className="flex items-center gap-1">
-                  <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
+                  <p>{getHowLongAgo(mainNews?.updatedAt ?? new Date())}</p>
                   <p className="text-primary">{mainNews?.category?.name}</p>
                 </div>
                 <p>{mainNews?.author}</p>

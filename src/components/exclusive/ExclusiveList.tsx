@@ -47,7 +47,7 @@ export default function ExclusiveList({
             picture={news.url}
             title={news.title}
             category="Exclusive"
-            date={news.createdAt}
+            date={news.updatedAt}
           />
         ))}
       </div>

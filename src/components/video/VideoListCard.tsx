@@ -42,7 +42,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
               </div>
             </div>
             <div className="flex gap-1 text-xs sm:text-sm">
-              <p>{getHowLongAgo(video.createdAt)}</p>
+              <p>{getHowLongAgo(video.updatedAt)}</p>
               <p>-</p>
               <p className="text-gray-300">{video.VideoCategory.name}</p>
             </div>

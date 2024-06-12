@@ -56,7 +56,7 @@ export default function DashboardMainSection({
             <div className="flex flex-col gap-1 pt-2 xl:w-5/6">
               <div className="flex w-full items-center justify-between text-xs text-gray-400 lg:text-sm">
                 <div className="flex items-center gap-1">
-                  <p>{getHowLongAgo(mainNews?.createdAt ?? new Date())}</p>
+                  <p>{getHowLongAgo(mainNews?.updatedAt ?? new Date())}</p>
                   <p className="text-primary">{mainNews?.category.name}</p>
                 </div>
                 <p>{mainNews?.author}</p>

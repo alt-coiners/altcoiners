@@ -24,7 +24,7 @@ export default function PodcastMainSection({
           ></iframe>
           <div className="flex w-[80%] flex-col gap-1">
             <div className="flex gap-1 text-xs">
-              <p>{getHowLongAgo(podcast.createdAt)}</p>
+              <p>{getHowLongAgo(podcast.updatedAt)}</p>
               <p>-</p>
               <p className="text-primary">Podcast</p>
             </div>

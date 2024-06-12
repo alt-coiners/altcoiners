@@ -28,7 +28,7 @@ export default function ExclusiveMainSection({
           />
           <div className="flex flex-col gap-1">
             <div className="flex gap-1 text-xs">
-              <p>{getHowLongAgo(article.createdAt)}</p>
+              <p>{getHowLongAgo(article.updatedAt)}</p>
               <p>-</p>
               <p className="text-primary">Exclusives</p>
             </div>

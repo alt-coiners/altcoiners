@@ -38,7 +38,7 @@ export default function NewsList({
               }}
             >
               <div className="flex gap-1 text-xs">
-                <p>{getHowLongAgo(article.createdAt)}</p>
+                <p>{getHowLongAgo(article.updatedAt)}</p>
                 <p>-</p>
                 <Link href={`/dashboard/news/${article.category.name}`}>
                   <p className="text-primary">{article.category.name}</p>

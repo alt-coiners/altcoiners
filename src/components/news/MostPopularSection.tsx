@@ -22,7 +22,7 @@ export default function MostPopularSection({
             >
               <div className="flex items-center gap-2">
                 <span className="text-sm">
-                  {getHowLongAgo(article.createdAt)}
+                  {getHowLongAgo(article.updatedAt)}
                 </span>
                 <span className="text-sm text-gray-200">
                   {article.category.name}
