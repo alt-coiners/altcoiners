@@ -21,13 +21,12 @@ export default function AdSection({ banner, className }: AdSectionProps) {
         className,
       )}
     >
-      <Image
+      <img
         src={url}
         alt={name}
         width={300}
         height={250}
-        quality={100}
-        className="h-full w-full rounded-xl "
+        className="h-full w-full rounded-xl"
       />
     </Link>
   );
