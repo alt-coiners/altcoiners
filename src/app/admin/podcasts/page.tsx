@@ -8,7 +8,7 @@ import EditPodcast from "./_podcastTable/create";
 
 export default function PodcastAdmin() {
   const { data: podcasts, isLoading: isLoading } =
-    api.podcast.getAll.useQuery();
+    api.podcast.getAllAdmin.useQuery();
 
   return (
     <div>

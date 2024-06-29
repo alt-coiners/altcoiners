@@ -6,7 +6,7 @@ export const exclusiveRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.exclusive.findMany({
       orderBy: {
-        id: "asc",
+        updatedAt: "desc",
       },
     });
   }),
@@ -73,4 +73,12 @@ export const exclusiveRouter = createTRPCRouter({
         },
       });
     }),
+
+  getAllAdmin: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.exclusive.findMany({
+      orderBy: {
+        id: "asc",
+      },
+    });
+  }),
 });

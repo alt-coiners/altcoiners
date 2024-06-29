@@ -9,7 +9,7 @@ export const newsRouter = createTRPCRouter({
         category: true,
       },
       orderBy: {
-        id: "asc",
+        updatedAt: "desc",
       },
     });
   }),
@@ -100,6 +100,9 @@ export const newsRouter = createTRPCRouter({
           include: {
             category: true,
           },
+          orderBy: {
+            updatedAt: "desc",
+          },
         });
       }
       return await ctx.db.article.findMany({
@@ -110,6 +113,9 @@ export const newsRouter = createTRPCRouter({
         },
         include: {
           category: true,
+        },
+        orderBy: {
+          updatedAt: "desc",
         },
       });
     }),
@@ -166,4 +172,15 @@ export const newsRouter = createTRPCRouter({
         },
       });
     }),
+
+  getAllNewsAdmin: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.article.findMany({
+      include: {
+        category: true,
+      },
+      orderBy: {
+        id: "asc",
+      },
+    });
+  }),
 });

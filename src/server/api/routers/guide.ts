@@ -45,7 +45,11 @@ export const guideRouter = createTRPCRouter({
           id: input.id,
         },
         include: {
-          Guide: true,
+          Guide: {
+            orderBy: {
+              updatedAt: "desc",
+            },
+          },
         },
       });
       if (!data) {
@@ -57,7 +61,11 @@ export const guideRouter = createTRPCRouter({
   getAllGuidesByCategory: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.guideCategory.findMany({
       include: {
-        Guide: true,
+        Guide: {
+          orderBy: {
+            updatedAt: "desc",
+          },
+        },
       },
     });
   }),
@@ -68,7 +76,7 @@ export const guideRouter = createTRPCRouter({
         category: true,
       },
       orderBy: {
-        id: "asc",
+        updatedAt: "desc",
       },
     });
   }),
@@ -133,4 +141,15 @@ export const guideRouter = createTRPCRouter({
         },
       });
     }),
+
+  getAllGuidesAdmin: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.guide.findMany({
+      include: {
+        category: true,
+      },
+      orderBy: {
+        id: "asc",
+      },
+    });
+  }),
 });

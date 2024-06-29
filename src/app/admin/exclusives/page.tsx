@@ -8,7 +8,7 @@ import EditExclusive from "./_exclusiveTable/create";
 
 export default function ExclusiveAdmin() {
   const { data: exclusives, isLoading: isLoading } =
-    api.exclusive.getAll.useQuery();
+    api.exclusive.getAllAdmin.useQuery();
 
   return (
     <div>

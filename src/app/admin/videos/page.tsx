@@ -12,7 +12,7 @@ export default function VideosAdmin() {
   const { data: videoCategories, isLoading: isVideoCategoriesLoading } =
     api.video.getVideoCategories.useQuery();
   const { data: videos, isLoading: isVideosLoading } =
-    api.video.getAllVideos.useQuery();
+    api.video.getAllVideosAdmin.useQuery();
 
   return (
     <div>
