@@ -21,7 +21,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
           </Button>
         </Link>
       </div>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-10 xl:grid-cols-4">
         {videos.map((video) => (
           <Link
             key={video.id}
@@ -35,7 +35,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
                 height={200}
                 quality={100}
                 alt={video.VideoCategory.name}
-                className="h-[200px] w-full  lg:h-40 xl:h-48"
+                className="h-full w-full"
               />
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform">
                 <PlayCircle size={32} />
@@ -46,7 +46,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
               <p>-</p>
               <p className="text-gray-300">{video.VideoCategory.name}</p>
             </div>
-            <h2 className=" font-semibold sm:text-xl">{video.title}</h2>
+            <h2 className="font-semibold sm:text-xl">{video.title}</h2>
           </Link>
         ))}
       </div>
