@@ -38,7 +38,9 @@ export const MENU_NAV_LINKS = [
     href: "/dashboard/guides",
     subMenus: [
       { title: "Bitcoin", url: "/dashboard/guides/1" },
-      { title: "Others", url: "/dashboard/guides/2" },
+      { title: "Blockchain", url: "/dashboard/guides/2" },
+      { title: "Ethereum", url: "/dashboard/guides/3" },
+      { title: "NFT", url: "/dashboard/guides/4" },
     ],
   },
   {
