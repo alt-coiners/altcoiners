@@ -22,6 +22,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { UploadButton } from "@/utils/uploadthing";
+import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -111,14 +113,30 @@ export default function EditExclusive({ id }: Props) {
                 <FormField
                   control={form.control}
                   name="url"
-                  render={({ field }) => (
+                  render={({}) => (
                     <FormItem>
                       <FormLabel>
-                        URL<span className="text-red-600">*</span>
+                        Picture<span className="text-red-600">*</span>
                       </FormLabel>
-                      <FormControl>
-                        <Input placeholder="Enter URL" {...field} />
-                      </FormControl>
+                      {(form.watch("url") || !!data?.url?.length) && (
+                        <Image
+                          src={form.watch("url") ?? data?.url}
+                          width={200}
+                          height={200}
+                          className="mx-auto"
+                          alt="image"
+                        />
+                      )}
+                      <UploadButton
+                        endpoint="imageUploader"
+                        onClientUploadComplete={(res) => {
+                          toast({ title: "Image uploaded" });
+                          form.setValue("url", res[0]?.url ?? "");
+                        }}
+                        onUploadError={(error: Error) => {
+                          alert(`ERROR! ${error.message}`);
+                        }}
+                      />
                       <FormMessage />
                     </FormItem>
                   )}
