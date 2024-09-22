@@ -4,7 +4,11 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 
 export const podcastRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.podcast.findMany({});
+    return await ctx.db.podcast.findMany({
+      orderBy: {
+        updatedAt: "desc",
+      },
+    });
   }),
 
   getById: publicProcedure
@@ -66,4 +70,8 @@ export const podcastRouter = createTRPCRouter({
         },
       });
     }),
+
+  getAllAdmin: publicProcedure.query(async ({ ctx }) => {
+    return await ctx.db.podcast.findMany({});
+  }),
 });

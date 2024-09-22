@@ -12,7 +12,7 @@ export default function GuidesAdmin() {
   const { data: categories, isLoading: isCategoriesLoading } =
     api.news.getAllCategories.useQuery();
   const { data: news, isLoading: isNewsLoading } =
-    api.news.getAllNews.useQuery();
+    api.news.getAllNewsAdmin.useQuery();
 
   return (
     <div>

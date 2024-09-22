@@ -49,7 +49,10 @@ export default function NewsList({
               </h2>
             </Link>
             {index + 1 !== articles.length && (
-              <div className="h-[0.5px] w-full bg-gray-300"></div>
+              <div
+                className="h-[0.5px] w-full bg-gray-300"
+                key={article.title}
+              ></div>
             )}
           </>
         ))}

@@ -6,7 +6,7 @@ export const bannerRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.banner.findMany({
       orderBy: {
-        id: "asc",
+        updatedAt: "desc",
       },
     });
   }),
