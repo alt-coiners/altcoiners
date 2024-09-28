@@ -152,4 +152,24 @@ export const guideRouter = createTRPCRouter({
       },
     });
   }),
+
+  getCategories: publicProcedure.query(async ({ ctx }) => {
+    const categories = await ctx.db.guideCategory.findMany({
+      select: {
+        id: true,
+        name: true,
+      },
+    });
+
+    return {
+      title: "Guides",
+      href: "/dashboard/guides",
+      subMenus: categories.map((category) => {
+        return {
+          title: category.name,
+          url: `/dashboard/guides/${category.id}`,
+        };
+      }),
+    };
+  }),
 });

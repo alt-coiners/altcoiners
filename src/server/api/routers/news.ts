@@ -183,4 +183,23 @@ export const newsRouter = createTRPCRouter({
       },
     });
   }),
+
+  getCategories: publicProcedure.query(async ({ ctx }) => {
+    const categories = await ctx.db.newsCategory.findMany({
+      select: {
+        name: true,
+      },
+    });
+
+    return {
+      title: "News",
+      href: "/dashboard/news",
+      subMenus: categories.map((category) => {
+        return {
+          title: category.name,
+          url: `/dashboard/news/${category.name}`,
+        };
+      }),
+    };
+  }),
 });

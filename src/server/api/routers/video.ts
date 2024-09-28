@@ -144,4 +144,23 @@ export const videoRouter = createTRPCRouter({
       },
     });
   }),
+
+  getCategories: publicProcedure.query(async ({ ctx }) => {
+    const categories = await ctx.db.videoCategory.findMany({
+      select: {
+        name: true,
+      },
+    });
+
+    return {
+      title: "Videos",
+      href: "/dashboard/videos",
+      subMenus: categories.map((category) => {
+        return {
+          title: category.name,
+          url: `/dashboard/videos/${category.name}`,
+        };
+      }),
+    };
+  }),
 });
