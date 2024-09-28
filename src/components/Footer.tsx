@@ -16,7 +16,7 @@ export default function Footer() {
             quality={100}
             alt="logo"
           />
-          <p className=" text-gray-400">
+          <p className="text-gray-400">
             A quick 3min read about today&apos;s crypto news!
           </p>
           <p className="text-pretty text-lg font-semibold">
@@ -72,7 +72,7 @@ export default function Footer() {
         <div className="hidden grid-cols-5 gap-4 lg:grid">
           {MENU_NAV_LINKS.map((link) => (
             <div key={link.title} className="flex flex-col gap-2">
-              <p className="mb-4  font-semibold">{link.title}</p>
+              <p className="mb-4 font-semibold">{link.title}</p>
               {link.subMenus.map((child) => (
                 <Link
                   key={child.title}
@@ -94,7 +94,7 @@ export default function Footer() {
         ))}
       </div>
       <div className="mt-8 lg:flex lg:items-center lg:justify-between">
-        <p className="text-center  text-gray-400">
+        <p className="text-center text-gray-400">
           © 2024 Altcoiners.live . All rights reserved
         </p>
         <div className="hidden gap-5 lg:flex lg:gap-8">
@@ -110,14 +110,17 @@ export default function Footer() {
         </div>
       </div>
       <div className="hidden justify-end gap-8 lg:flex">
-        <p className="text-center  text-gray-400">Have a story?</p>
+        <Link href={"mailto:connect@altcoiners.live"}>
+          <p className="text-center text-gray-400 hover:underline">
+            Have a story?
+          </p>
+        </Link>
         <Link
           href={
             "https://docs.google.com/forms/d/e/1FAIpQLSdlW0aeiOr2R4SlZP1yCLpQw-vDXDudx0CetWidp6tAT1Hu2g/viewform?usp=sf_link"
           }
-          target="_blank"
         >
-          <p className="text-center  text-gray-400 hover:underline">
+          <p className="text-center text-gray-400 hover:underline">
             Advertising
           </p>
         </Link>

@@ -16,19 +16,19 @@ export const MENU_NAV_LINKS = [
 export const FOOTER_LINKS = [
   {
     title: "Terms & Conditions",
-    href: "#",
+    href: "https://docs.google.com/document/d/19hojUfJmtNRzfUKpRDyxPDt97FXFeAvPZO2DvAZoPBA/edit?usp=sharing",
   },
   {
     title: "About Us",
-    href: "#",
+    href: "https://docs.google.com/document/d/14WJwGYIARcwfYDWDM_FdDcle4p8pVEqrLBFDobgM6PU/edit?usp=sharing",
   },
   {
     title: "Privacy Policy",
-    href: "#",
+    href: "https://docs.google.com/document/d/19pC6yHmJ7id8wCOlX0CH23N7zMx2-ZKvkdTIE1qmhto/edit?usp=sharing",
   },
   {
     title: "Disclaimer",
-    href: "#",
+    href: "https://docs.google.com/document/d/1KswjaMuTCv_e829p-c6puxx3mGbwc5h7BVr-WLG63eI/edit?usp=sharing",
   },
 ];
 
