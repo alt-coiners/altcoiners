@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils";
 import type { Banner } from "@prisma/client";
-import Image from "next/image";
 import Link from "next/link";
 
 interface AdSectionProps {
@@ -26,7 +25,7 @@ export default function AdSection({ banner, className }: AdSectionProps) {
         alt={name}
         width={300}
         height={250}
-        className="h-full w-full rounded-xl"
+        className="h-full w-full rounded-xl object-cover lg:object-contain"
       />
     </Link>
   );

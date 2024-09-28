@@ -20,7 +20,6 @@ export default async function Dashboard() {
     nftNewsData,
     videosData,
     guideData,
-    cryptoCoinData,
     adPictures,
   ] = await Promise.all([
     api.news.getAllNews.query(),
@@ -31,13 +30,12 @@ export default async function Dashboard() {
     api.news.getNewsByCategoryName.query({ categoryName: "NFT" }),
     api.video.getAllVideos.query(),
     api.guide.getAllGuidesByCategory.query(),
-    api.crypto.getAllCoins.query(),
     api.banner.getAll.query(),
   ]);
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">
-      <CoinPricesCarousel coinsData={cryptoCoinData} />
+      <CoinPricesCarousel />
       <DashboardMainSection newsData={newsData} />
       {/* only take the banners which start with	CAROUSEL */}
       <AdSlider

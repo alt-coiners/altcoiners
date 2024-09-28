@@ -1,4 +1,5 @@
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { PrismaClient } from "@prisma/client";
 
 export interface Coin {
   id: string;
@@ -12,6 +13,7 @@ export interface Coin {
   first_data_at: string;
   last_updated: string;
   quotes: Record<"BTC" | "USD", Quote>;
+  logo: string;
 }
 
 interface Quote {
@@ -34,14 +36,53 @@ interface Quote {
   percent_from_price_ath: number | null;
 }
 
+const getCoinLogo = async (db: PrismaClient, id: string) => {
+  const coin = await db.coinLogo.findUnique({
+    where: {
+      coinApiId: id,
+    },
+  });
+  if (coin) {
+    return coin.url;
+  }
+  const coinData = await fetch(`https://api.coinpaprika.com/v1/coins/${id}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer",
+    },
+  })
+    .then((res) => res.json() as Promise<{ logo: string }>)
+    .then((data) => data.logo);
+  await db.coinLogo.create({
+    data: {
+      coinApiId: id,
+      url: coinData,
+    },
+  });
+  return coinData;
+};
+
 export const cryptoRouter = createTRPCRouter({
-  getAllCoins: publicProcedure.query(async () => {
-    return (await fetch("https://api.coinpaprika.com/v1/tickers?limit=100", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer",
+  getAllCoins: publicProcedure.query(async ({ ctx }) => {
+    const coinData = await fetch(
+      "https://api.coinpaprika.com/v1/tickers?limit=50",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer",
+        },
       },
-    }).then((res) => res.json())) as Promise<Coin[]>;
+    )
+      .then((res) => res.json() as Promise<Coin[]>)
+      .then((data) => data);
+
+    const promises = coinData.map(async (coin) => {
+      coin.logo = await getCoinLogo(ctx.db, coin.id);
+      return coin;
+    });
+
+    return await Promise.all(promises);
   }),
 });

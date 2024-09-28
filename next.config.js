@@ -11,6 +11,9 @@ const config = {
       {
         hostname: "utfs.io",
       },
+      {
+        hostname: "static.coinpaprika.com",
+      },
     ],
   },
 };

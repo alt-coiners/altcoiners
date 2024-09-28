@@ -10,17 +10,14 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { type Coin } from "@/server/api/routers/crypto";
+import { api } from "@/trpc/react";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 import { useRef } from "react";
 
-interface CoinPricesCarouselProps {
-  coinsData: Coin[];
-}
-
-export default function CoinPricesCarousel({
-  coinsData: coins,
-}: CoinPricesCarouselProps) {
+export default function CoinPricesCarousel({}) {
   const plugin = useRef(Autoplay({ delay: 2000, stopOnInteraction: true }));
+  const { data: coins } = api.crypto.getAllCoins.useQuery();
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 lg:-mb-8 xl:max-w-5xl 2xl:max-w-7xl">
@@ -80,7 +77,7 @@ function CoinCard({ coin }: { coin: Coin }) {
             </span>
           </p>
         </div>
-        <p className="font-semibold">{coin.symbol}</p>
+        <Image src={coin.logo} width={30} height={30} alt={coin.name} />
       </div>
     </div>
   );
