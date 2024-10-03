@@ -44,8 +44,10 @@ export default function CoinPricesCarousel({}) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <div className="hidden md:block">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </Carousel>
     </div>
   );
