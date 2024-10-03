@@ -67,7 +67,7 @@ export default async function NewsId({
     <div className="mx-auto flex flex-col gap-4 sm:max-w-lg md:max-w-xl xl:max-w-4xl 2xl:max-w-5xl">
       <div className="xl:flex xl:justify-between xl:gap-12">
         <div className="flex flex-col gap-4 p-3">
-          <BreadcrumbComponent links={breadcrumbs} />
+          {/* <BreadcrumbComponent links={breadcrumbs} /> */}
           <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
             {newsArticle?.title}
           </p>
@@ -99,11 +99,10 @@ export default async function NewsId({
           />
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
-              articles={latestNews}
+              articles={latestNews.slice(0, 4)}
               moreUrl="/dashboard/news"
               title="Crypto News"
             />
-            A
           </div>
           <div className="xl:hidden">
             <NewsLetter />
@@ -111,7 +110,7 @@ export default async function NewsId({
         </div>
         <div className="sticky top-20 mt-36 hidden flex-col gap-8 xl:flex xl:w-1/3">
           <NewsList
-            articles={latestNews}
+            articles={latestNews.slice(0, 4)}
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
@@ -121,11 +120,6 @@ export default async function NewsId({
               (banner) =>
                 banner.name === "BETWEEN_NEWS_SECTION_NEWS_ARTICLE_FIRST",
             )}
-          />
-          <NewsList
-            articles={latestNews}
-            moreUrl="/dashboard/news"
-            title="Similar News"
           />
         </div>
       </div>

@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import type { Banner } from "@prisma/client";
+import Image from "next/image";
 import Link from "next/link";
 
 interface AdSectionProps {
@@ -20,7 +21,8 @@ export default function AdSection({ banner, className }: AdSectionProps) {
         className,
       )}
     >
-      <img
+      <Image
+        quality={100}
         src={url}
         alt={name}
         width={300}
