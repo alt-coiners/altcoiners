@@ -97,7 +97,7 @@ export default async function ExclusivesId({
           />
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
-              articles={latestNews}
+              articles={latestNews.slice(0, 4)}
               moreUrl="/dashboard/news"
               title="Crypto News"
             />
@@ -109,7 +109,7 @@ export default async function ExclusivesId({
         </div>
         <div className="mt-36 hidden flex-col gap-8 xl:flex xl:w-1/3">
           <NewsList
-            articles={latestNews}
+            articles={latestNews.slice(0, 4)}
             moreUrl="/dashboard/news"
             title="Most Popular"
           />
@@ -119,11 +119,6 @@ export default async function ExclusivesId({
               (banner) =>
                 banner.name === "BETWEEN_NEWS_SECTION_EXCLUSIVE_ARTICLE_SECOND",
             )}
-          />
-          <NewsList
-            articles={latestNews}
-            moreUrl="/dashboard/news"
-            title="Similar News"
           />
         </div>
       </div>
