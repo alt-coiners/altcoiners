@@ -16,6 +16,7 @@ export const metadata = {
   title: "Altcoiners",
   description: "Altcoiners",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  "google-site-verification": "a30jirDlKYGbOSPBL7x-fQ-JlOPkfdEzQF-d_dTsN9c",
 };
 
 export default function RootLayout({
