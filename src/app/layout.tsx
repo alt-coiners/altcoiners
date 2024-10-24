@@ -16,7 +16,6 @@ export const metadata = {
   title: "Altcoiners",
   description: "Altcoiners",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
-  "google-site-verification": "a30jirDlKYGbOSPBL7x-fQ-JlOPkfdEzQF-d_dTsN9c",
 };
 
 export default function RootLayout({
@@ -26,6 +25,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="google-site-verification"
+          content="a30jirDlKYGbOSPBL7x-fQ-JlOPkfdEzQF-d_dTsN9c"
+        />
+      </head>
       <body className={`font-sans ${noto_sans.variable}`}>
         <Toaster />
         <TRPCReactProvider>{children}</TRPCReactProvider>
