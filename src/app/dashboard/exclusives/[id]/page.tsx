@@ -8,10 +8,8 @@ import { calculateReadingTime, formatDate } from "@/utils/helper";
 import { type Metadata, type ResolvingMetadata } from "next";
 import Image from "next/image";
 
-export async function generateMetadata(
-  { params }: { params: { id: string } },
-  parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }, parent: ResolvingMetadata): Promise<Metadata> {
+  const params = await props.params;
   const news = await api.exclusive.getById.query({ id: +params.id });
   const previousImages = (await parent).openGraph?.images ?? [];
 
@@ -35,11 +33,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function ExclusivesId({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default async function ExclusivesId(
+  props: {
+    params: Promise<{ id: string }>;
+  }
+) {
+  const params = await props.params;
   const newsArticle = await api.exclusive.getById.query({ id: +params.id });
   const latestNews = await api.news.getLatestNews.query();
   const adPictures = await api.banner.getAll.query();

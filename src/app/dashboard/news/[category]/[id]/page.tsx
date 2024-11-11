@@ -9,13 +9,12 @@ import { type Metadata, type ResolvingMetadata } from "next";
 import Image from "next/image";
 
 export async function generateMetadata(
-  {
-    params,
-  }: {
-    params: { id: string; category: string };
+  props: {
+    params: Promise<{ id: string; category: string }>;
   },
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const params = await props.params;
   const news = await api.news.getNewsById.query({ id: +params.id });
   const previousImages = (await parent).openGraph?.images ?? [];
 
@@ -39,11 +38,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function NewsId({
-  params,
-}: {
-  params: { id: string; category: string };
-}) {
+export default async function NewsId(
+  props: {
+    params: Promise<{ id: string; category: string }>;
+  }
+) {
+  const params = await props.params;
   const newsArticle = await api.news.getNewsById.query({ id: +params.id });
   const latestNews = await api.news.getLatestNews.query();
   const adPictures = await api.banner.getAll.query();

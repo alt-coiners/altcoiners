@@ -3,11 +3,12 @@ import BreadcrumbComponent from "@/components/breadcrumb";
 import VideoList from "@/components/video/VideoList";
 import { api } from "@/trpc/server";
 
-export default async function VideoCategory({
-  params,
-}: {
-  params: { category: string };
-}) {
+export default async function VideoCategory(
+  props: {
+    params: Promise<{ category: string }>;
+  }
+) {
+  const params = await props.params;
   const { category } = params;
   const videoCategoryData = await api.video.getVideosForCategory.query({
     category,

@@ -6,13 +6,12 @@ import { api } from "@/trpc/server";
 import { type Metadata, type ResolvingMetadata } from "next";
 
 export async function generateMetadata(
-  {
-    params,
-  }: {
-    params: { id: string; category: string };
+  props: {
+    params: Promise<{ id: string; category: string }>;
   },
-  parent: ResolvingMetadata,
+  parent: ResolvingMetadata
 ): Promise<Metadata> {
+  const params = await props.params;
   const video = await api.video.getVideoById.query({ id: +params.id });
   const previousImages = (await parent).openGraph?.images ?? [];
   return {
@@ -35,11 +34,12 @@ export async function generateMetadata(
   };
 }
 
-export default async function VideoId({
-  params,
-}: {
-  params: { id: string; category: string };
-}) {
+export default async function VideoId(
+  props: {
+    params: Promise<{ id: string; category: string }>;
+  }
+) {
+  const params = await props.params;
   const video = await api.video.getVideoById.query({ id: +params.id });
   const latestNews = await api.news.getLatestNews.query();
   const adPictures = await api.banner.getAll.query();

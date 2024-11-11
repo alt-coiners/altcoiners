@@ -5,11 +5,12 @@ import NewsList from "@/components/news/NewsList";
 import NewsListWithImage from "@/components/news/NewsListWithImage";
 import { api } from "@/trpc/server";
 
-export default async function CategoryNews({
-  params,
-}: {
-  params: { category: string };
-}) {
+export default async function CategoryNews(
+  props: {
+    params: Promise<{ category: string }>;
+  }
+) {
+  const params = await props.params;
   const { category } = params;
   const news = await api.news.getNewsByCategoryName.query({
     categoryName: category,
