@@ -16,6 +16,15 @@ const config = {
       },
     ],
   },
+  redirects: async () => {
+    return [
+      {
+        source: "/dashboard/:slug",
+        destination: "/:slug",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default config;
