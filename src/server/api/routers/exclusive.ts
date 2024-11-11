@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { revalidatePath } from "next/cache";
 
 export const exclusiveRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -32,6 +33,7 @@ export const exclusiveRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       if (input.id) {
         return await ctx.db.exclusive.update({
           where: {
@@ -67,6 +69,7 @@ export const exclusiveRouter = createTRPCRouter({
   delete: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.exclusive.delete({
         where: {
           id: input.id,

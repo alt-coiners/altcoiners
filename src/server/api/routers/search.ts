@@ -67,27 +67,27 @@ export const searchRouter = createTRPCRouter({
           id: article.id,
           title: article.title,
           category: article.category.name,
-          url: `/dashboard/news/${article.category.name}/${article.id}`,
+          url: `/news/${article.category.name}/${article.id}`,
         })),
         ...videos.map((video) => ({
           type: "video",
           id: video.id,
           title: video.title,
           category: video.VideoCategory.name,
-          url: `/dashboard/videos/${video.VideoCategory.name}/${video.id}`,
+          url: `/videos/${video.VideoCategory.name}/${video.id}`,
         })),
         ...exchanges.map((exchange) => ({
           type: "exchange",
           id: exchange.id,
           title: exchange.name,
-          url: `/dashboard/reviews`,
+          url: `/reviews`,
         })),
         ...guide.map((guide) => ({
           type: "guide",
           id: guide.id,
           title: guide.title,
           category: guide.category.name,
-          url: `/dashboard/guides/${guide.category.id}/${guide.id}`,
+          url: `/guides/${guide.category.id}/${guide.id}`,
         })),
       ];
 

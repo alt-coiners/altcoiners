@@ -1,15 +1,15 @@
 export const MENU_NAV_LINKS = [
   {
     title: "Exclusives",
-    href: "/dashboard/exclusives",
+    href: "/exclusives",
     subMenus: [
-      { title: "Opinions", url: "/dashboard/exclusives" },
-      { title: "Podcasts", url: "/dashboard/exclusives/podcasts" },
+      { title: "Opinions", url: "/exclusives" },
+      { title: "Podcasts", url: "/exclusives/podcasts" },
     ],
   },
   {
     title: "Earn",
-    subMenus: [{ title: "Earn", url: "/dashboard/reviews" }],
+    subMenus: [{ title: "Earn", url: "/reviews" }],
   },
 ];
 

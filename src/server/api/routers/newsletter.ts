@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { revalidatePath } from "next/cache";
 
 export const newsletterRouter = createTRPCRouter({
   getAll: publicProcedure.query(async ({ ctx }) => {
@@ -28,6 +29,7 @@ export const newsletterRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.newsLetter.create({
         data: {
           email: input.email,

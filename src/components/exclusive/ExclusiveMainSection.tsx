@@ -16,7 +16,7 @@ export default function ExclusiveMainSection({
         <Link
           key={article.id}
           className="flex gap-4 xl:gap-6"
-          href={`/dashboard/exclusives/${article.id}`}
+          href={`/exclusives/${article.id}`}
         >
           <Image
             src={article.url}
@@ -32,7 +32,7 @@ export default function ExclusiveMainSection({
               <p>-</p>
               <p className="text-primary">Exclusives</p>
             </div>
-            <h2 className="w-[90%] text-pretty  font-semibold xl:text-xl 2xl:text-lg">
+            <h2 className="w-[90%] text-pretty font-semibold xl:text-xl 2xl:text-lg">
               {article.title}
             </h2>
             <p className="2xl: text-xs xl:text-sm">{article.description}</p>

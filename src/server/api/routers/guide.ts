@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { revalidatePath } from "next/cache";
 
 export const guideRouter = createTRPCRouter({
   getGuideCategories: publicProcedure.query(async ({ ctx }) => {
@@ -89,6 +90,7 @@ export const guideRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.guideCategory.upsert({
         where: {
           id: input.id,
@@ -113,6 +115,7 @@ export const guideRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.guide.upsert({
         where: {
           id: input.id,
@@ -135,6 +138,7 @@ export const guideRouter = createTRPCRouter({
   delete: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.guide.delete({
         where: {
           id: input.id,
@@ -163,11 +167,11 @@ export const guideRouter = createTRPCRouter({
 
     return {
       title: "Guides",
-      href: "/dashboard/guides",
+      href: "/guides",
       subMenus: categories.map((category) => {
         return {
           title: category.name,
-          url: `/dashboard/guides/${category.id}`,
+          url: `/guides/${category.id}`,
         };
       }),
     };

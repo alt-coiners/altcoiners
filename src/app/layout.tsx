@@ -1,4 +1,4 @@
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 import "@/styles/globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -6,13 +6,15 @@ import { Noto_Sans } from "next/font/google";
 
 import { Toaster } from "@/components/ui/toaster";
 import { TRPCReactProvider } from "@/trpc/react";
+import type { Metadata } from "next";
 
 const noto_sans = Noto_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Altcoiners",
   description: "Altcoiners",
   icons: [{ rel: "icon", url: "/favicon.ico" }],

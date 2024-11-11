@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { revalidatePath } from "next/cache";
 
 export const newsRouter = createTRPCRouter({
   getAllNews: publicProcedure.query(async ({ ctx }) => {
@@ -146,6 +147,7 @@ export const newsRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       if (input.id) {
         return await ctx.db.newsCategory.update({
           where: {
@@ -166,6 +168,7 @@ export const newsRouter = createTRPCRouter({
   deleteNews: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.article.delete({
         where: {
           id: input.id,
@@ -193,11 +196,11 @@ export const newsRouter = createTRPCRouter({
 
     return {
       title: "News",
-      href: "/dashboard/news",
+      href: "/news",
       subMenus: categories.map((category) => {
         return {
           title: category.name,
-          url: `/dashboard/news/${category.name}`,
+          url: `/news/${category.name}`,
         };
       }),
     };

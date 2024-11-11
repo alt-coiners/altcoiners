@@ -11,10 +11,10 @@ interface VideoListProps {
 
 export default function VideoListCard({ videos }: VideoListProps) {
   return (
-    <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
+    <div className="bg-primary-dark mx-auto flex flex-col gap-5 px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-semibold">Videos</h3>
-        <Link href={"/dashboard/videos"}>
+        <Link href={"/videos"}>
           <Button variant="ghost" className="hidden items-center gap-1 lg:flex">
             <p className="text-sm">More Videos</p>
             <ChevronRight size={12} />
@@ -26,7 +26,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
           <Link
             key={video.id}
             className="duration-30 flex transform flex-col gap-2 transition-transform hover:scale-[1.01]"
-            href={`/dashboard/videos/${video.VideoCategory.name}/${video.id}`}
+            href={`/videos/${video.VideoCategory.name}/${video.id}`}
           >
             <div className="relative">
               <Image
@@ -50,7 +50,7 @@ export default function VideoListCard({ videos }: VideoListProps) {
           </Link>
         ))}
       </div>
-      <Link href={"/dashboard/news/category/videos"}>
+      <Link href={"/news/category/videos"}>
         <Button
           variant="outline"
           className="mx-auto mt-5 flex w-5/6 items-center gap-1 bg-transparent lg:hidden"

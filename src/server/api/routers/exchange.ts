@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { revalidatePath } from "next/cache";
 
 export const exchangeRouter = createTRPCRouter({
   getAllExchanges: publicProcedure.query(async ({ ctx }) => {
@@ -31,6 +32,7 @@ export const exchangeRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.exchange.upsert({
         where: {
           id: input.id,
@@ -51,6 +53,7 @@ export const exchangeRouter = createTRPCRouter({
   delete: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.exchange.delete({
         where: {
           id: input.id,

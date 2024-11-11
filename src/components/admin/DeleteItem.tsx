@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import { api } from "@/trpc/react";
-import { toast } from "../ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 
 interface DeleteItemProps {
   id: number;
