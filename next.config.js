@@ -19,8 +19,13 @@ const config = {
   redirects: async () => {
     return [
       {
-        source: "/dashboard/:slug",
-        destination: "/:slug",
+        source: "/dashboard/:slug*",
+        destination: "/:slug*",
+        permanent: true,
+      },
+      {
+        source: "/dashboard",
+        destination: "/",
         permanent: true,
       },
     ];
