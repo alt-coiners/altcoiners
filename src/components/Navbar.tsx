@@ -15,13 +15,13 @@ import { api } from "@/trpc/server";
 
 export default async function Navbar() {
   const [newsCategories, videoCategories, guideCategories] = await Promise.all([
-    api.news.getCategories.query(),
-    api.video.getCategories.query(),
-    api.guide.getCategories.query(),
+    api.news.getCategories(),
+    api.video.getCategories(),
+    api.guide.getCategories(),
   ]);
 
   return (
-    <div className="fixed left-0 top-0 z-10 flex w-full items-center justify-between border border-primary/50 bg-white px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
+    <div className="border-primary/50 fixed left-0 top-0 z-10 flex w-full items-center justify-between border bg-white px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
       <Link href="/dashboard">
         <Image
           src="/images/altcoiners-logo.svg"

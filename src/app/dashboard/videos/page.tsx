@@ -4,8 +4,8 @@ import VideoList from "@/components/video/VideoList";
 import { api } from "@/trpc/server";
 
 export default async function Videos() {
-  const videos = await api.video.getAllVideos.query();
-  const adPictures = await api.banner.getAll.query();
+  const videos = await api.video.getAllVideos();
+  const adPictures = await api.banner.getAll();
 
   const breadcrumbs = [
     {
@@ -17,7 +17,7 @@ export default async function Videos() {
   return (
     <div className="mx-auto flex flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <BreadcrumbComponent links={breadcrumbs} />
-      <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
+      <p className="text-primary-dark w-[90%] text-pretty text-2xl font-bold lg:text-3xl">
         Videos
       </p>
       <p className="">

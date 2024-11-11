@@ -18,9 +18,9 @@ import {
 
 export default async function HamburgerMenu() {
   const [newsCategories, videoCategories, guideCategories] = await Promise.all([
-    api.news.getCategories.query(),
-    api.video.getCategories.query(),
-    api.guide.getCategories.query(),
+    api.news.getCategories(),
+    api.video.getCategories(),
+    api.guide.getCategories(),
   ]);
 
   const SheetTriggerLink = ({
@@ -38,7 +38,7 @@ export default async function HamburgerMenu() {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="size-6 text-primary lg:hidden" />
+        <Menu className="text-primary size-6 lg:hidden" />
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>

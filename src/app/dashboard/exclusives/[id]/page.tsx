@@ -8,9 +8,12 @@ import { calculateReadingTime, formatDate } from "@/utils/helper";
 import { type Metadata, type ResolvingMetadata } from "next";
 import Image from "next/image";
 
-export async function generateMetadata(props: { params: Promise<{ id: string }> }, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+  props: { params: Promise<{ id: string }> },
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
   const params = await props.params;
-  const news = await api.exclusive.getById.query({ id: +params.id });
+  const news = await api.exclusive.getById({ id: +params.id });
   const previousImages = (await parent).openGraph?.images ?? [];
 
   return {
@@ -33,15 +36,13 @@ export async function generateMetadata(props: { params: Promise<{ id: string }> 
   };
 }
 
-export default async function ExclusivesId(
-  props: {
-    params: Promise<{ id: string }>;
-  }
-) {
+export default async function ExclusivesId(props: {
+  params: Promise<{ id: string }>;
+}) {
   const params = await props.params;
-  const newsArticle = await api.exclusive.getById.query({ id: +params.id });
-  const latestNews = await api.news.getLatestNews.query();
-  const adPictures = await api.banner.getAll.query();
+  const newsArticle = await api.exclusive.getById({ id: +params.id });
+  const latestNews = await api.news.getLatestNews();
+  const adPictures = await api.banner.getAll();
 
   const breadcrumbs = [
     {
@@ -63,7 +64,7 @@ export default async function ExclusivesId(
       <div className="xl:flex xl:justify-between xl:gap-12">
         <div className="flex flex-col gap-4 p-3">
           <BreadcrumbComponent links={breadcrumbs} />
-          <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
+          <p className="text-primary-dark w-[90%] text-pretty text-2xl font-bold lg:text-3xl">
             {newsArticle?.title}
           </p>
           <div>
@@ -84,7 +85,7 @@ export default async function ExclusivesId(
             className="mx-auto w-[90%]"
           />
           <article
-            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl"
+            className="prose prose-sm sm:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl px-2 py-6 text-justify text-gray-700"
             dangerouslySetInnerHTML={{ __html: newsArticle?.content ?? "" }}
           ></article>
           <AdSection

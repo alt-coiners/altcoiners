@@ -7,17 +7,17 @@ import AdSection from "../AdSection";
 import NewsList from "./NewsList";
 
 export default async function ReadersChoiceSection() {
-  const readersNews = await api.news.getAllNews.query();
+  const readersNews = await api.news.getAllNews();
   const mainNews = readersNews[0];
-  const adPictures = await api.banner.getAll.query();
+  const adPictures = await api.banner.getAll();
 
   return (
     <section className="mx-auto flex flex-col gap-4 px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-primary-dark">
+        <h1 className="text-primary-dark text-2xl font-bold">
           Reader&apos;s choice
         </h1>
-        <div className="flex items-center gap-1 text-sm text-primary">
+        <div className="text-primary flex items-center gap-1 text-sm">
           <p>More from Crypto News</p>
           <ChevronRight size={12} />
         </div>
@@ -36,7 +36,7 @@ export default async function ReadersChoiceSection() {
               quality={100}
               className="h-48 w-full lg:h-full"
             />
-            <div className="absolute bottom-0 h-8 w-full bg-primary-dark"></div>
+            <div className="bg-primary-dark absolute bottom-0 h-8 w-full"></div>
           </div>
           <div className="flex justify-between gap-2">
             <div className="flex flex-col gap-2 pt-3">
@@ -50,7 +50,7 @@ export default async function ReadersChoiceSection() {
               <p className="font-semibold">{mainNews?.title}</p>
               <p className="">{mainNews?.description}</p>
             </div>
-            <div className="min-h-full w-10 bg-primary"></div>
+            <div className="bg-primary min-h-full w-10"></div>
           </div>
         </Link>
         <div className="my-2 sm:w-3/4 lg:hidden">

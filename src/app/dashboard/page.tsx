@@ -22,15 +22,15 @@ export default async function Dashboard() {
     guideData,
     adPictures,
   ] = await Promise.all([
-    api.news.getAllNews.query(),
-    api.news.getNewsByCategoryName.query({ categoryName: "Bitcoin" }),
-    api.news.getNewsByCategoryName.query({ categoryName: "Finance" }),
-    api.news.getNewsByCategoryName.query({ categoryName: "Ethereum" }),
-    api.news.getNewsByCategoryName.query({ categoryName: "Altcoin" }),
-    api.news.getNewsByCategoryName.query({ categoryName: "NFT" }),
-    api.video.getAllVideos.query(),
-    api.guide.getAllGuidesByCategory.query(),
-    api.banner.getAll.query(),
+    api.news.getAllNews(),
+    api.news.getNewsByCategoryName({ categoryName: "Bitcoin" }),
+    api.news.getNewsByCategoryName({ categoryName: "Finance" }),
+    api.news.getNewsByCategoryName({ categoryName: "Ethereum" }),
+    api.news.getNewsByCategoryName({ categoryName: "Altcoin" }),
+    api.news.getNewsByCategoryName({ categoryName: "NFT" }),
+    api.video.getAllVideos(),
+    api.guide.getAllGuidesByCategory(),
+    api.banner.getAll(),
   ]);
 
   return (

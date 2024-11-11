@@ -3,17 +3,15 @@ import BreadcrumbComponent from "@/components/breadcrumb";
 import GuideCard from "@/components/guide/GuideCard";
 import { api } from "@/trpc/server";
 
-export default async function GuideCategory(
-  props: {
-    params: Promise<{ categoryId: string }>;
-  }
-) {
+export default async function GuideCategory(props: {
+  params: Promise<{ categoryId: string }>;
+}) {
   const params = await props.params;
   const { categoryId } = params;
-  const categoryData = await api.guide.getGuidesByCategory.query({
+  const categoryData = await api.guide.getGuidesByCategory({
     id: Number(categoryId),
   });
-  const adPictures = await api.banner.getAll.query();
+  const adPictures = await api.banner.getAll();
 
   const breadcrumbs = [
     {
