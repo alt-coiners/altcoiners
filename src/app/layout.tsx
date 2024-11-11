@@ -10,6 +10,7 @@ import { TRPCReactProvider } from "@/trpc/react";
 const noto_sans = Noto_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
+  display: "swap",
 });
 
 export const metadata = {
