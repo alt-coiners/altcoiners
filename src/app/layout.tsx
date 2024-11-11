@@ -1,7 +1,7 @@
 export const dynamic = "force-dynamic";
 
 import "@/styles/globals.css";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { Noto_Sans } from "next/font/google";
 
 import { Toaster } from "@/components/ui/toaster";
@@ -34,6 +34,7 @@ export default function RootLayout({
       <body className={`font-sans ${noto_sans.variable}`}>
         <Toaster />
         <TRPCReactProvider>{children}</TRPCReactProvider>
+        <GoogleAnalytics gaId="G-HDBXD4ZM36" />
       </body>
     </html>
   );
