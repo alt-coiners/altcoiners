@@ -15,7 +15,7 @@ export default function VideoList({ videos }: VideoListProps) {
         <Link
           key={video.id}
           className="flex flex-col gap-2"
-          href={`/dashboard/videos/${video.VideoCategory.name}/${video.id}`}
+          href={`/videos/${video.VideoCategory.name}/${video.id}`}
         >
           <div className="relative">
             <Image
@@ -24,7 +24,7 @@ export default function VideoList({ videos }: VideoListProps) {
               height={180}
               quality={100}
               alt={video.VideoCategory.name}
-              className="w-full "
+              className="w-full"
             />
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white">
               <PlayCircle size={32} className="" />
@@ -35,11 +35,11 @@ export default function VideoList({ videos }: VideoListProps) {
             <p>-</p>
             <p className="text-primary">{video.VideoCategory.name}</p>
           </div>
-          <h2 className=" font-semibold text-primary-dark">{video.title}</h2>
+          <h2 className="text-primary-dark font-semibold">{video.title}</h2>
         </Link>
       ))}
       {/* TODO: Add pagination */}
-      {/* <Link href={"/dashboard/news/category/videos"}>
+      {/* <Link href={"/news/category/videos"}>
         <Button
           variant="outline"
           className="mx-auto mt-5 flex w-5/6 items-center gap-1 bg-transparent"

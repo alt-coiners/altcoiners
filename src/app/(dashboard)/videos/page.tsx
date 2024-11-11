@@ -10,7 +10,7 @@ export default async function Videos() {
   const breadcrumbs = [
     {
       name: "Videos",
-      url: `/dashboard/news/category/videos`,
+      url: `/news/category/videos`,
     },
   ];
 

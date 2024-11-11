@@ -3,13 +3,13 @@ import type { MetadataRoute } from "next";
 const BASE_URL = "https://www.altcoiners.live";
 
 const staticPaths = [
-  "/dashboard",
-  "/dashboard/news",
-  "/dashboard/exclusives",
-  "/dashboard/exclusives/podcasts",
-  "/dashboard/guides",
-  "/dashboard/reviews",
-  "/dashboard/videos",
+  "",
+  "/news",
+  "/exclusives",
+  "/exclusives/podcasts",
+  "/guides",
+  "/reviews",
+  "/videos",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

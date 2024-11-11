@@ -21,8 +21,8 @@ export default async function Navbar() {
   ]);
 
   return (
-    <div className="border-primary/50 fixed left-0 top-0 z-10 flex w-full items-center justify-between border bg-white px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
-      <Link href="/dashboard">
+    <div className="fixed left-0 top-0 z-10 flex w-full items-center justify-between border border-primary/50 bg-white px-5 py-3 lg:px-20 xl:px-36 2xl:px-48">
+      <Link href="">
         <Image
           src="/images/altcoiners-logo.svg"
           alt="logo"

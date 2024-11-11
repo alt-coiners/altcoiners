@@ -24,7 +24,7 @@ export async function generateMetadata(
     openGraph: {
       title: guide?.title + " - Altcoiners",
       description: guide?.title?.slice(0, 50) + "...",
-      url: `https://altcoiners.com/dashboard/guide/${params.category}/${params.id}`,
+      url: `https://altcoiners.com/guide/${params.category}/${params.id}`,
       images: [guide?.picture ?? "", ...previousImages],
     },
     twitter: {
@@ -48,15 +48,15 @@ export default async function GuideId(props: {
   const breadcrumbs = [
     {
       name: "News",
-      url: "/dashboard/news",
+      url: "/news",
     },
     {
       name: guideData?.category.name ?? "",
-      url: `/dashboard/guide/${params.categoryId}`,
+      url: `/guide/${params.categoryId}`,
     },
     {
       name: guideData?.title ?? "",
-      url: `/dashboard/guide/${guideData?.id}`,
+      url: `/guide/${guideData?.id}`,
     },
   ];
 
@@ -96,7 +96,7 @@ export default async function GuideId(props: {
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
               articles={latestNews.slice(0, 4)}
-              moreUrl="/dashboard/news"
+              moreUrl="/news"
               title="Crypto News"
             />
             A
@@ -108,7 +108,7 @@ export default async function GuideId(props: {
         <div className="mt-36 hidden flex-col gap-8 xl:flex xl:w-1/3">
           <NewsList
             articles={latestNews.slice(0, 4)}
-            moreUrl="/dashboard/news"
+            moreUrl="/news"
             title="Most Popular"
           />
           <AdSection
@@ -129,7 +129,7 @@ export default async function GuideId(props: {
         articles={latestNews.slice(0, 4)}
         title="Similar News"
         className="my-6 px-2"
-        moreUrl="/dashboard/news"
+        moreUrl="/news"
       />
     </div>
   );

@@ -21,7 +21,7 @@ export async function generateMetadata(
     openGraph: {
       title: video?.title + " - Altcoiners",
       description: video?.title,
-      url: `https://altcoiners.com/dashboard/videos/${params.category}/${params.id}`,
+      url: `https://altcoiners.com/videos/${params.category}/${params.id}`,
       images: [video?.picture ?? "", ...previousImages],
     },
     twitter: {
@@ -45,15 +45,15 @@ export default async function VideoId(props: {
   const breadcrumbs = [
     {
       name: "Videos",
-      url: "/dashboard/videos",
+      url: "/videos",
     },
     {
       name: params.category ?? "",
-      url: `/dashboard/videos/${params.category}`,
+      url: `/videos/${params.category}`,
     },
     {
       name: video?.title ?? "",
-      url: `/dashboard/videos/${video?.id}`,
+      url: `/videos/${video?.id}`,
     },
   ];
 
@@ -79,7 +79,7 @@ export default async function VideoId(props: {
           <div className="mb-4 px-2 xl:hidden">
             <NewsList
               articles={latestNews.slice(0, 4)}
-              moreUrl="/dashboard/news"
+              moreUrl="/news"
               title="Crypto News"
             />
           </div>
@@ -90,7 +90,7 @@ export default async function VideoId(props: {
         <div className="mt-36 hidden flex-col gap-8 xl:flex xl:w-1/3">
           <NewsList
             articles={latestNews.slice(0, 4)}
-            moreUrl="/dashboard/news"
+            moreUrl="/news"
             title="Most Popular"
           />
         </div>

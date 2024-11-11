@@ -1,5 +1,5 @@
 import AdSection from "@/components/AdSection";
-import DashboardMainSection from "@/components/DashboardMainSection";
+import DashboardMainSection from "@/componentsMainSection";
 import AdSlider from "@/components/advertisement/AdSlider";
 import CoinPricesCarousel from "@/components/crypto/CoinPricesCarousel";
 import GuideHomeSection from "@/components/guide/GuideHomeSection";
@@ -44,7 +44,7 @@ export default async function Dashboard() {
       <NewsListWithImage
         title="Crypto News"
         articles={newsData.slice(0, 8)}
-        moreUrl="/dashboard/news/Crypto"
+        moreUrl="/news/Crypto"
       />
       <div className="lg:hidden">
         <NewsListWithImage
@@ -54,7 +54,7 @@ export default async function Dashboard() {
               ? financeNewsData.slice(0, 8)
               : newsData.slice(0, 8)
           }
-          moreUrl="/dashboard/news/Finance"
+          moreUrl="/news/Finance"
         />
       </div>
       <div className="lg:hidden">
@@ -74,7 +74,7 @@ export default async function Dashboard() {
             ? altcoinNewsData.slice(0, 8)
             : newsData.slice(0, 8)
         }
-        moreUrl="/dashboard/news/Altcoin"
+        moreUrl="/news/Altcoin"
       />
       <AdSection
         className="h-[300px]"
@@ -92,7 +92,7 @@ export default async function Dashboard() {
             ? bitcoinNewsData.slice(0, 8)
             : newsData.slice(0, 8)
         }
-        moreUrl="/dashboard/news/Bitcoin"
+        moreUrl="/news/Bitcoin"
       />
       <NewsListWithImage
         title="Ethereum News"
@@ -101,7 +101,7 @@ export default async function Dashboard() {
             ? ethereumNewsData.slice(0, 8)
             : newsData.slice(0, 8)
         }
-        moreUrl="/dashboard/news/Ethereum"
+        moreUrl="/news/Ethereum"
       />
       <AdSection
         className="h-[300px]"
@@ -116,12 +116,12 @@ export default async function Dashboard() {
             ? nftNewsData.slice(0, 8)
             : newsData.slice(0, 8)
         }
-        moreUrl="/dashboard/news/NFT"
+        moreUrl="/news/NFT"
       />
       <NewsListWithImage
         title="All News"
         articles={newsData.slice(0, 16)}
-        moreUrl="/dashboard/news/All"
+        moreUrl="/news/All"
       />
       <AdSection
         className="h-[300px]"

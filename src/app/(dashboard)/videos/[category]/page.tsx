@@ -22,15 +22,15 @@ export default async function VideoCategory(props: {
   const breadcrumbs = [
     {
       name: "News",
-      url: "/dashboard/news",
+      url: "/news",
     },
     {
       name: "Videos",
-      url: `/dashboard/news/category/videos`,
+      url: `/news/category/videos`,
     },
     {
       name: category,
-      url: `/dashboard/news/category/videos/${category}`,
+      url: `/news/category/videos/${category}`,
     },
   ];
 

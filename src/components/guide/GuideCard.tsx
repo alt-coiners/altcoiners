@@ -22,7 +22,7 @@ export default function GuideCard({
 }: GuideCardProps) {
   return (
     <Card className="shadow-xl drop-shadow-xl">
-      <Link href={`/dashboard/guides/${category_id}/${id}`} key={id}>
+      <Link href={`/guides/${category_id}/${id}`} key={id}>
         <CardHeader>
           <CardDescription>{category}</CardDescription>
           <CardTitle className="text-lg">{title}</CardTitle>

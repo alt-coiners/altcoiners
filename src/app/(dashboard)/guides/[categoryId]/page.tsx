@@ -16,11 +16,11 @@ export default async function GuideCategory(props: {
   const breadcrumbs = [
     {
       name: "Guides",
-      url: "/dashboard/guides",
+      url: "/guides",
     },
     {
       name: categoryData.name,
-      url: `/dashboard/news/category/videos`,
+      url: `/news/category/videos`,
     },
   ];
 

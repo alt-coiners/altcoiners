@@ -193,11 +193,11 @@ export const newsRouter = createTRPCRouter({
 
     return {
       title: "News",
-      href: "/dashboard/news",
+      href: "/news",
       subMenus: categories.map((category) => {
         return {
           title: category.name,
-          url: `/dashboard/news/${category.name}`,
+          url: `/news/${category.name}`,
         };
       }),
     };

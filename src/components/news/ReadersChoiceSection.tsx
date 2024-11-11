@@ -17,7 +17,7 @@ export default async function ReadersChoiceSection() {
         <h1 className="text-primary-dark text-2xl font-bold">
           Reader&apos;s choice
         </h1>
-        <div className="text-primary flex items-center gap-1 text-sm">
+        <div className="flex items-center gap-1 text-sm text-primary">
           <p>More from Crypto News</p>
           <ChevronRight size={12} />
         </div>
@@ -25,7 +25,7 @@ export default async function ReadersChoiceSection() {
       <div className="flex flex-col gap-3 lg:flex-row lg:gap-6">
         <Link
           className="flex flex-col lg:w-1/2"
-          href={`/dashboard/news/${mainNews?.category.name}/${mainNews?.id}`}
+          href={`/news/${mainNews?.category.name}/${mainNews?.id}`}
         >
           <div className="relative">
             <Image
@@ -50,13 +50,13 @@ export default async function ReadersChoiceSection() {
               <p className="font-semibold">{mainNews?.title}</p>
               <p className="">{mainNews?.description}</p>
             </div>
-            <div className="bg-primary min-h-full w-10"></div>
+            <div className="min-h-full w-10 bg-primary"></div>
           </div>
         </Link>
         <div className="my-2 sm:w-3/4 lg:hidden">
           <NewsList
             articles={readersNews.slice(1, 5)}
-            moreUrl="/dashboard/news"
+            moreUrl="/news"
             title="Readers' choice"
             showTitle={false}
           />
@@ -64,7 +64,7 @@ export default async function ReadersChoiceSection() {
         <div className="my-2 hidden gap-6 sm:w-3/4 lg:flex lg:w-1/2">
           <NewsList
             articles={readersNews.slice(1, 5)}
-            moreUrl="/dashboard/news"
+            moreUrl="/news"
             title="Readers' choice"
             showTitle={false}
           />

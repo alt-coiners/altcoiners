@@ -154,11 +154,11 @@ export const videoRouter = createTRPCRouter({
 
     return {
       title: "Videos",
-      href: "/dashboard/videos",
+      href: "/videos",
       subMenus: categories.map((category) => {
         return {
           title: category.name,
-          url: `/dashboard/videos/${category.name}`,
+          url: `/videos/${category.name}`,
         };
       }),
     };

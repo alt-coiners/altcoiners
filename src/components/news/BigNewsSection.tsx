@@ -16,12 +16,12 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
         <Link
           key={article.id}
           className="flex gap-4 xl:gap-6"
-          href={`/dashboard/news/${article.category.name}/${article.id}`}
+          href={`/news/${article.category.name}/${article.id}`}
         >
           <Image
             src={article.picture}
             alt={article.title}
-            className="h-full "
+            className="h-full"
             width={200}
             height={100}
             quality={100}
@@ -32,13 +32,11 @@ export default function BigNewsSection({ articles }: BigNewsSectionProps) {
               <p>-</p>
               <p className="text-primary">{article.category.name}</p>
             </div>
-            <h2 className="w-[90%] text-pretty  font-semibold xl:text-xl 2xl:text-lg">
+            <h2 className="w-[90%] text-pretty font-semibold xl:text-xl 2xl:text-lg">
               {article.title}
             </h2>
             <p className="2xl: text-xs xl:text-sm">{article.description}</p>
-            <Link
-              href={`/dashboard/news/${article.category.name}/${article.id}`}
-            >
+            <Link href={`/news/${article.category.name}/${article.id}`}>
               <Button
                 variant={"ghost"}
                 className="2xl: items-center px-0 text-xs xl:text-sm"

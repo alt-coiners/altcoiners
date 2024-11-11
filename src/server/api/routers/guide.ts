@@ -163,11 +163,11 @@ export const guideRouter = createTRPCRouter({
 
     return {
       title: "Guides",
-      href: "/dashboard/guides",
+      href: "/guides",
       subMenus: categories.map((category) => {
         return {
           title: category.name,
-          url: `/dashboard/guides/${category.id}`,
+          url: `/guides/${category.id}`,
         };
       }),
     };

@@ -12,7 +12,7 @@ export default async function Guide() {
       <div className="mx-auto flex flex-col gap-4 px-6 xl:gap-6">
         {guidesByCategoryData.map((category) => (
           <div key={category.id}>
-            <Link href={`/dashboard/guides/${category.id}`}>
+            <Link href={`/guides/${category.id}`}>
               <h2 className="text-2xl font-semibold">{category.name}</h2>
             </Link>
             <div className="flex">
@@ -20,7 +20,7 @@ export default async function Guide() {
                 {category.Guide.map((guide) => (
                   <Link
                     key={guide.id}
-                    href={`/dashboard/guides/${category.id}/${guide.id}`}
+                    href={`/guides/${category.id}/${guide.id}`}
                     className="h-full rounded-lg bg-white px-4 py-6 shadow-lg lg:py-8"
                   >
                     <h3 className="text-lg font-semibold">{guide.title}</h3>

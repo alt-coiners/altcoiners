@@ -10,7 +10,7 @@ export default async function Reviews() {
   const breadcrumbs = [
     {
       name: "Reviews",
-      url: "/dashboard/reviews",
+      url: "/reviews",
     },
   ];
 

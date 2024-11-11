@@ -13,11 +13,11 @@ export default async function Podcasts() {
   const breadcrumbs = [
     {
       name: "Exclusives",
-      url: `/dashboard/exclusives`,
+      url: `/exclusives`,
     },
     {
       name: "Podcasts",
-      url: `/dashboard/podcasts`,
+      url: `/podcasts`,
     },
   ];
 
@@ -35,14 +35,14 @@ export default async function Podcasts() {
           <div className="lg:hidden">
             <NewsList
               articles={news.slice(0, 4)}
-              moreUrl="/dashboard/news"
+              moreUrl="/news"
               title="Crypto News"
               showTitle={false}
             />
           </div>
           <NewsList
             articles={news.slice(0, 5)}
-            moreUrl="/dashboard/news"
+            moreUrl="/news"
             title="Most Popular"
           />
           <AdSection
