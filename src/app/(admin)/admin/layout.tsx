@@ -12,7 +12,7 @@ export default function AdminLayout({
   const { isLoggedIn } = useAdminLoginStore();
   const router = useRouter();
   const pathname = usePathname();
-  if (!isLoggedIn && !pathname.includes("/admin/login")) {
+  if (!isLoggedIn && pathname && !pathname.includes("/admin/login")) {
     return router.push("/admin/login");
   }
   return (

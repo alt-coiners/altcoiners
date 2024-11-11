@@ -1,6 +1,7 @@
 import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
+import { revalidatePath } from "next/cache";
 
 export const videoRouter = createTRPCRouter({
   getAllVideos: publicProcedure.query(async ({ ctx }) => {
@@ -73,6 +74,7 @@ export const videoRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.video.upsert({
         where: {
           id: input.id,
@@ -109,6 +111,7 @@ export const videoRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.videoCategory.upsert({
         where: {
           id: input.id,
@@ -127,6 +130,7 @@ export const videoRouter = createTRPCRouter({
   deleteVideo: publicProcedure
     .input(z.object({ id: z.number() }))
     .mutation(async ({ input, ctx }) => {
+      revalidatePath("/", "layout");
       return await ctx.db.video.delete({
         where: {
           id: input.id,
