@@ -92,9 +92,6 @@ importers:
       next:
         specifier: ^15.0.1
         version: 15.0.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      node-xlsx:
-        specifier: ^0.24.0
-        version: 0.24.0
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -2154,11 +2151,6 @@ packages:
       sass:
         optional: true
 
-  node-xlsx@0.24.0:
-    resolution: {integrity: sha512-1olwK48XK9nXZsyH/FCltvGrQYvXXZuxVitxXXv2GIuRm51aBi1+5KwR4rWM4KeO61sFU+00913WLZTD+AcXEg==}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
@@ -2945,12 +2937,6 @@ packages:
 
   xlsx@0.18.5:
     resolution: {integrity: sha512-dmg3LCjBPHZnQp5/F/+nnTa+miPJxUXB6vtk42YjBBKayDNagxGEeIdWApkYPOf3Z3pm3k62Knjzp7lMeTEtFQ==}
-    engines: {node: '>=0.8'}
-    hasBin: true
-
-  xlsx@https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz:
-    resolution: {tarball: https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz}
-    version: 0.20.2
     engines: {node: '>=0.8'}
     hasBin: true
 
@@ -5216,10 +5202,6 @@ snapshots:
       - '@babel/core'
       - babel-plugin-macros
 
-  node-xlsx@0.24.0:
-    dependencies:
-      xlsx: https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz
-
   normalize-path@3.0.0: {}
 
   object-assign@4.1.1: {}
@@ -6058,8 +6040,6 @@ snapshots:
       ssf: 0.11.2
       wmf: 1.0.2
       word: 0.3.0
-
-  xlsx@https://cdn.sheetjs.com/xlsx-0.20.2/xlsx-0.20.2.tgz: {}
 
   yaml@2.6.0: {}
 
