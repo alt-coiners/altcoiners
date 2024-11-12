@@ -29,7 +29,6 @@ import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -55,7 +54,6 @@ export default function EditVideo({ videoId }: EditVideoProps) {
   const { data: categories } = api.video.getVideoCategories.useQuery();
   const updateVideoMutation = api.video.upsertVideo.useMutation({
     onSuccess: () => {
-      revalidatePath("/", "layout");
       void refetchVideos();
       form.reset();
       toast({ title: "Video updated" });

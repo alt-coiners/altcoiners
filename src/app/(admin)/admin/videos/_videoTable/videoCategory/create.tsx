@@ -22,7 +22,6 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { revalidatePath } from "next/cache";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -46,7 +45,6 @@ export default function EditVideoCategory({ videoCategoryId }: EditVideoProps) {
   const updateVideoCategoryMutation = api.video.upsertVideoCategory.useMutation(
     {
       onSuccess: () => {
-      revalidatePath("/", "layout");
         void refetchVideoCategories();
         form.reset();
         toast({ title: "Video Category updated" });

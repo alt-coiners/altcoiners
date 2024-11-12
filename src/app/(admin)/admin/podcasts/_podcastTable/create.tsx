@@ -21,7 +21,6 @@ import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { revalidatePath } from "next/cache";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -44,7 +43,6 @@ export default function EditPodcast({ id }: Props) {
   const { refetch } = api.podcast.getAll.useQuery();
   const upsertMutation = api.podcast.upsert.useMutation({
     onSuccess: () => {
-      revalidatePath("/", "layout");
       void refetch();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });
