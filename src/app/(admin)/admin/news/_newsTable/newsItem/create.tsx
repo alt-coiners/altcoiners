@@ -30,6 +30,7 @@ import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { revalidatePath } from "next/cache";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -56,6 +57,7 @@ export default function EditNews({ id }: Props) {
   const { refetch } = api.news.getAllNews.useQuery();
   const upsertMutation = api.news.upsertNews.useMutation({
     onSuccess: () => {
+      revalidatePath("/", "layout");
       void refetch();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });

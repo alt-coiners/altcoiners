@@ -27,6 +27,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+import { revalidatePath } from "next/cache";
 
 interface Props {
   id: number;
@@ -47,6 +48,7 @@ export default function EditExclusive({ id }: Props) {
   const { refetch } = api.exclusive.getAll.useQuery();
   const upsertMutation = api.exclusive.upsert.useMutation({
     onSuccess: () => {
+      revalidatePath("/", "layout");
       void refetch();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });

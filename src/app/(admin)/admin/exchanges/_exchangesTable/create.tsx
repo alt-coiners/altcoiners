@@ -22,6 +22,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { revalidatePath } from "next/cache";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
@@ -44,6 +45,7 @@ export default function EditExchange({ id }: Props) {
   const { refetch } = api.exchange.getAllExchanges.useQuery();
   const upsertMutation = api.exchange.upsertExchange.useMutation({
     onSuccess: () => {
+      revalidatePath("/", "layout");
       void refetch();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });
