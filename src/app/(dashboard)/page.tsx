@@ -11,27 +11,28 @@ import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 
 export default async function Dashboard() {
-  const [
-    newsData,
-    bitcoinNewsData,
-    financeNewsData,
-    ethereumNewsData,
-    altcoinNewsData,
-    nftNewsData,
-    videosData,
-    guideData,
-    adPictures,
-  ] = await Promise.all([
+  const [newsData, videosData, guideData, adPictures] = await Promise.all([
     api.news.getAllNews(),
-    api.news.getNewsByCategoryName({ categoryName: "Bitcoin" }),
-    api.news.getNewsByCategoryName({ categoryName: "Finance" }),
-    api.news.getNewsByCategoryName({ categoryName: "Ethereum" }),
-    api.news.getNewsByCategoryName({ categoryName: "Altcoin" }),
-    api.news.getNewsByCategoryName({ categoryName: "NFT" }),
     api.video.getAllVideos(),
     api.guide.getAllGuidesByCategory(),
     api.banner.getAll(),
   ]);
+
+  const financeNewsData = newsData?.filter((article) =>
+    article.category.name.includes("Finance"),
+  );
+  const altcoinNewsData = newsData?.filter((article) =>
+    article.category.name.includes("Altcoin"),
+  );
+  const bitcoinNewsData = newsData?.filter((article) =>
+    article.category.name.includes("Bitcoin"),
+  );
+  const ethereumNewsData = newsData?.filter((article) =>
+    article.category.name.includes("Ethereum"),
+  );
+  const nftNewsData = newsData?.filter((article) =>
+    article.category.name.includes("NFT"),
+  );
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">

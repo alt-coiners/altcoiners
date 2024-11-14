@@ -22,7 +22,7 @@ export default function NewsList({
   return (
     <section className="flex flex-col gap-4" key={title}>
       {!!title?.length && showTitle && (
-        <h2 className="text-primary-dark text-2xl font-bold">{title}</h2>
+        <h2 className="text-2xl font-bold text-primary-dark">{title}</h2>
       )}
       <div className="flex flex-col gap-4">
         {articles.map((article, index) => (

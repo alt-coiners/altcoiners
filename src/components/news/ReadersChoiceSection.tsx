@@ -14,7 +14,7 @@ export default async function ReadersChoiceSection() {
   return (
     <section className="mx-auto flex flex-col gap-4 px-4 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <div className="flex items-center justify-between">
-        <h1 className="text-primary-dark text-2xl font-bold">
+        <h1 className="text-2xl font-bold text-primary-dark">
           Reader&apos;s choice
         </h1>
         <div className="flex items-center gap-1 text-sm text-primary">
@@ -36,7 +36,7 @@ export default async function ReadersChoiceSection() {
               quality={100}
               className="h-48 w-full lg:h-full"
             />
-            <div className="bg-primary-dark absolute bottom-0 h-8 w-full"></div>
+            <div className="absolute bottom-0 h-8 w-full bg-primary-dark"></div>
           </div>
           <div className="flex justify-between gap-2">
             <div className="flex flex-col gap-2 pt-3">

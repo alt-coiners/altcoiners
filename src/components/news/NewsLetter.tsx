@@ -22,7 +22,7 @@ export default function NewsLetter() {
   });
 
   return (
-    <div className="bg-primary-dark mx-auto flex max-w-[350px] flex-col gap-4 px-4 pb-6 pt-12 text-white sm:max-w-lg sm:px-6 md:max-w-xl md:px-8 lg:max-w-3xl lg:px-16 xl:max-w-5xl xl:py-6 2xl:max-w-7xl 2xl:px-24">
+    <div className="mx-auto flex max-w-[350px] flex-col gap-4 bg-primary-dark px-4 pb-6 pt-12 text-white sm:max-w-lg sm:px-6 md:max-w-xl md:px-8 lg:max-w-3xl lg:px-16 xl:max-w-5xl xl:py-6 2xl:max-w-7xl 2xl:px-24">
       <p className="text-gray-400">
         A quick 3min read about today&apos;s crypto news!
       </p>

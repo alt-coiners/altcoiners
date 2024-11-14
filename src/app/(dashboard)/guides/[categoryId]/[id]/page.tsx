@@ -65,7 +65,7 @@ export default async function GuideId(props: {
       <div className="xl:flex xl:justify-between xl:gap-12">
         <div className="flex flex-col gap-4 p-3">
           <BreadcrumbComponent links={breadcrumbs} />
-          <p className="text-primary-dark w-[90%] text-pretty text-2xl font-bold lg:text-3xl">
+          <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
             {guideData?.title}
           </p>
           <div>
@@ -86,7 +86,7 @@ export default async function GuideId(props: {
             className="mx-auto w-[90%]"
           />
           <article
-            className="prose prose-sm sm:prose-base xl:prose-lg px-2 py-6 text-justify text-gray-700"
+            className="prose prose-sm px-2 py-6 text-justify text-gray-700 sm:prose-base xl:prose-lg"
             dangerouslySetInnerHTML={{ __html: guideData?.content ?? "" }}
           ></article>
           <AdSection

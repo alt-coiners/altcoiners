@@ -1,6 +1,3 @@
-export const dynamic = "force-static";
-export const revalidate = 3600;
-
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 

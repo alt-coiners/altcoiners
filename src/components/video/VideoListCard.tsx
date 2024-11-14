@@ -11,7 +11,7 @@ interface VideoListProps {
 
 export default function VideoListCard({ videos }: VideoListProps) {
   return (
-    <div className="bg-primary-dark mx-auto flex flex-col gap-5 px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
+    <div className="mx-auto flex flex-col gap-5 bg-primary-dark px-4 py-6 text-white sm:max-w-lg md:max-w-xl lg:max-w-full lg:px-20 xl:px-36 xl:py-6 2xl:px-48">
       <div className="flex items-center justify-between">
         <h3 className="text-2xl font-semibold">Videos</h3>
         <Link href={"/videos"}>

@@ -37,7 +37,7 @@ export default async function VideoCategory(props: {
   return (
     <div className="mx-auto flex flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl xl:py-6 2xl:max-w-7xl">
       <BreadcrumbComponent links={breadcrumbs} />
-      <p className="text-primary-dark w-[90%] text-pretty text-2xl font-bold lg:text-3xl">
+      <p className="w-[90%] text-pretty text-2xl font-bold text-primary-dark lg:text-3xl">
         Videos
       </p>
       <p className="">

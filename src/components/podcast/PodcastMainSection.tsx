@@ -28,7 +28,7 @@ export default function PodcastMainSection({
               <p>-</p>
               <p className="text-primary">Podcast</p>
             </div>
-            <h2 className="w-[90%] text-pretty  font-semibold xl:text-xl 2xl:text-lg">
+            <h2 className="w-[90%] text-pretty font-semibold xl:text-xl 2xl:text-lg">
               {podcast.title}
             </h2>
             <p className="2xl: text-xs xl:text-sm">{podcast.description}</p>

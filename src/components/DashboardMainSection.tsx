@@ -23,7 +23,7 @@ export default function DashboardMainSection({
   return (
     <div className="mx-auto hidden max-w-3xl gap-1 lg:flex xl:max-w-5xl xl:gap-4 xl:py-6 2xl:max-w-7xl 2xl:gap-8">
       <div className="flex w-1/4 flex-col gap-4">
-        <h2 className="text-primary-dark text-2xl font-bold">
+        <h2 className="text-2xl font-bold text-primary-dark">
           Latest Crypto News
         </h2>
         <NewsList articles={newsData.slice(0, 5)} setMainNews={setMainNews} />
@@ -49,7 +49,7 @@ export default function DashboardMainSection({
               height={300}
               className="aspect-video w-full"
             />
-            <div className="bg-primary-dark absolute bottom-0 h-8 w-full"></div>
+            <div className="absolute bottom-0 h-8 w-full bg-primary-dark"></div>
           </div>
           <div className="flex gap-2">
             <div className="h-full w-8 bg-primary"></div>

@@ -35,7 +35,7 @@ export default function VideoList({ videos }: VideoListProps) {
             <p>-</p>
             <p className="text-primary">{video.VideoCategory.name}</p>
           </div>
-          <h2 className="text-primary-dark font-semibold">{video.title}</h2>
+          <h2 className="font-semibold text-primary-dark">{video.title}</h2>
         </Link>
       ))}
       {/* TODO: Add pagination */}

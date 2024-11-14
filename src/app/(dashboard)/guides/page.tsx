@@ -8,7 +8,7 @@ export default async function Guide() {
 
   return (
     <div className="mx-auto mb-6 flex w-full flex-col gap-4 p-3 sm:max-w-lg md:max-w-xl lg:max-w-3xl xl:max-w-5xl 2xl:max-w-7xl">
-      <p className="text-primary-dark text-2xl font-bold lg:text-3xl">Guides</p>
+      <p className="text-2xl font-bold text-primary-dark lg:text-3xl">Guides</p>
       <div className="mx-auto flex flex-col gap-4 px-6 xl:gap-6">
         {guidesByCategoryData.map((category) => (
           <div key={category.id}>

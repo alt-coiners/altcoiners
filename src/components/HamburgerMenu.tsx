@@ -38,7 +38,7 @@ export default async function HamburgerMenu() {
   return (
     <Sheet>
       <SheetTrigger>
-        <Menu className="text-primary size-6 lg:hidden" />
+        <Menu className="size-6 text-primary lg:hidden" />
       </SheetTrigger>
       <SheetContent side="top">
         <SheetHeader>
