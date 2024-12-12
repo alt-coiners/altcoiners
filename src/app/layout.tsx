@@ -1,4 +1,4 @@
-// export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 import "@/styles/globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";

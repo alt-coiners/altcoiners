@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
+import revalidate from "@/utils/revalidate";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -54,6 +55,7 @@ export default function EditGuide({ id }: Props) {
   const upsertMutation = api.guide.upsertGuide.useMutation({
     onSuccess: () => {
       void refetch();
+      void revalidate();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });
     },

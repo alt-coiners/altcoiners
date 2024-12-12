@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
+import revalidate from "@/utils/revalidate";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -55,6 +56,7 @@ export default function EditVideo({ videoId }: EditVideoProps) {
   const updateVideoMutation = api.video.upsertVideo.useMutation({
     onSuccess: () => {
       void refetchVideos();
+      void revalidate();
       form.reset();
       toast({ title: "Video updated" });
     },

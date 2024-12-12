@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
+import revalidate from "@/utils/revalidate";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -45,6 +46,7 @@ export default function EditExchange({ id }: Props) {
   const upsertMutation = api.exchange.upsertExchange.useMutation({
     onSuccess: () => {
       void refetch();
+      void revalidate();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });
     },

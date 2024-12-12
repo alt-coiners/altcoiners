@@ -20,6 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
+import revalidate from "@/utils/revalidate";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
@@ -42,6 +43,7 @@ export default function EditNewsCategory({ id }: Props) {
   const upsertMutation = api.news.upsertCategory.useMutation({
     onSuccess: () => {
       void refetch();
+      void revalidate();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });
     },

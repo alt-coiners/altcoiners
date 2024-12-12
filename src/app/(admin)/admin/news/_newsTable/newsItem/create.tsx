@@ -28,6 +28,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/hooks/use-toast";
 import { api } from "@/trpc/react";
+import revalidate from "@/utils/revalidate";
 import { UploadButton } from "@/utils/uploadthing";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
@@ -57,6 +58,7 @@ export default function EditNews({ id }: Props) {
   const upsertMutation = api.news.upsertNews.useMutation({
     onSuccess: () => {
       void refetch();
+      void revalidate();
       form.reset();
       toast({ title: id === -1 ? "Created" : "Updated" });
     },
