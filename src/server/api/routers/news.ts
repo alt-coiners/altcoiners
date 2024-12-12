@@ -101,7 +101,7 @@ export const newsRouter = createTRPCRouter({
     }),
 
   getNewsByCategoryName: publicProcedure
-    .input(z.object({ categoryName: z.string() }))
+    .input(z.object({ categoryName: z.string(), limit: z.number().optional() }))
     .query(async ({ input, ctx }) => {
       if (input.categoryName.toLowerCase() === "all") {
         return await ctx.db.article.findMany({
@@ -111,6 +111,7 @@ export const newsRouter = createTRPCRouter({
           orderBy: {
             updatedAt: "desc",
           },
+          take: input.limit,
         });
       }
       return await ctx.db.article.findMany({

@@ -11,28 +11,33 @@ import VideoListCard from "@/components/video/VideoListCard";
 import { api } from "@/trpc/server";
 
 export default async function Dashboard() {
-  const [newsData, videosData, guideData, adPictures] = await Promise.all([
+  // const [newsData, videosData, guideData, adPictures] = await Promise.all([
+  //   api.news.getAllNews({ limit: 8 }),
+  //   api.video.getAllVideos({ limit: 4 }),
+  //   api.guide.getAllGuidesByCategory({ limit: 4 }),
+  //   api.banner.getAll(),
+  // ]);
+  const [
+    newsData,
+    bitcoinNewsData,
+    financeNewsData,
+    ethereumNewsData,
+    altcoinNewsData,
+    nftNewsData,
+    videosData,
+    guideData,
+    adPictures,
+  ] = await Promise.all([
     api.news.getAllNews({ limit: 8 }),
+    api.news.getNewsByCategoryName({ categoryName: "Bitcoin", limit: 8 }),
+    api.news.getNewsByCategoryName({ categoryName: "Finance", limit: 8 }),
+    api.news.getNewsByCategoryName({ categoryName: "Ethereum", limit: 8 }),
+    api.news.getNewsByCategoryName({ categoryName: "Altcoin", limit: 8 }),
+    api.news.getNewsByCategoryName({ categoryName: "NFT", limit: 8 }),
     api.video.getAllVideos({ limit: 4 }),
     api.guide.getAllGuidesByCategory({ limit: 4 }),
     api.banner.getAll(),
   ]);
-
-  const financeNewsData = newsData?.filter((article) =>
-    article.category.name.includes("Finance"),
-  );
-  const altcoinNewsData = newsData?.filter((article) =>
-    article.category.name.includes("Altcoin"),
-  );
-  const bitcoinNewsData = newsData?.filter((article) =>
-    article.category.name.includes("Bitcoin"),
-  );
-  const ethereumNewsData = newsData?.filter((article) =>
-    article.category.name.includes("Ethereum"),
-  );
-  const nftNewsData = newsData?.filter((article) =>
-    article.category.name.includes("NFT"),
-  );
 
   return (
     <div className="my-4 flex flex-col gap-8 px-2 lg:gap-12 lg:px-0">
