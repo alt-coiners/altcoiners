@@ -4,7 +4,7 @@ import VideoList from "@/components/video/VideoList";
 import { api } from "@/trpc/server";
 
 export default async function Videos() {
-  const videos = await api.video.getAllVideos();
+  const videos = await api.video.getAllVideos({});
   const adPictures = await api.banner.getAll();
 
   const breadcrumbs = [

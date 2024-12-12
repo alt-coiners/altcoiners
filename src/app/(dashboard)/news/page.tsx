@@ -6,7 +6,7 @@ import NewsListWithImage from "@/components/news/NewsListWithImage";
 import { api } from "@/trpc/server";
 
 export default async function News() {
-  const news = await api.news.getAllNews();
+  const news = await api.news.getAllNews({});
   const adPictures = await api.banner.getAll();
 
   const breadcrumbs = [

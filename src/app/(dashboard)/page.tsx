@@ -12,9 +12,9 @@ import { api } from "@/trpc/server";
 
 export default async function Dashboard() {
   const [newsData, videosData, guideData, adPictures] = await Promise.all([
-    api.news.getAllNews(),
-    api.video.getAllVideos(),
-    api.guide.getAllGuidesByCategory(),
+    api.news.getAllNews({ limit: 8 }),
+    api.video.getAllVideos({ limit: 4 }),
+    api.guide.getAllGuidesByCategory({ limit: 4 }),
     api.banner.getAll(),
   ]);
 

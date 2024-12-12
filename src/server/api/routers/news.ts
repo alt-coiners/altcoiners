@@ -4,16 +4,23 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { revalidatePath } from "next/cache";
 
 export const newsRouter = createTRPCRouter({
-  getAllNews: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.article.findMany({
-      include: {
-        category: true,
-      },
-      orderBy: {
-        updatedAt: "desc",
-      },
-    });
-  }),
+  getAllNews: publicProcedure
+    .input(
+      z.object({
+        limit: z.number().optional(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.db.article.findMany({
+        include: {
+          category: true,
+        },
+        orderBy: {
+          updatedAt: "desc",
+        },
+        take: input.limit,
+      });
+    }),
 
   getNewsById: publicProcedure
     .input(z.object({ id: z.number() }))

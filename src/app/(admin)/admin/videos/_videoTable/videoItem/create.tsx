@@ -51,7 +51,9 @@ export default function EditVideo({ videoId }: EditVideoProps) {
     { id: videoId },
     { enabled: videoId !== -1 },
   );
-  const { refetch: refetchVideos } = api.video.getAllVideos.useQuery();
+  const { refetch: refetchVideos } = api.video.getAllVideos.useQuery({
+    limit: 1,
+  });
   const { data: categories } = api.video.getVideoCategories.useQuery();
   const updateVideoMutation = api.video.upsertVideo.useMutation({
     onSuccess: () => {

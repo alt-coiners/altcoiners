@@ -54,7 +54,7 @@ export default function EditNews({ id }: Props) {
     { id: id },
     { enabled: id !== -1 },
   );
-  const { refetch } = api.news.getAllNews.useQuery();
+  const { refetch } = api.news.getAllNews.useQuery({ limit: 1 });
   const upsertMutation = api.news.upsertNews.useMutation({
     onSuccess: () => {
       void refetch();

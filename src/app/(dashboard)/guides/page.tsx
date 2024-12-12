@@ -3,7 +3,7 @@ import { api } from "@/trpc/server";
 import Link from "next/link";
 
 export default async function Guide() {
-  const guidesByCategoryData = await api.guide.getAllGuidesByCategory();
+  const guidesByCategoryData = await api.guide.getAllGuidesByCategory({});
   const adPictures = await api.banner.getAll();
 
   return (

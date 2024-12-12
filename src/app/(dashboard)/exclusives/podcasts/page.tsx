@@ -6,7 +6,7 @@ import PodcastMainSection from "@/components/podcast/PodcastMainSection";
 import { api } from "@/trpc/server";
 
 export default async function Podcasts() {
-  const news = await api.news.getAllNews();
+  const news = await api.news.getAllNews({ limit: 10 });
   const podcasts = await api.podcast.getAll();
   const adPictures = await api.banner.getAll();
 

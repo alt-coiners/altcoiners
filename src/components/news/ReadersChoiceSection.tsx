@@ -7,7 +7,7 @@ import AdSection from "../AdSection";
 import NewsList from "./NewsList";
 
 export default async function ReadersChoiceSection() {
-  const readersNews = await api.news.getAllNews();
+  const readersNews = await api.news.getAllNews({ limit: 5 });
   const mainNews = readersNews[0];
   const adPictures = await api.banner.getAll();
 

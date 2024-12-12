@@ -4,16 +4,23 @@ import { createTRPCRouter, publicProcedure } from "@/server/api/trpc";
 import { revalidatePath } from "next/cache";
 
 export const videoRouter = createTRPCRouter({
-  getAllVideos: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.video.findMany({
-      include: {
-        VideoCategory: true,
-      },
-      orderBy: {
-        updatedAt: "desc",
-      },
-    });
-  }),
+  getAllVideos: publicProcedure
+    .input(
+      z.object({
+        limit: z.number().optional(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.db.video.findMany({
+        include: {
+          VideoCategory: true,
+        },
+        orderBy: {
+          updatedAt: "desc",
+        },
+        take: input.limit,
+      });
+    }),
 
   getVideoById: publicProcedure
     .input(z.object({ id: z.number() }))

@@ -59,17 +59,24 @@ export const guideRouter = createTRPCRouter({
       return data;
     }),
 
-  getAllGuidesByCategory: publicProcedure.query(async ({ ctx }) => {
-    return await ctx.db.guideCategory.findMany({
-      include: {
-        Guide: {
-          orderBy: {
-            updatedAt: "desc",
+  getAllGuidesByCategory: publicProcedure
+    .input(
+      z.object({
+        limit: z.number().optional(),
+      }),
+    )
+    .query(async ({ ctx, input }) => {
+      return await ctx.db.guideCategory.findMany({
+        include: {
+          Guide: {
+            orderBy: {
+              updatedAt: "desc",
+            },
+            take: input.limit,
           },
         },
-      },
-    });
-  }),
+      });
+    }),
 
   getAllGuides: publicProcedure.query(async ({ ctx }) => {
     return await ctx.db.guide.findMany({

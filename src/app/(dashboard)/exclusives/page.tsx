@@ -6,7 +6,7 @@ import NewsList from "@/components/news/NewsList";
 import { api } from "@/trpc/server";
 
 export default async function Exclusives() {
-  const news = await api.news.getAllNews();
+  const news = await api.news.getAllNews({ limit: 5 });
   const exclusives = await api.exclusive.getAll();
   const adPictures = await api.banner.getAll();
 
